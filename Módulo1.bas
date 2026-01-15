@@ -2,6 +2,7 @@ Attribute VB_Name = "M�dulo1"
 Public Sub Limpiar_Layout() 
     ThisWorkbook.Sheets("Layout").Range("JI96:LI187").Clear
     ThisWorkbook.Sheets("Layout").Range("JI96:LI187").Interior.Color = &HF2F2F2
+
 End Sub 
 Public Sub Limpiar_Unifilar()
     ThisWorkbook.Sheets("Unifilar").Range("JI96:LI187").Clear
@@ -16,7 +17,7 @@ Public Sub Restablecer_unifilar()
     ThisWorkbook.Sheets("Unifilar").Range("BR44:IE147").Clear
     ThisWorkbook.Sheets("Unifilar").Range("BR148:IE165").Clear
     call DibujarLineaPunteada_Fijau
-    DibujarLineaPunteada_FijaVU
+    call DibujarLineaPunteada_FijaVU
 End Sub
 Sub DibujarLineaPunteada_Fija() 
     Dim ws As Worksheet
