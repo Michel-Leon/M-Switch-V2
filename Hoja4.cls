@@ -309,7 +309,7 @@ Public Sub Boton1GBC()
     Select case Me.OLEObjects("AppGBC").Object.Value
         Case "Medida"
             Aplicacion = "MD"
-        Case Else
+        Case Else 
     End Select
     Select case Me.OLEObjects("MedidoresGBC").Object.Value
         Case "1M"
@@ -322,5 +322,5 @@ Public Sub Boton1GBC()
     Tipo = Me.OLEObjects("TipoGBC").Object.Value    
     resultadoUNIF = "UN_GBC" & Tipo & Tension & "X" & Aplicacion & "X" & Medidores & "X" & Direcccion 
     'MsgBox resultadoUNIF
-    MoverBloque resultadoUNIF, "UNGBC" , "UGBC 36kv"
+    MoverBloque resultadoUNIF, "UNGBC" , "UNGBC 36kv"
 End Sub
