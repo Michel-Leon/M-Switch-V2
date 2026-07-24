@@ -27,10 +27,10 @@ Private Sub UserForm_Initialize()
     msgbox Resultado_IM
     if Resultado_IM  = "1" Then
         Me.OptionButton1.Value = True
-        
         Me.OptionButton7.Value = True
         Me.OptionButton9.Value = True
         me.OptionButton10.Value = True
+        Me.OptionButton12.Value = True
 
 
     End If

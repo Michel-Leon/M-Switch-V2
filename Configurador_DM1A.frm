@@ -15,11 +15,16 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Private Sub UserForm_Initialize()
-    'Tamaño de la ventana
+    'Tamaï¿½o de la ventana
     Me.Height = 580
     Me.Width = 932
      ' Centrar en la pantalla
-    Me.StartUpPosition = 0  ' Manual, para poder controlar posición
+    Me.StartUpPosition = 0  ' Manual, para poder controlar posiciï¿½n
     Me.Top = (Application.Height - Me.Height) / 2
     Me.Left = (Application.Width - Me.Width) / 2
+    Me.OptionButton1.Value = True
+    Me.OptionButton7.Value = True
+    Me.OptionButton9.Value = True
+    me.OptionButton10.Value = True
+    Me.OptionButton12.Value = True
 End Sub
