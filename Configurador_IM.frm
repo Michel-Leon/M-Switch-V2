@@ -17,7 +17,7 @@ Attribute VB_Exposed = False
 
 
 Private Sub UserForm_Initialize()
-    'Tama�o de la ventana
+    ' Tamaño de la ventana
     Me.Height = 580
     Me.Width = 932
      ' Centrar en la pantalla

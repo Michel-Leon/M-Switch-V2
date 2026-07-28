@@ -25,8 +25,8 @@ Sub EliminarGraficosEnRango(ws As Worksheet, rng As Range, Optional excluir As S
     Dim shp As Shape
     Dim i As Long
     
-    ' Recorremos de atrás hacia adelante porque al eliminar shapes
-    ' la colección se reindexa y si vas hacia adelante te saltas elementos
+    ' Recorremos de atr�s hacia adelante porque al eliminar shapes
+    ' la colecci�n se reindexa y si vas hacia adelante te saltas elementos
     For i = ws.Shapes.Count To 1 Step -1
         Set shp = ws.Shapes(i)
         If shp.Name <> excluir Then
@@ -53,7 +53,7 @@ Function ShapeIntersectaConRango(shp As Shape, rng As Range) As Boolean
     rngRight = rng.Left + rng.Width
     rngBottom = rng.Top + rng.Height
     
-    ' Verifica si hay solapamiento entre los dos rectángulos
+    ' Verifica si hay solapamiento entre los dos rect�ngulos
     If shpLeft < rngRight And shpRight > rngLeft And _
        shpTop < rngBottom And shpBottom > rngTop Then
         ShapeIntersectaConRango = True
@@ -62,7 +62,7 @@ Function ShapeIntersectaConRango(shp As Shape, rng As Range) As Boolean
     End If
 End Function
 
-Sub Celda_IM() ' Modo de ejecución
+Sub Celda_IM() ' Modo de ejecuci�n
     Dim ws As Worksheet
     Dim rng As Range
     Dim celdaDestino As String
@@ -71,22 +71,22 @@ Sub Celda_IM() ' Modo de ejecución
     
     Set ws = ThisWorkbook.Sheets("ESQUEMA")
     
-    pregunta = InputBox("Indicar la posición de la celda (H1 a H9): ")
+    pregunta = InputBox("Indicar la posicion de la celda (H1 a H9): ")
     If Trim(pregunta) = "" Then Exit Sub
     pregunta = UCase(Trim(pregunta))
     
     Select Case pregunta
-        Case "H1": celdaDestino = "BJ56": rangoLimpiar = "BJ56:CC115"
-        Case "H2": celdaDestino = "CE56": rangoLimpiar = "CE56:CX115"
-        Case "H3": celdaDestino = "CZ56": rangoLimpiar = "CZ56:DS115"
-        Case "H4": celdaDestino = "DU56": rangoLimpiar = "DU56:EN115"
-        Case "H5": celdaDestino = "EP56": rangoLimpiar = "EP56:FI115"
-        Case "H6": celdaDestino = "FK56": rangoLimpiar = "FK56:GD115"
-        Case "H7": celdaDestino = "GF56": rangoLimpiar = "GF56:GY115"
-        Case "H8": celdaDestino = "HA56": rangoLimpiar = "HA56:HT115"
-        Case "H9": celdaDestino = "HV56": rangoLimpiar = "HV56:IO115"
+        Case "H1": celdaDestino = "CM45": rangoLimpiar = "CM45:DF104"
+        Case "H2": celdaDestino = "DH45": rangoLimpiar = "DH45:EA104"
+        Case "H3": celdaDestino = "EC45": rangoLimpiar = "EC45:EV104"
+        Case "H4": celdaDestino = "EX45": rangoLimpiar = "EX45:FQ104"
+        Case "H5": celdaDestino = "FS45": rangoLimpiar = "FS45:GL104"
+        Case "H6": celdaDestino = "GN45": rangoLimpiar = "GN45:HG104"
+        Case "H7": celdaDestino = "HI45": rangoLimpiar = "HI45:IB104"
+        Case "H8": celdaDestino = "ID45": rangoLimpiar = "ID45:HT115"
+        Case "H9": celdaDestino = "IY45": rangoLimpiar = "IY45:JR104"
         Case Else
-            MsgBox "Posición no válida. Debe indicar un valor entre H1 y H9.", vbExclamation
+            MsgBox "Posicion no valida. Debe indicar un valor entre H1 y H9.", vbExclamation
             Exit Sub
     End Select
     
@@ -96,7 +96,7 @@ Sub Celda_IM() ' Modo de ejecución
     rng.Clear
     rng.Interior.Color = &HF2F2F2
     
-    ' Borrar gráficos y formas que se solapen con el rango
+    ' Borrar gr�ficos y formas que se solapen con el rango
     EliminarGraficosEnRango ws, rng
     
     Dim codigoIM As String
@@ -106,7 +106,7 @@ Sub Celda_IM() ' Modo de ejecución
     MoverBloque codigoIM, "BD_Esquemas", ws, celdaDestino
 End Sub
 
-Sub Celda_QM() ' Modo de ejecución
+Sub Celda_QM() ' Modo de ejecuci�n
     Dim ws As Worksheet
     Dim rng As Range
     Dim celdaDestino As String
@@ -115,22 +115,22 @@ Sub Celda_QM() ' Modo de ejecución
     
     Set ws = ThisWorkbook.Sheets("ESQUEMA")
     
-    pregunta = InputBox("Indicar la posición de la celda (H1 a H9): ")
+    pregunta = InputBox("Indicar la posicion de la celda (H1 a H9): ")
     If Trim(pregunta) = "" Then Exit Sub
     pregunta = UCase(Trim(pregunta))
     
     Select Case pregunta
-        Case "H1": celdaDestino = "BJ56": rangoLimpiar = "BJ56:CC115"
-        Case "H2": celdaDestino = "CE56": rangoLimpiar = "CE56:CX115"
-        Case "H3": celdaDestino = "CZ56": rangoLimpiar = "CZ56:DS115"
-        Case "H4": celdaDestino = "DU56": rangoLimpiar = "DU56:EN115"
-        Case "H5": celdaDestino = "EP56": rangoLimpiar = "EP56:FI115"
-        Case "H6": celdaDestino = "FK56": rangoLimpiar = "FK56:GD115"
-        Case "H7": celdaDestino = "GF56": rangoLimpiar = "GF56:GY115"
-        Case "H8": celdaDestino = "HA56": rangoLimpiar = "HA56:HT115"
-        Case "H9": celdaDestino = "HV56": rangoLimpiar = "HV56:IO115"
+        Case "H1": celdaDestino = "CM45": rangoLimpiar = "CM45:DF104"
+        Case "H2": celdaDestino = "DH45": rangoLimpiar = "DH45:EA104"
+        Case "H3": celdaDestino = "EC45": rangoLimpiar = "EC45:EV104"
+        Case "H4": celdaDestino = "EX45": rangoLimpiar = "EX45:FQ104"
+        Case "H5": celdaDestino = "FS45": rangoLimpiar = "FS45:GL104"
+        Case "H6": celdaDestino = "GN45": rangoLimpiar = "GN45:HG104"
+        Case "H7": celdaDestino = "HI45": rangoLimpiar = "HI45:IB104"
+        Case "H8": celdaDestino = "ID45": rangoLimpiar = "ID45:HT115"
+        Case "H9": celdaDestino = "IY45": rangoLimpiar = "IY45:JR104"
         Case Else
-            MsgBox "Posición no válida. Debe indicar un valor entre H1 y H9.", vbExclamation
+            MsgBox "posicion no valida. Debe indicar un valor entre H1 y H9.", vbExclamation
             Exit Sub
     End Select
     
@@ -140,7 +140,7 @@ Sub Celda_QM() ' Modo de ejecución
     rng.Clear
     rng.Interior.Color = &HF2F2F2
     
-    ' Borrar gráficos y formas que se solapen con el rango
+    ' Borrar gr�ficos y formas que se solapen con el rango
     EliminarGraficosEnRango ws, rng
     
     Dim codigoQM As String
@@ -150,7 +150,7 @@ Sub Celda_QM() ' Modo de ejecución
     MoverBloque codigoQM, "BD_Esquemas", ws, celdaDestino
 End Sub
 
-Sub Celda_GBC() ' Modo de ejecución
+Sub Celda_GBC() ' Modo de ejecuci�n
     Dim ws As Worksheet
     Dim rng As Range
     Dim celdaDestino As String
@@ -159,22 +159,22 @@ Sub Celda_GBC() ' Modo de ejecución
     
     Set ws = ThisWorkbook.Sheets("ESQUEMA")
     
-    pregunta = InputBox("Indicar la posición de la celda (H1 a H9): ")
+    pregunta = InputBox("Indicar la posicion de la celda (H1 a H9): ")
     If Trim(pregunta) = "" Then Exit Sub
     pregunta = UCase(Trim(pregunta))
     
     Select Case pregunta
-        Case "H1": celdaDestino = "BJ56": rangoLimpiar = "BJ56:CC115"
-        Case "H2": celdaDestino = "CE56": rangoLimpiar = "CE56:CX115"
-        Case "H3": celdaDestino = "CZ56": rangoLimpiar = "CZ56:DS115"
-        Case "H4": celdaDestino = "DU56": rangoLimpiar = "DU56:EN115"
-        Case "H5": celdaDestino = "EP56": rangoLimpiar = "EP56:FI115"
-        Case "H6": celdaDestino = "FK56": rangoLimpiar = "FK56:GD115"
-        Case "H7": celdaDestino = "GF56": rangoLimpiar = "GF56:GY115"
-        Case "H8": celdaDestino = "HA56": rangoLimpiar = "HA56:HT115"
-        Case "H9": celdaDestino = "HV56": rangoLimpiar = "HV56:IO115"
+        Case "H1": celdaDestino = "CM45": rangoLimpiar = "CM45:DF104"
+        Case "H2": celdaDestino = "DH45": rangoLimpiar = "DH45:EA104"
+        Case "H3": celdaDestino = "EC45": rangoLimpiar = "EC45:EV104"
+        Case "H4": celdaDestino = "EX45": rangoLimpiar = "EX45:FQ104"
+        Case "H5": celdaDestino = "FS45": rangoLimpiar = "FS45:GL104"
+        Case "H6": celdaDestino = "GN45": rangoLimpiar = "GN45:HG104"
+        Case "H7": celdaDestino = "HI45": rangoLimpiar = "HI45:IB104"
+        Case "H8": celdaDestino = "ID45": rangoLimpiar = "ID45:HT115"
+        Case "H9": celdaDestino = "IY45": rangoLimpiar = "IY45:JR104"
         Case Else
-            MsgBox "Posición no válida. Debe indicar un valor entre H1 y H9.", vbExclamation
+            MsgBox "posicion no valida. Debe indicar un valor entre H1 y H9.", vbExclamation
             Exit Sub
     End Select
     
@@ -184,7 +184,7 @@ Sub Celda_GBC() ' Modo de ejecución
     rng.Clear
     rng.Interior.Color = &HF2F2F2
     
-    ' Borrar gráficos y formas que se solapen con el rango
+    ' Borrar gr�ficos y formas que se solapen con el rango
     EliminarGraficosEnRango ws, rng
     
     Dim codigoGBC As String
@@ -193,7 +193,7 @@ Sub Celda_GBC() ' Modo de ejecución
     
     MoverBloque codigoGBC, "BD_Esquemas", ws, celdaDestino
 End Sub
-Sub Celda_DM1A() ' Modo de ejecución
+Sub Celda_DM1A() ' Modo de ejecuci�n
     Dim ws As Worksheet
     Dim rng As Range
     Dim celdaDestino As String
@@ -203,47 +203,47 @@ Sub Celda_DM1A() ' Modo de ejecución
     Set ws = ThisWorkbook.Sheets("ESQUEMA")
     
     ' ===============================
-    ' Preguntar posición de la celda
+    ' Preguntar posicion de la celda
     ' ===============================
-    pregunta = InputBox("Indicar la posición de la celda (H1 a H9): ")
+    pregunta = InputBox("Indicar la posicion de la celda (H1 a H9): ")
     
-    If Trim(pregunta) = "" Then Exit Sub ' El usuario canceló o dejó vacío
+    If Trim(pregunta) = "" Then Exit Sub ' El usuario cancel� o dej� vac�o
     
     pregunta = UCase(Trim(pregunta))
     
     ' ===============================
-    ' Determinar celda destino y rango a limpiar según posición
+    ' Determinar celda destino y rango a limpiar segun posicion
     ' ===============================
     Select Case pregunta
         Case "H1"
-            celdaDestino = "BJ56"
-            rangoLimpiar = "BJ56:CC115"
+            celdaDestino = "CM45"
+            rangoLimpiar = "CM45:DF104"
         Case "H2"
-            celdaDestino = "CE56"
-            rangoLimpiar = "CE56:CX115"
+            celdaDestino = "DH45"
+            rangoLimpiar = "DH45:EA104"
         Case "H3"
-            celdaDestino = "CZ56"
-            rangoLimpiar = "CZ56:DS115"
-        Case "H4"
-            celdaDestino = "DU56"
-            rangoLimpiar = "DU56:EN115"
+            celdaDestino = "EC45"
+            rangoLimpiar = "EC45:EV104"
+        Case "H4" 
+            celdaDestino = "EX45"
+            rangoLimpiar = "EX45:FQ104"
         Case "H5"
-            celdaDestino = "EP56"
-            rangoLimpiar = "EP56:FI115"
+            celdaDestino = "FS45"
+            rangoLimpiar = "FS45:GL104"
         Case "H6"
-            celdaDestino = "FK56"
-            rangoLimpiar = "FK56:GD115"
+            celdaDestino = "GN45"
+            rangoLimpiar = "GN45:HG104"
         Case "H7"
-            celdaDestino = "GF56"
-            rangoLimpiar = "GF56:GY115"
+            celdaDestino = "HI45"
+            rangoLimpiar = "HI45:IB104"
         Case "H8"
-            celdaDestino = "HA56"
-            rangoLimpiar = "HA56:HT115"
+            celdaDestino = "ID45"
+            rangoLimpiar = "ID45:HT115"
         Case "H9"
-            celdaDestino = "HV56"
-            rangoLimpiar = "HV56:IO115"
+            celdaDestino = "IY45"
+            rangoLimpiar = "IY45:JR104"
         Case Else
-            MsgBox "Posición no válida. Debe indicar un valor entre H1 y H9.", vbExclamation
+            MsgBox "posicion no valida. Debe indicar un valor entre H1 y H9.", vbExclamation
             Exit Sub
     End Select
     
@@ -253,7 +253,7 @@ Sub Celda_DM1A() ' Modo de ejecución
     rng.Clear
     rng.Interior.Color = &HF2F2F2
     
-    ' Borrar gráficos y formas que se solapen con el rango
+    ' Borrar graficos y formas que se solapen con el rango
     EliminarGraficosEnRango ws, rng
     
     Dim codigoDM1A As String
@@ -266,14 +266,15 @@ Sub Limpiar_TodasLasPosiciones()
     Dim rng As Range
     
     Set ws = ThisWorkbook.Sheets("ESQUEMA")
-    Set rng = ws.Range("BJ56:HV116")
+    Set rng = ws.Range("CM45:HV116")
     
     ' Limpiar solo el contenido (no formato)
     rng.ClearContents
     
-    ' Borrar gráficos y formas que se solapen con el rango,
-    ' EXCLUYENDO el botón "Boton_Limpiar" (ajusta el nombre real aquí)
+    ' Borrar gr�ficos y formas que se solapen con el rango,
+    ' EXCLUYENDO el bot�n "Boton_Limpiar" (ajusta el nombre real aqu�)
     EliminarGraficosEnRango ws, rng, "Boton_Limpiar"
     
-    MsgBox "Se limpió el contenido y los gráficos de todas las posiciones (H1 a H9).", vbInformation
+    MsgBox "Se limpia el contenido y los graficos de todas las posiciones (H1 a H9).", vbInformation
 End Sub
+
