@@ -31,8 +31,6 @@ Private Sub UserForm_Initialize()
         Me.OptionButton9.Value = True
         me.OptionButton10.Value = True
         Me.OptionButton12.Value = True
-
-
     End If
 End Sub
  
