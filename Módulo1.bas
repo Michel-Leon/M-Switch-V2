@@ -19,6 +19,9 @@ End Sub
 Sub fORMULARIO_GBC()
     Configurador_GBC.Show
 End Sub
+sub navegador()
+    Navegador_Menu.Show
+End sub
 public sub Limpiar_ficha_DM1A()
     WITH ThisWorkbook.Sheets("FT DM1A")
         .Range("EV58").Value = ""

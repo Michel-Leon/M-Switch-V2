@@ -27,7 +27,18 @@ Private Sub UserForm_Initialize()
     Me.OptionButton9.Value = True
     me.OptionButton10.Value = True
     Me.OptionButton12.Value = True
+    Me.OptionButton15.Value = True
+    Me.OptionButton17.Value = True
+    Me.OptionButton19.Value = True
+    Me.OptionButton23.Value = True
+    Me.OptionButton27.Value = True
+    Me.OptionButton30.Value = True
     Me.OptionButton47.Value = True
+    Me.OptionButton54.Value = True
+    Me.OptionButton58.Value = True
+    Me.OptionButton60.Value = True
+    Me.OptionButton62.Value = True
+    Me.OptionButton65.Value = True
     Me.Rf1.caption = "SM61D1JHD6X7CDM1A"
     Me.Ct1.caption = "1"
 End Sub
@@ -234,164 +245,164 @@ End sub
 Private Sub Registar_Click()
     with thisWorkbook.sheets("FT DM1A")
         '============= 1)
-            if Me.OptionButton1.Value = True then 
-                .Range("EV58").Value = "17.5 kV"
+            if Me.OptionButton1.Value = True then 'Voltaje nominal
+                .Range("CZ32").Value = "17.5 kV" 
             elseif Me.OptionButton2.Value = True then 
-                .Range("EV58").Value = "24 kV"
+                .Range("CZ32").Value = "24 kV"
             end if
         '============= 2)
-            if Me.OptionButton3.Value = True then 
-                .Range("EV62").Value = "11.4 kV"
+            if Me.OptionButton3.Value = True then 'Voltaje de operacion
+                .Range("CZ36").Value = "11.4 kV"
             elseif Me.OptionButton4.Value = True then 
-                .Range("EV62").Value = "13.2  kV"
+                .Range("CZ36").Value = "13.2  kV"
             elseif Me.OptionButton5.Value = True then
-                .Range("EV62").Value = "13.8 kV"    
+                .Range("CZ36").Value = "13.8 kV"    
             end if
         '============= 3)
-            if Me.OptionButton6.Value = True then 
-                .Range("EV66").Value = "630 A"
+            if Me.OptionButton6.Value = True then 'Corriente
+                .Range("CZ40").Value = "630 A"
             elseif Me.OptionButton7.Value = True then 
-                .Range("EV66").Value = "1250 A"
+                .Range("CZ40").Value = "1250 A"
             end if
         '============= 4)
-            if Me.OptionButton8.Value = True then 
-                .Range("EV70").Value = "20 kA/1s"
+            if Me.OptionButton8.Value = True then 'corriente corto
+                .Range("CZ52").Value = "20 kA/1s"
             elseif Me.OptionButton9.Value = True then 
-                .Range("EV70").Value = "25 kA/1S"
+                .Range("CZ52").Value = "25 kA/1S"
             end if
         '============= 6) 
             if Me.OptionButton12.Value = True then 
-                .Range("HD40").Value = "AC-AFL 12,5kA/1s"
+                .Range("DA114").Value = "AC-AFL 12,5kA/1s"
             elseif Me.OptionButton13.Value = True then 
-                .Range("HD40").Value = "IAC-AFLR 12,5kA/1s"  
+                .Range("DA114").Value = "IAC-AFLR 12,5kA/1s"  
             end if 
         '============= A)
             if Me.OptionButton14.Value = True then 
-                .Range("HD49").Value = "Incluido"
+                .Range("FH23").Value = "Incluido"
             elseif Me.OptionButton15.Value = True then  
-                .Range("HD49").Value = "No Incluido"
+                .Range("FH23").Value = "No Incluido"
             end if
         '============= B)
             if Me.OptionButton16.Value = True then 
-                .Range("HD61").Value = "sensores TH110 x3" 
+                .Range("FH35").Value = "sensores TH110 x3" 
             elseif Me.OptionButton17.Value = True then 
-                .Range("HD61").Value = "No Incluido"
+                .Range("FH35").Value = "No Incluido"
             end if
         '============= C)
             if Me.OptionButton18.Value = True then 
-                .Range("HD66").Value = "Sensor CL110"
+                .Range("FH40").Value = "Sensor CL110"
             elseif Me.OptionButton19.Value = True then 
-                .Range("HD66").Value = "No Incluido"
+                .Range("FH40").Value = "No Incluido"
             end if
         '============= D)
             if Me.OptionButton20.Value = True then 
-                .Range("HD71").Value = "VPIS (2 - 4) KV"
+                .Range("FH45").Value = "VPIS (2 - 4) KV"
             elseif Me.OptionButton21.Value = True then 
-                .Range("HD71").Value = "VPIS (3,4 - 6,3)KV - VPIS (13 - 24kV)"
+                .Range("FH45").Value = "VPIS (3,4 - 6,3)KV - VPIS (13 - 24kV)"
             elseif Me.OptionButton22.Value = True then 
-                .Range("HD71").Value = "VPIS (4-8)KV"
+                .Range("FH45").Value = "VPIS (4-8)KV"
             elseif Me.OptionButton23.Value = True then 
-                .Range("HD71").Value = "No Incluido"
+                .Range("FH45").Value = "(9-17)kV"
             end if
         '============= E)
             if Me.OptionButton24.Value = True then 
-                .Range("HD76").Value = "Relé P3U30-6AAA2BCAA"
+                .Range("FH50").Value = "Relé P3U30-6AAA2BCAA"
             elseif Me.OptionButton25.Value = True then 
-                .Range("HD76").Value = "Relé P3T32-CGG1A-AA1NA-BBAAA"
+                .Range("FH50").Value = "Relé P3T32-CGG1A-AA1NA-BBAAA"
             elseif Me.OptionButton26.Value = True then 
-                .Range("HD76").Value = "Relé P5U20-AABD-IABAA-BAEI"
+                .Range("FH50").Value = "Relé P5U20-AABD-IABAA-BAEI"
             elseif Me.OptionButton27.Value = True then 
-                .Range("HD76").Value = "No Incluido"
+                .Range("FH50").Value = "No Incluido"
             end if
         '============= F)
             if Me.OptionButton28.Value = True then 
-                .Range("HD81").Value = "AGC-150"
+                .Range("FH55").Value = "AGC-150"
             elseif Me.OptionButton29.Value = True then 
-                .Range("HD81").Value = "ATS-270 Comap"
+                .Range("FH55").Value = "ATS-270 Comap"
             elseif Me.OptionButton30.Value = True then
-                .Range("HD81").Value = "No Incluido"    
+                .Range("FH55").Value = "No Incluido"    
             end if
         '============= G)
             if Me.OptionButton31.Value = True then 
-                .Range("HD86").Value = "50/5A Clase 5P20 10VA 17.5kV"    
+                .Range("FH60").Value = "50/5A Clase 5P20 10VA 17.5kV"    
             elseif Me.OptionButton32.Value = True then 
-                .Range("HD86").Value = "100/5A Clase 5P20 10VA 17.5kV"    
+                .Range("FH60").Value = "100/5A Clase 5P20 10VA 17.5kV"    
             elseif Me.OptionButton33.Value = True then 
-                .Range("HD86").Value = "150/5A Clase 5P20 10VA 17.5kV"    
+                .Range("FH60").Value = "150/5A Clase 5P20 10VA 17.5kV"    
             elseif Me.OptionButton34.Value = True then 
-                .Range("HD86").Value = "200/5A Clase 5P20 10VA 17.5kV"    
+                .Range("FH60").Value = "200/5A Clase 5P20 10VA 17.5kV"    
             elseif Me.OptionButton35.Value = True then  
-                .Range("HD86").Value = "50/5A Clase 10P20 10VA 17.5kV"
+                .Range("FH60").Value = "50/5A Clase 10P20 10VA 17.5kV"
             elseif Me.OptionButton36.Value = True then
-                .Range("HD86").Value = "100/5A Clase 10P20 10VA 17.5kV"
+                .Range("FH60").Value = "100/5A Clase 10P20 10VA 17.5kV"
             elseif Me.OptionButton37.Value = True then
-                .Range("HD86").Value = "150/5A Clase 10P20 10VA 17.5kV"
+                .Range("FH60").Value = "150/5A Clase 10P20 10VA 17.5kV"
             elseif Me.OptionButton38.Value = True then
-                .Range("HD86").Value = "200/5A Clase 10P20 10VA 17.5kV"
+                .Range("FH60").Value = "200/5A Clase 10P20 10VA 17.5kV"
             Elseif Me.OptionButton39.Value = True then
-                .Range("HD86").Value = "50/5A N1: 0.5S N2:5P20 10VA 17.5kV"
+                .Range("FH60").Value = "50/5A N1: 0.5S N2:5P20 10VA 17.5kV"
             Elseif Me.OptionButton40.Value = True then
-                .Range("HD86").Value = "100/5A N1: 0.5S N2:5P20 10VA 17.5kV"
+                .Range("FH60").Value = "100/5A N1: 0.5S N2:5P20 10VA 17.5kV"
             Elseif Me.OptionButton41.Value = True then
-                .Range("HD86").Value = "150/5A N1: 0.5S N2:5P20 10VA 17.5kV"
+                .Range("FH60").Value = "150/5A N1: 0.5S N2:5P20 10VA 17.5kV"
             Elseif Me.OptionButton42.Value = True then
-                .Range("HD86").Value = "200/5A N1: 0.5S N2:5P20 10VA 17.5kV"
+                .Range("FH60").Value = "200/5A N1: 0.5S N2:5P20 10VA 17.5kV"
             Elseif Me.OptionButton43.Value = True then
-                .Range("HD86").Value = "50/5A N1: 0.5S N2:10P20 10VA 17.5kV"
+                .Range("FH60").Value = "50/5A N1: 0.5S N2:10P20 10VA 17.5kV"
             Elseif Me.OptionButton44.Value = True then
-                .Range("HD86").Value = "100/5A N1: 0.5S N2:10P20 10VA 17.5kV"
+                .Range("FH60").Value = "100/5A N1: 0.5S N2:10P20 10VA 17.5kV"
             Elseif Me.OptionButton45.Value = True then
-                .Range("HD86").Value = "150/5A N1: 0.5S N2:10P20 10VA 17.5kV"
+                .Range("FH60").Value = "150/5A N1: 0.5S N2:10P20 10VA 17.5kV"
             Elseif Me.OptionButton46.Value = True then
-                .Range("HD86").Value = "200/5A N1: 0.5S N2:10P20 10VA 17.5kV"
+                .Range("FH60").Value = "200/5A N1: 0.5S N2:10P20 10VA 17.5kV"
             Elseif Me.OptionButton47.Value = True then
-                .Range("HD86").Value = "LPCT's 5-1250A / 22.5mV Cl 5P250"
+                .Range("FH60").Value = "LPCT's 5-1250A / 22.5mV Cl 5P250"
             Elseif Me.OptionButton48.Value = True then
-                .Range("HD86").Value = "No Incluido"    
+                .Range("FH60").Value = "No Incluido"    
             end if 
         '============= H)
             if Me.OptionButton49.Value = True then   
-                .Range("HD96").Value = "PT Clase 0.2 10VA S.Normal 17,5kV"
+                .Range("FH70").Value = "PT Clase 0.2 10VA S.Normal 17,5kV"
             ELseif Me.OptionButton50.Value = True then
-                .Range("HD96").Value = "PT Clase 0.5 10VA S.Normal 17,5kV"
+                .Range("FH70").Value = "PT Clase 0.5 10VA S.Normal 17,5kV"
             ELseif Me.OptionButton51.Value = True then
-                .Range("HD96").Value = "PT Clase 3P 10VA S.Normal 17,5kV"  
+                .Range("FH70").Value = "PT Clase 3P 10VA S.Normal 17,5kV"  
             ELseif Me.OptionButton52.Value = True then
-                .Range("HD96").Value = "PT N1: 0.5 N2:3P 10VA S.Normal 17,5kV"
+                .Range("FH70").Value = "PT N1: 0.5 N2:3P 10VA S.Normal 17,5kV"
             ELseif Me.OptionButton53.Value = True then
-                .Range("HD96").Value = "PT N1:Clase 0.2 N2: 3P 10VA S.Normal 17,5kV"
+                .Range("FH70").Value = "PT N1:Clase 0.2 N2: 3P 10VA S.Normal 17,5kV"
             ELseif Me.OptionButton54.Value = True then
-                .Range("HD96").Value = "No Incluido"
+                .Range("FH70").Value = "No Incluido"
             End if  
         '============= I)
             if Me.OptionButton55.Value = True then    
-                .Range("HD106").Value = "PM5340"
+                .Range("FH80").Value = "PM5340"
             ELseif Me.OptionButton56.Value = True then  
-                .Range("HD106").Value = "PM5560"
+                .Range("FH80").Value = "PM5560"
             ELseif Me.OptionButton57.Value = True then  
-                .Range("HD106").Value = "PM8240"  
+                .Range("FH80").Value = "PM8240"  
             ELseif Me.OptionButton58.Value = True then  
-                .Range("HD106").Value = "No Incluido"
+                .Range("FH80").Value = "No Incluido"
             End if
         '============= J)
             if Me.OptionButton59.Value = True then   
-                .Range("HD111").Value = "Incluido"
+                .Range("FH85").Value = "Incluido"
             ELseif Me.OptionButton60.Value = True then  
-                .Range("HD111").Value = "No Incluido"
+                .Range("FH85").Value = "No Incluido"
             end if  
         '============= K)
             if Me.OptionButton61.Value = True then   
-                .Range("HD116").Value = "Incluido"
+                .Range("FH90").Value = "Incluido"
             ELseif Me.OptionButton62.Value = True then  
-                .Range("HD116").Value = "No Incluido"
+                .Range("FH90").Value = "No Incluido"
             end if  
         '============= L)
             if Me.OptionButton63.Value = True then   
-                .Range("HD121").Value = "400mm"
+                .Range("FH95").Value = "400mm"
             ELseif Me.OptionButton64.Value = True then  
-                .Range("HD121").Value = "600mm"
+                .Range("FH95").Value = "600mm"
             Elseif Me.OptionButton65.Value = True then  
-                .Range("HD121").Value = "No Incluido"    
+                .Range("FH95").Value = "No Incluido"    
             end if       
     end with
     MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
