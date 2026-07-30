@@ -192,11 +192,11 @@ Private Sub Registar_Click()
                 .Range("FH55").Value = "No Incluido"    
             end if
         '============= G)
-            if Me.OptionButton63.Value = True then   
+            if Me.OptionButton28.Value = True then   
                 .Range("FH60").Value = "400mm"
-            ELseif Me.OptionButton64.Value = True then  
+            ELseif Me.OptionButton29.Value = True then  
                 .Range("FH60").Value = "600mm"
-            Elseif Me.OptionButton65.Value = True then  
+            Elseif Me.OptionButton30.Value = True then  
                 .Range("FH60").Value = "No Incluido"    
             end if       
     end with

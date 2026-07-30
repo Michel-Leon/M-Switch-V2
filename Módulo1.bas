@@ -90,7 +90,7 @@ Sub abrir_formulario()
         wsConfig.Range("JO4").Value = nombreUsuario
 
         ' Abrir el formulario
-        Selector_gama.Show
+        Datos_entrada.Show
     Else
         MsgBox "Usuario o contraseña incorrectos.", vbCritical, "Login"
     End If
