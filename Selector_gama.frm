@@ -19,8 +19,9 @@ Private Sub UserForm_Initialize()
     Me.Height = 488
     Me.Width = 493
 End Sub    
-Private Sub SM624_Click()
+Private Sub SM624_Click() 
    ThisWorkbook.Sheets("ESQUEMA").Activate
+   Dato1 = "01"
    Unload Me
 End Sub
 

@@ -15,12 +15,13 @@ Attribute VB_Exposed = False
 
 
 Private Sub UserForm_Initialize()
-    'Tamaño de la ventana
-    Me.Height = 630
-    Me.Width = 649
+    'Tamaño de la ventana 
+    Me.Height = 690
+    Me.Width = 680
 End Sub
 Private Sub Saltar_Click()
-   Selector_gama.Show
    'cerra formulario
    Unload Me
+   Selector_gama.Show
+   
 End Sub

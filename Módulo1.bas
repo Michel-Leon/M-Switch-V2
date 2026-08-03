@@ -1,24 +1,25 @@
 Attribute VB_Name = "M�dulo1"
 
-
+' Variables globales
 Public Resultado_IM As String
 Public Resultado_DM1A As String
 Public Resultado_QM As String
 Public Resultado_GBC As String
+' vARIBALES PARA CODIGOS
+Public Dato1 As String
+Public Dato2 As String
+Public Dato3 As String
+Public Dato4 As String
 
 Sub Formulario_DM1()
     Configurador_DM1A.Show
-    Limpiar_ficha_DM1A
-End Sub
-Sub Formulario_IM()
-    Configurador_IM.Show
 End Sub
 Sub Formulario_QM()
     Configurador_QM.Show
 End Sub
 Sub fORMULARIO_GBC()
     Configurador_GBC.Show
-End Sub
+End Sub 
 sub navegador()
     Navegador_Menu.Show
 End sub
