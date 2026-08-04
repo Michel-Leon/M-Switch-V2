@@ -142,12 +142,10 @@ private sub OptionButton40_Click()
 End sub
 private sub OptionButton41_Click()
     SetRef OptionButton41.Value, Me.Rf10, Me.Ct10, "", ""
-
 End sub
 '============= H)
 private sub OptionButton42_Click()
     SetRef OptionButton42.Value, Me.Rf11, Me.Ct11, "KIT-ZOCALO-400-SM6-24", "1"
-
 End sub
 private sub OptionButton43_Click()
     SetRef OptionButton43.Value, Me.Rf11, Me.Ct11, "KIT-ZOCALO-600-SM6-24", "1"
@@ -156,7 +154,7 @@ private sub OptionButton44_Click()
     SetRef OptionButton44.Value, Me.Rf11, Me.Ct11, "", ""
 End sub
 Private Sub Registar_Click()
-    with thisWorkbook.sheets("FT DM1A")
+    with thisWorkbook.sheets("FT QM")
         '============= 1)
             if Me.OptionButton1.Value = True then 'Voltaje nominal
                 .Range("CZ32").Value = "17.5 kV" 
@@ -260,15 +258,33 @@ Private Sub Registar_Click()
                 .Range("FH60").Value = "No Incluido"
             End if  
         '============= H)
-            if Me.OptionButton63.Value = True then   
+            if Me.OptionButton42.Value = True then   
                 .Range("FH65").Value = "400mm"
-            ELseif Me.OptionButton64.Value = True then  
+            ELseif Me.OptionButton43.Value = True then  
                 .Range("FH65").Value = "600mm"
-            Elseif Me.OptionButton65.Value = True then  
+            Elseif Me.OptionButton44.Value = True then  
                 .Range("FH65").Value = "No Incluido"    
             end if       
     end with
     MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
+    codigo_unifilar
     'cerrar el formulario
     Unload Me
 End Sub
+Public sub Codigo_unifilar()
+    Dim codigo_QM As String
+    Dato2 = "03"
+    If Me.OptionButton17.Value = True Then
+        Dato3 = "02"
+    elseif Me.OptionButton16.Value = True Then
+        Dato3 = "01"
+    End If
+
+    codigo_QM = "UN_" & Dato1 & Dato2 & Dato3
+    If PosicionUnifilarActual = 0 Then
+        MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
+        Exit Sub
+    End If
+
+    Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_QM, 17    
+end sub

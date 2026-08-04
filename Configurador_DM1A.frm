@@ -407,13 +407,12 @@ Private Sub Registar_Click()
     end with
     MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
     codigo_unifilar
-    msgbox "Diagrama unifilar generado", vbInformation, "Aviso"
     'cerrar el formulario
     Unload Me
 End Sub
 ' tomar valores para codigo bloque unifilar
 Public Sub codigo_unifilar()
-    Dim RESULTADO_DM1A As String
+    Dim codigo_DM1A As String 
 
     Dato2 = "04"
 
@@ -433,14 +432,14 @@ Public Sub codigo_unifilar()
         Dato4 = ""
     End If
 
-    Resultado_DM1A = "UN_" & Dato1 & Dato2 & Dato3 & Dato4
+    codigo_DM1A = "UN_" & Dato1 & Dato2 & Dato3 & Dato4
 
     If PosicionUnifilarActual = 0 Then
         MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
         Exit Sub
     End If
 
-    Asignar_Posicion_Unifilar PosicionUnifilarActual, Resultado_DM1A, 17
+    Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_DM1A, 34
 End Sub
 Private Function HayActivoEnRango(desde As Integer, hasta As Integer) As Boolean
     Dim i As Integer

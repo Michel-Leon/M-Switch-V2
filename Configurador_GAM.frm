@@ -68,8 +68,21 @@ End sub
 Private Sub OptionButton20_Click()
     SetRef OptionButton20.Value, Me.Rf4, Me.Ct4, "", ""
 End Sub
+'============= 2)
+Private Sub OptionButton21_Click()
+    SetRef OptionButton21.Value, Me.Rf1, Me.Ct1, "SE-GAM-0-24KV", "1"
+End Sub
+Private Sub OptionButton22_Click()
+    SetRef OptionButton22.Value, Me.Rf1, Me.Ct1, "SE-GAM-2-24KV", "1"
+End Sub
+Private Sub OptionButton23_Click()
+    SetRef OptionButton23.Value, Me.Rf1, Me.Ct1, "SM61DAJHJ6Z7CGAM0", "1"
+End Sub
+Private Sub OptionButton24_Click()
+    SetRef OptionButton24.Value, Me.Rf1, Me.Ct1, "SM61G2JHJ6Z7CGAM2", "1"
+End Sub
 Private Sub Registar_Click()
-    with thisWorkbook.sheets("FT GBC")
+    with thisWorkbook.sheets("FT GAM 24kV")
         '============= 1)
             if Me.OptionButton1.Value = True then 'Voltaje nominal
                 .Range("CZ32").Value = "17.5 kV" 
@@ -121,4 +134,32 @@ Private Sub Registar_Click()
                 .Range("FH31").Value = "No Incluido"
             end if
     end with
-End Sub        
+    MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
+    codigo_unifilar
+    'cerrar el formulario
+    Unload Me
+End Sub  
+public sub codigo_unifilar()
+    dim codigo_GAM As String
+    Dato2="01"
+    if Me.OptionButton23.Value = True or Me.OptionButton24.Value = True then 
+        Dato3="02"
+    elseif Me.OptionButton21.Value = True or Me.OptionButton22.Value = True then 
+        Dato3="01"
+    end if  
+    if Me.OptionButton25.Value = True then 
+        Dato4="02"
+    elseif Me.OptionButton26.Value = True then 
+        Dato4="01"
+    end if
+    Codigo_GAM = "UN_" & Dato1 & Dato2 & Dato3 & Dato4
+    If PosicionUnifilarActual = 0 Then
+        MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
+        Exit Sub
+    End If
+
+    Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_GAM, 17
+End sub
+
+
+    

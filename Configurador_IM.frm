@@ -106,16 +106,13 @@ Private sub OptionButton27_Click()
 End sub
 '============= G)
 Private sub OptionButton28_Click()
-    SetRef OptionButton28.Value, Me.Rf8, Me.Ct8, "KIT-ZOCALO-400-SM6-24", "1"
-    
+    SetRef OptionButton28.Value, Me.Rf8, Me.Ct8, "KIT-ZOCALO-400-SM6-24", "1"  
 End sub
 Private sub OptionButton29_Click()
     SetRef OptionButton29.Value, Me.Rf8, Me.Ct8, "KIT-ZOCALO-600-SM6-24", "1"
-  
 End sub
 private sub OptionButton30_Click()
     SetRef OptionButton30.Value, Me.Rf8, Me.Ct8, "", ""
-
 End sub
 Private Sub Registar_Click()
     with thisWorkbook.sheets("FT IM")
@@ -201,6 +198,24 @@ Private Sub Registar_Click()
             end if       
     end with
     MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
+    codigo_unifilar
     'cerrar el formulario
     Unload Me
 End Sub
+Public sub codigo_unifilar()
+    dim codigo_IM As String
+    Dato2="02"
+    if Me.OptionButton17.Value = True  then 
+        Dato3="01"
+    elseif Me.OptionButton16.Value = True then 
+        Dato3="02"    
+    end if
+
+    codigo_IM = "UN_" & Dato1 & Dato2 & Dato3
+    If PosicionUnifilarActual = 0 Then
+        MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
+        Exit Sub
+    End If
+
+    Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_IM, 17
+End sub    

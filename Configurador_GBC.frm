@@ -337,6 +337,48 @@ Private Sub Registar_Click()
             end if     
     end with
     MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
+    Codigo_unifilar
     'cerrar el formulario
     Unload Me
 End Sub
+Public sub Codigo_unifilar()
+    dim codigo_GBC As String
+    dato2="05"
+    if Me.optionbutton68.Value = True then
+        dato3="01"
+    elseif Me.optionbutton69.Value = True then  
+        dato3="02"
+    Elseif Me.optionbutton70.Value = True then 
+        dato3="03"
+    elseif Me.optionbutton71.Value = True then 
+        dato3="04"
+    end if
+    if Me.optionbutton72.Value = True then
+        dato4="01"
+    elseif Me.optionbutton73.Value = True then
+        dato4="02"
+    end if
+    if HayActivoEnRango(47, 55) Then
+        dato5="01"
+    elseif HayActivoEnRango(47, 55)  and HayActivoEnRango(56, 64) Then   
+        dato5="02" 
+    end if
+    Codigo_GBC = "UN_" & Dato1 & Dato2 & Dato3 & Dato4 & Dato5  
+
+    If PosicionUnifilarActual = 0 Then
+        MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
+        Exit Sub
+    End If
+
+    Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_GBC, 34 
+end sub
+Private Function HayActivoEnRango(desde As Integer, hasta As Integer) As Boolean
+    Dim i As Integer
+    For i = desde To hasta
+        If Me.Controls("OptionButton" & i).Value = True Then
+            HayActivoEnRango = True
+            Exit Function
+        End If
+    Next i
+    HayActivoEnRango = False
+End Function

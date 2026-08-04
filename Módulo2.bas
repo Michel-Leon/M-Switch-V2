@@ -5,7 +5,7 @@ Public PosicionUnifilarActual As Long
 Public Const FILA_INICIO_UNIFILAR As Long = 44
 Public Const ANCHO_SLOT As Long = 17
 Public Const NUM_SLOTS_TOTAL As Long = 10
-Public Const NUM_POSICIONES As Long = 9      ' H1 a H9
+Public Const NUM_POSICIONES As Long = 9      ' H1 a H9 
 Public Const NOMBRE_HOJA_CONTROL As String = "_CTRL_UNIFILAR"
 Public Const FILA_CONTROL_INICIO As Long = 2
 Sub MoverBloque(ref As String, BD As String, wsDestino As Worksheet, celdaDestino As String)
@@ -18,6 +18,7 @@ Sub MoverBloque(ref As String, BD As String, wsDestino As Worksheet, celdaDestin
     On Error GoTo errBuscarRango
     Set origen = wsDatos.Range(ref)
     Set destino = wsDestino.Range(celdaDestino)
+    destino.Resize(origen.Rows.Count, origen.Columns.Count).UnMerge 
     On Error GoTo errCopiar
 
     origen.Copy Destination:=destino
@@ -107,6 +108,7 @@ Sub RecalcularYColocarTodo()
     
     Application.ScreenUpdating = False
     rng.ClearContents
+    rng.UnMerge 
     EliminarGraficosEnRango ws, rng, "Boton_Limpiar"
     
     slotActual = 1

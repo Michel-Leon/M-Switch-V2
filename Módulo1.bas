@@ -20,6 +20,12 @@ End Sub
 Sub fORMULARIO_GBC()
     Configurador_GBC.Show
 End Sub 
+Sub Formulario_IM()
+    Configurador_IM.Show
+End Sub
+sub Formulario_GAM()
+    Configurador_GAM.Show
+End sub
 sub navegador()
     Navegador_Menu.Show
 End sub
