@@ -10,6 +10,7 @@ Public Dato1 As String
 Public Dato2 As String
 Public Dato3 As String
 Public Dato4 As String
+Public Dato5 As String
 
 Sub Formulario_DM1()
     Configurador_DM1A.Show
@@ -65,15 +66,15 @@ Sub abrir_formulario()
     ' Referencias a las hojas
     Set wsLogin = ThisWorkbook.Sheets("LOGIN")
     Set wsUsuarios = ThisWorkbook.Sheets("USUARIOS")
-    Set wsConfig = ThisWorkbook.Sheets("ESQUEMA")
+    Set wsConfig = ThisWorkbook.Sheets("Panel")
 
     ' Leer usuario y clave ingresados
     usuarioIngresado = Trim(wsLogin.Range("HX83").Value)
     claveIngresada = Trim(wsLogin.Range("HX98").Value)
 
-    ' Validar que no estén vacíos
+    ' Validar que no estï¿½n vacï¿½os
     If usuarioIngresado = "" Or claveIngresada = "" Then
-        MsgBox "Debe ingresar usuario y contraseña.", vbExclamation, "Login"
+        MsgBox "Debe ingresar usuario y contraseÃ±a.", vbExclamation, "Login"
         Exit Sub
     End If
 
@@ -94,12 +95,27 @@ Sub abrir_formulario()
 
     If encontrado Then
         ' Escribir el nombre en M-Configurator, celda JO4
-        wsConfig.Range("JO4").Value = nombreUsuario
-
-        ' Abrir el formulario
-        Datos_entrada.Show
+        wsConfig.Range("K193").Value = nombreUsuario
+        'DIRIGIRSE A HOJA PANEL
+        wsConfig.Activate
     Else
-        MsgBox "Usuario o contraseña incorrectos.", vbCritical, "Login"
+        MsgBox "Usuario o contraseÃ±a incorrectos.", vbCritical, "Login"
     End If
 
+End Sub
+Public Sub MostrarTodasLasHojas()
+    Dim ws As Object
+    Dim contador As Long
+ 
+    On Error Resume Next
+    For Each ws In ThisWorkbook.Sheets
+        If ws.Visible <> xlSheetVisible Then
+            ws.Visible = xlSheetVisible
+            If Err.Number = 0 Then contador = contador + 1
+            Err.Clear
+        End If
+    Next ws
+    On Error GoTo 0
+
+    MsgBox "Se mostraron " & contador & " hoja(s).", vbInformation
 End Sub

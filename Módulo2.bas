@@ -1,8 +1,8 @@
-Attribute VB_Name = "Módulo2"
+Attribute VB_Name = "Mï¿½dulo2"
 ' CONFIGURACION GLOBAL (version final)
 '=========================================================
 Public PosicionUnifilarActual As Long
-Public Const FILA_INICIO_UNIFILAR As Long = 44
+Public Const FILA_INICIO_UNIFILAR As Long = 45
 Public Const ANCHO_SLOT As Long = 17
 Public Const NUM_SLOTS_TOTAL As Long = 10
 Public Const NUM_POSICIONES As Long = 9      ' H1 a H9
@@ -104,7 +104,7 @@ Sub RecalcularYColocarTodo()
     
     Set ws = ThisWorkbook.Sheets("UNIFILAR")
     Set wsCtrl = ThisWorkbook.Sheets(NOMBRE_HOJA_CONTROL)
-    Set rng = ws.Range("CD44:IU147")
+    Set rng = ws.Range("CM45:IZ148")
     
     Application.ScreenUpdating = False
     rng.ClearContents
@@ -126,7 +126,7 @@ Sub RecalcularYColocarTodo()
                 Exit Sub
             End If
             
-            colInicio = ws.Range("CD44").Column + (slotActual - 1) * ANCHO_SLOT
+            colInicio = ws.Range("CM45").Column + (slotActual - 1) * ANCHO_SLOT
             celdaDestino = ws.Cells(FILA_INICIO_UNIFILAR, colInicio).Address(False, False)
             
             MoverBloque codigoRef, "Diagrama_unifilar", ws, celdaDestino

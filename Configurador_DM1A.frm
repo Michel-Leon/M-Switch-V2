@@ -17,7 +17,7 @@ Attribute VB_Exposed = False
 
 Private Sub UserForm_Initialize()
     'Tama?o de la ventana
-    Me.Height = 580
+    Me.Height = 650
     Me.Width = 932
      ' Centrar en la pantalla
     Me.StartUpPosition = 0  ' Manual, para poder controlar posici?n
@@ -40,6 +40,7 @@ Private Sub UserForm_Initialize()
     Me.OptionButton60.Value = True
     Me.OptionButton62.Value = True
     Me.OptionButton65.Value = True
+    Me.OptionButton66.Value = True 'conexion a al izquierda
     Me.Rf1.Caption = "SM61D1JHD6X7CDM1A"
     Me.Ct1.Caption = "1"
 End Sub
@@ -187,19 +188,49 @@ Private Sub OptionButton48_Click()
 End Sub
 '============= H)
 Private Sub OptionButton49_Click()
-    SetRef OptionButton49.Value, Me.Rf9, Me.Ct9, "PT-13.2-120-02-10-BR-N", "3"
+    SetRef OptionButton49.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.2_BR", "3"
 End Sub
 Private Sub OptionButton50_Click()
-    SetRef OptionButton50.Value, Me.Rf9, Me.Ct9, "PT-13.2-120-05-10-BR-N", "3"
+    SetRef OptionButton50.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.5_BR", "3"
 End Sub
 Private Sub OptionButton51_Click()
-    SetRef OptionButton51.Value, Me.Rf9, Me.Ct9, "PT-13.2-120-3P-10-BR-N", "3"
+    SetRef OptionButton51.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_3P_BR", "3"
 End Sub
 Private Sub OptionButton52_Click()
-    SetRef OptionButton52.Value, Me.Rf9, Me.Ct9, "PT-13.2-120-05-3P-10-BR-N", "3"
+    SetRef OptionButton52.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.5_3P_BR", "3"
 End Sub
 Private Sub OptionButton53_Click()
-    SetRef OptionButton53.Value, Me.Rf9, Me.Ct9, "PT-13.2-120-02-3P-10-BR-N", "3"
+    SetRef OptionButton53.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.2_3P_BR", "3"
+End Sub
+Private sub OptionButton69_Click()
+    SetRef OptionButton69.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.2_BR", "3"
+End Sub
+Private Sub OptionButton70_Click()
+    SetRef OptionButton70.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.2_3P_BR", "3"
+End Sub
+Private Sub OptionButton71_Click()
+    SetRef OptionButton71.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_3P_BR", "3"
+End Sub
+Private Sub OptionButton72_Click()
+    SetRef OptionButton72.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.5_BR", "3"
+End Sub
+Private Sub OptionButton73_Click()
+    SetRef OptionButton73.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_3P_BR", "3"
+End Sub
+Private Sub OptionButton74_Click()
+    SetRef OptionButton74.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.5_BR", "3"
+End Sub
+Private Sub OptionButton75_Click()
+    SetRef OptionButton75.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.2_BR", "3"
+End Sub
+Private Sub OptionButton76_Click()
+    SetRef OptionButton76.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.2_3P_BR", "3"
+End Sub
+private Sub OptionButton77_Click()
+    SetRef OptionButton77.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.5_3P_BR", "3"
+End Sub
+private Sub OptionButton78_Click()
+    SetRef OptionButton78.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.5_3P_BR", "3"
 End Sub
 Private Sub OptionButton54_Click()
     SetRef OptionButton54.Value, Me.Rf9, Me.Ct9, "", ""
@@ -307,11 +338,11 @@ Private Sub Registar_Click()
             End If
         '============= E)
             If Me.OptionButton24.Value = True Then
-                .Range("FH50").Value = "Relé P3U30-6AAA2BCAA"
+                .Range("FH50").Value = "Relï¿½ P3U30-6AAA2BCAA"
             ElseIf Me.OptionButton25.Value = True Then
-                .Range("FH50").Value = "Relé P3T32-CGG1A-AA1NA-BBAAA"
+                .Range("FH50").Value = "Relï¿½ P3T32-CGG1A-AA1NA-BBAAA"
             ElseIf Me.OptionButton26.Value = True Then
-                .Range("FH50").Value = "Relé P5U20-AABD-IABAA-BAEI"
+                .Range("FH50").Value = "Relï¿½ P5U20-AABD-IABAA-BAEI"
             ElseIf Me.OptionButton27.Value = True Then
                 .Range("FH50").Value = "No Incluido"
             End If
@@ -406,7 +437,7 @@ Private Sub Registar_Click()
                 .Range("FH95").Value = "No Incluido"
             End If
     End With
-    MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
+    MsgBox "Datos Cargados a la ficha tï¿½cnica", vbInformation, "Aviso"
     Codigo_unifilar
     'cerrar el formulario
     Unload Me
@@ -432,14 +463,21 @@ Public Sub Codigo_unifilar()
     Else
         Dato4 = ""
     End If
-
-    codigo_DM1A = "UN_" & Dato1 & Dato2 & Dato3 & Dato4
+    if Me.OptionButton66.Value = True Then
+        Dato5 = "01"
+    elseIf Me.OptionButton67.Value = True Then
+        Dato5 = "02"
+    elseIf Me.OptionButton68.Value = True Then
+        Dato5 = "03"
+    Else
+        Dato5 = ""    
+    End If
+    codigo_DM1A = "UN_" & Dato1 & Dato2 & Dato3 & Dato4 & Dato5
 
     If PosicionUnifilarActual = 0 Then
         MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
         Exit Sub
     End If
-
     Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_DM1A, 34
 End Sub
 Private Function HayActivoEnRango(desde As Integer, hasta As Integer) As Boolean

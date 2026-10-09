@@ -18,7 +18,7 @@ Attribute VB_Exposed = False
 
 Private Sub UserForm_Initialize()
     'Tama?o de la ventana
-    Me.Height = 580
+    Me.Height = 650
     Me.Width = 932
      ' Centrar en la pantalla
     Me.StartUpPosition = 0  ' Manual, para poder controlar posici?n
@@ -101,19 +101,49 @@ Private Sub OptionButton40_Click()
 End Sub
 '============= B)
 Private Sub OptionButton41_Click()
-    SetRef OptionButton41.Value, Me.Rf3, Me.Ct3, "PT-13.2-120-02-10-BR-N", "3"
+    SetRef OptionButton41.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_13,2/120_0.2_BR", "3"
 End Sub
 Private Sub OptionButton42_Click()
-    SetRef OptionButton42.Value, Me.Rf3, Me.Ct3, "PT-13.2-120-05-10-BR-N", "3"
+    SetRef OptionButton42.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_13,2/120_0.5_BR", "3"
 End Sub
 Private Sub OptionButton43_Click()
-    SetRef OptionButton43.Value, Me.Rf3, Me.Ct3, "PT-13.2-120-3P-10-BR-N", "3"
+    SetRef OptionButton43.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_13,2/120_3P_BR", "3"
 End Sub
 Private Sub OptionButton44_Click()
-    SetRef OptionButton44.Value, Me.Rf3, Me.Ct3, "PT-13.2-120-05-3P-10-BR-N", "3"
+    SetRef OptionButton44.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_13,2/120_0.5_3P_BR", "3"
 End Sub
 Private Sub OptionButton45_Click()
-    SetRef OptionButton45.Value, Me.Rf3, Me.Ct3, "PT-13.2-120-02-3P-10-BR-N", "3"
+    SetRef OptionButton45.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_13,2/120_0.2_3P_BR", "3"
+End Sub
+Private Sub OptionButton74_Click()
+    SetRef OptionButton74.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_13,8/120_0.2_BR", "3"
+End Sub
+private Sub OptionButton75_Click()
+    SetRef OptionButton75.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_13,8/120_0.5_BR", "3"
+End Sub
+private Sub OptionButton76_Click()
+    SetRef OptionButton76.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_13,8/120_3P_BR", "3"
+End Sub
+private Sub OptionButton77_Click()
+    SetRef OptionButton77.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_13,8/120_0.2_3P_BR", "3"
+End Sub
+private Sub OptionButton78_Click()
+    SetRef OptionButton78.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_13,8/120_0.5_3P_BR", "3"
+End Sub
+private Sub OptionButton79_Click()
+    SetRef OptionButton79.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_11,4/120_0.2_BR", "3"
+End Sub
+private Sub OptionButton80_Click()
+    SetRef OptionButton80.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_11,4/120_0.5_BR", "3"
+End Sub
+private Sub OptionButton81_Click()
+    SetRef OptionButton81.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_11,4/120_3P_BR", "3"
+End Sub
+private Sub OptionButton82_Click()
+    SetRef OptionButton82.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_11,4/120_0.5_3P_BR", "3"
+End Sub
+private Sub OptionButton83_Click()
+    SetRef OptionButton83.Value, Me.Rf3, Me.Ct3, "PTMT_17,5_11,4/120_0.2_3P_BR", "3"
 End Sub
 Private Sub OptionButton46_Click()
     SetRef OptionButton46.Value, Me.Rf3, Me.Ct3, "", ""
@@ -337,7 +367,7 @@ Private Sub Registar_Click()
                 .Range("FH63").Value = "No Incluido"
             End If
     End With
-    MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
+    MsgBox "Datos Cargados a la ficha tï¿½cnica", vbInformation, "Aviso"
     Codigo_unifilar
     'cerrar el formulario
     Unload Me

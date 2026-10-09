@@ -13,18 +13,15 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
-
-
-
 Private Sub UserForm_Initialize()
-    ' Tamaño de la ventana
-    Me.Height = 580
+    ' Tamaï¿½o de la ventana
+    Me.Height = 650
     Me.Width = 932
      ' Centrar en la pantalla
     Me.StartUpPosition = 0  ' Manual, para poder controlar posici?n
     Me.Top = (Application.Height - Me.Height) / 2
     Me.Left = (Application.Width - Me.Width) / 2
-    MsgBox Resultado_IM
+    MsgBox Dato1
     If Resultado_IM = "1" Then
         Me.OptionButton1.Value = True
         Me.OptionButton7.Value = True
@@ -38,6 +35,7 @@ Private Sub UserForm_Initialize()
         Me.OptionButton25.Value = True
         Me.OptionButton27.Value = True
         Me.OptionButton30.Value = True
+        Me.OptionButton66.Value = True ' conexion a al izquierda
         Me.Rf1.Caption = "SM61N3JHC6Z7CIMES"
         Me.Ct1.Caption = "1"
     End If
@@ -197,26 +195,42 @@ Private Sub Registar_Click()
                 .Range("FH60").Value = "No Incluido"
             End If
     End With
-    MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
+    MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar
     'cerrar el formulario
     Unload Me
 End Sub
 Public Sub Codigo_unifilar()
     Dim codigo_IM As String
+    
+    Debug.Print "Dato1 al entrar: [" & Dato1 & "]"
+    
+    If Dato1 = "" Then
+        MsgBox "Dato1 estÃ¡ vacÃ­o. Seleccione primero el tipo (SM624...).", vbExclamation
+        Exit Sub
+    End If
+
     Dato2 = "02"
     If Me.OptionButton17.Value = True Then
         Dato3 = "01"
     ElseIf Me.OptionButton16.Value = True Then
         Dato3 = "02"
     End If
-
-    codigo_IM = "UN_" & Dato1 & Dato2 & Dato3
+    IF Me.OptionButton66.Value = True Then
+        Dato4 = "01"
+    ElseIf Me.OptionButton67.Value = True Then
+        Dato4 = "02"
+    ElseIf Me.OptionButton68.Value = True Then
+        Dato4 = "03"
+    Else
+        Dato4 = ""
+    End If
     If PosicionUnifilarActual = 0 Then
         MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
         Exit Sub
     End If
 
+    codigo_IM = "UN_" & Dato1 & Dato2 & Dato3 & Dato4
     Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_IM, 17
 End Sub
 

@@ -18,7 +18,7 @@ Attribute VB_Exposed = False
 
 Private Sub UserForm_Initialize()
     'Tama?o de la ventana
-    Me.Height = 580
+    Me.Height = 650
     Me.Width = 932
      ' Centrar en la pantalla
     Me.StartUpPosition = 0  ' Manual, para poder controlar posici?n
@@ -33,9 +33,13 @@ Private Sub UserForm_Initialize()
         Me.OptionButton17.Value = True
         Me.OptionButton19.Value = True
         Me.OptionButton23.Value = True
-        Me.OptionButton25.Value = True
         Me.OptionButton27.Value = True
         Me.OptionButton30.Value = True
+        Me.OptionButton39.Value = True
+        Me.OptionButton41.Value = True
+        Me.OptionButton44.Value = True
+        Me.OptionButton45.Value = True
+        Me.OptionButton66.Value = True
         Me.Rf1.Caption = "SM61Q3JHH6Z7CQMES"
         Me.Ct1.Caption = "1"
 End Sub
@@ -128,6 +132,9 @@ Private Sub OptionButton36_Click()
 End Sub
 Private Sub OptionButton37_Click()
     SetRef OptionButton37.Value, Me.Rf8, Me.Ct8, "2050151000016", "3"
+End Sub
+private Sub OptionButton45_Click()
+    SetRef OptionButton45.Value, Me.Rf9, Me.Ct9, "", ""
 End Sub
 '============= F)
 Private Sub OptionButton38_Click()
@@ -267,7 +274,7 @@ Private Sub Registar_Click()
                 .Range("FH65").Value = "No Incluido"
             End If
     End With
-    MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
+    MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar
     'cerrar el formulario
     Unload Me
@@ -280,8 +287,16 @@ Public Sub Codigo_unifilar()
     ElseIf Me.OptionButton16.Value = True Then
         Dato3 = "01"
     End If
-
-    codigo_QM = "UN_" & Dato1 & Dato2 & Dato3
+    if Me.OptionButton66.Value = True Then
+        Dato4 = "01"
+    elseIf Me.OptionButton67.Value = True Then
+        Dato4 = "02"
+    elseIf Me.OptionButton68.Value = True Then
+        Dato4 = "03"
+    else
+        Dato4 = ""
+    End If
+    codigo_QM = "UN_" & Dato1 & Dato2 & Dato3 & Dato4
     If PosicionUnifilarActual = 0 Then
         MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
         Exit Sub

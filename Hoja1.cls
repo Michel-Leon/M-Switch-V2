@@ -222,7 +222,7 @@ Sub Limpiar_TodasLasPosiciones()
     Dim rng As Range
     
     Set ws = ThisWorkbook.Sheets("ESQUEMA")
-    Set rng = ws.Range("CE57:HV116")
+    Set rng = ws.Range("CE57:JJ123") 
     
     ' Limpiar solo el contenido (no formato)
     rng.ClearContents
@@ -230,6 +230,6 @@ Sub Limpiar_TodasLasPosiciones()
     ' Borrar gr?ficos y formas que se solapen con el rango,
     ' EXCLUYENDO el bot?n "Boton_Limpiar" (ajusta el nombre real aqu?)
     EliminarGraficosEnRango ws, rng, "Boton_Limpiar"
-    
+    Limpiar_ctr_unifilar
     MsgBox "Se limpia el contenido y los graficos de todas las posiciones (H1 a H9).", vbInformation
 End Sub
