@@ -80,7 +80,7 @@ Sub Asignar_Posicion_Unifilar(posicion As Long, codigoRef As String, anchoBloque
     wsCtrl.Cells(fila, "C").Value = anchoBloque
     
     RecalcularYColocarTodo
-End Sub
+End Sub 
 
 Sub Limpiar_Posicion_Unifilar(posicion As Long)
     Dim wsCtrl As Worksheet

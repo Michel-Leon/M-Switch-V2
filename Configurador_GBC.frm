@@ -202,8 +202,11 @@ Private Sub OptionButton63_Click()
     SetRef OptionButton63.Value, Me.Rf7, Me.Ct7, "METSEION7400", "1"
 End Sub
 Private Sub OptionButton64_Click()
-    SetRef OptionButton64.Value, Me.Rf7, Me.Ct7, "", ""
+    SetRef OptionButton64.Value, Me.Rf7, Me.Ct7, "2010472000023", "1"
 End Sub
+Private sub optionbutton84_click()
+    SetRef OptionButton84.Value, Me.Rf8, Me.Ct7, "KIT-ZOCALO-400-SM6-24", "1"
+End sub
 '============= E)
 Private Sub OptionButton65_Click()
     SetRef OptionButton65.Value, Me.Rf8, Me.Ct8, "KIT-ZOCALO-400-SM6-24", "1"

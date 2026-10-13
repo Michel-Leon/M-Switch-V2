@@ -135,7 +135,7 @@ Private Sub Registar_Click()
                 .Range("FH31").Value = "No Incluido"
             End If
     End With
-    MsgBox "Datos Cargados a la ficha técnica", vbInformation, "Aviso"
+    MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar
     'cerrar el formulario
     Unload Me

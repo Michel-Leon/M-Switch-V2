@@ -1,5 +1,5 @@
 Attribute VB_Name = "Imp1"
-
+Option Explicit
 ' Variables globales
 Public Resultado_IM As String
 Public Resultado_DM1A As String

@@ -14,7 +14,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
-
+Option Explicit
 Private Sub UserForm_Initialize()
     'Tama?o de la ventana
     Me.Height = 650
@@ -43,6 +43,7 @@ Private Sub UserForm_Initialize()
     Me.OptionButton66.Value = True 'conexion a al izquierda
     Me.Rf1.Caption = "SM61D1JHD6X7CDM1A"
     Me.Ct1.Caption = "1"
+    'MSGBOX Dato1
 End Sub
 Private Sub SetRef(ByVal isChecked As Boolean, _
                     ByRef refCtl As MSForms.Label, _
