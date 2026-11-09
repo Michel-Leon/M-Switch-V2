@@ -339,11 +339,11 @@ Private Sub Registar_Click()
             End If
         '============= E)
             If Me.OptionButton24.Value = True Then
-                .Range("FH50").Value = "Rel� P3U30-6AAA2BCAA"
+                .Range("FH50").Value = "Rele P3U30-6AAA2BCAA"
             ElseIf Me.OptionButton25.Value = True Then
-                .Range("FH50").Value = "Rel� P3T32-CGG1A-AA1NA-BBAAA"
+                .Range("FH50").Value = "Rele P3T32-CGG1A-AA1NA-BBAAA"
             ElseIf Me.OptionButton26.Value = True Then
-                .Range("FH50").Value = "Rel� P5U20-AABD-IABAA-BAEI"
+                .Range("FH50").Value = "Rele P5U20-AABD-IABAA-BAEI"
             ElseIf Me.OptionButton27.Value = True Then
                 .Range("FH50").Value = "No Incluido"
             End If
