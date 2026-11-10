@@ -18,9 +18,9 @@ Sub Celda_IM() ' Modo de ejecucion
         Case "H3": celdaDestino = "DU57": rangoLimpiar = "DU57:EN116"
         Case "H4": celdaDestino = "EP57": rangoLimpiar = "EP57:FI116"
         Case "H5": celdaDestino = "FK57": rangoLimpiar = "FK57:GD116"
-        Case "H6": celdaDestino = "GF57": rangoLimpiar = "FW56:GY116"
-        Case "H7": celdaDestino = "HA57": rangoLimpiar = "GR56:HT116"
-        Case "H8": celdaDestino = "HV57": rangoLimpiar = "HA57:IO116"
+        Case "H6": celdaDestino = "GF57": rangoLimpiar = "GF57:GY116"
+        Case "H7": celdaDestino = "HA57": rangoLimpiar = "HA57:HT116"
+        Case "H8": celdaDestino = "HV57": rangoLimpiar = "HV57:IO116"
         Case "H9": celdaDestino = "IQ57": rangoLimpiar = "IQ57:JJ116"
         Case Else
             MsgBox "Posicion no valida. Debe indicar un valor entre H1 y H9.", vbExclamation
@@ -63,9 +63,9 @@ Sub Celda_QM() ' Modo de ejecuci?n
         Case "H3": celdaDestino = "DU57": rangoLimpiar = "DU57:EN116"
         Case "H4": celdaDestino = "EP57": rangoLimpiar = "EP57:FI116"
         Case "H5": celdaDestino = "FK57": rangoLimpiar = "FK57:GD116"
-        Case "H6": celdaDestino = "FW56": rangoLimpiar = "FW56:GY116"
-        Case "H7": celdaDestino = "GR56": rangoLimpiar = "GR56:HT116"
-        Case "H8": celdaDestino = "HA57": rangoLimpiar = "HA57:IO116"
+        Case "H6": celdaDestino = "GF57": rangoLimpiar = "GF57:GY116"
+        Case "H7": celdaDestino = "HA57": rangoLimpiar = "HA57:HT116"
+        Case "H8": celdaDestino = "HV57": rangoLimpiar = "HV57:IO116"
         Case "H9": celdaDestino = "IQ57": rangoLimpiar = "IQ57:JJ116"
         Case Else
             MsgBox "posicion no valida. Debe indicar un valor entre H1 y H9.", vbExclamation
@@ -107,9 +107,9 @@ Sub Celda_GBC() ' Modo de ejecuci?n
         Case "H3": celdaDestino = "DU57": rangoLimpiar = "DU57:EN116"
         Case "H4": celdaDestino = "EP57": rangoLimpiar = "EP57:FI116"
         Case "H5": celdaDestino = "FK57": rangoLimpiar = "FK57:GD116"
-        Case "H6": celdaDestino = "FW56": rangoLimpiar = "FW56:GY116"
-        Case "H7": celdaDestino = "GR56": rangoLimpiar = "GR56:HT116"
-        Case "H8": celdaDestino = "HA57": rangoLimpiar = "HA57:IO116"
+        Case "H6": celdaDestino = "GF57": rangoLimpiar = "GF57:GY116"
+        Case "H7": celdaDestino = "HA57": rangoLimpiar = "HA57:HT116"
+        Case "H8": celdaDestino = "HV57": rangoLimpiar = "HV57:IO116"
         Case "H9": celdaDestino = "IQ57": rangoLimpiar = "IQ57:JJ116"
         Case Else
             MsgBox "posicion no valida. Debe indicar un valor entre H1 y H9.", vbExclamation
@@ -151,9 +151,9 @@ Sub Celda_GAM() ' Modo de ejecuci?n
         Case "H3": celdaDestino = "DU57": rangoLimpiar = "DU57:EN116"
         Case "H4": celdaDestino = "EP57": rangoLimpiar = "EP57:FI116"
         Case "H5": celdaDestino = "FK57": rangoLimpiar = "FK57:GD116"
-        Case "H6": celdaDestino = "FW56": rangoLimpiar = "FW56:GY116"
-        Case "H7": celdaDestino = "GR56": rangoLimpiar = "GR56:HT116"
-        Case "H8": celdaDestino = "HA57": rangoLimpiar = "HA57:IO116"
+        Case "H6": celdaDestino = "GF57": rangoLimpiar = "GF57:GY116"
+        Case "H7": celdaDestino = "HA57": rangoLimpiar = "HA57:HT116"
+        Case "H8": celdaDestino = "HV57": rangoLimpiar = "HV57:IO116"
         Case "H9": celdaDestino = "IQ57": rangoLimpiar = "IQ57:JJ116"
         Case Else
             MsgBox "posicion no valida. Debe indicar un valor entre H1 y H9.", vbExclamation
@@ -195,9 +195,9 @@ Sub Celda_DM1A() ' Modo de ejecucion
         Case "H3": celdaDestino = "DU57": rangoLimpiar = "DU57:EN116"
         Case "H4": celdaDestino = "EP57": rangoLimpiar = "EP57:FI116"
         Case "H5": celdaDestino = "FK57": rangoLimpiar = "FK57:GD116"
-        Case "H6": celdaDestino = "FW56": rangoLimpiar = "FW56:GY116"
-        Case "H7": celdaDestino = "GR56": rangoLimpiar = "GR56:HT116"
-        Case "H8": celdaDestino = "HA57": rangoLimpiar = "HA57:IO116"
+        Case "H6": celdaDestino = "GF57": rangoLimpiar = "GF57:GY116"
+        Case "H7": celdaDestino = "HA57": rangoLimpiar = "HA57:HT116"
+        Case "H8": celdaDestino = "HV57": rangoLimpiar = "HV57:IO116"
         Case "H9": celdaDestino = "IQ57": rangoLimpiar = "IQ57:JJ116"
         Case Else
             MsgBox "posicion no valida. Debe indicar un valor entre H1 y H9.", vbExclamation

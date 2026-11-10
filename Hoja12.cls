@@ -23,6 +23,71 @@ Private mbCargando As Boolean          'evita eventos en cascada
         Application.ScreenUpdating = True
         MsgBox "Faltan selecciones en: " & sQue, vbExclamation
     End Sub
+'CELDA DM1A
+    Private Sub ReleDM1_Change()
+        Dim dato As String
+        dato = Me.OLEObjects("ReleDM1").Object.Value
+        '--- Contactor: P5U20 solo existe sin contactor
+        With Me.OLEObjects("ContacDM1").Object
+            .Clear
+            Select Case dato
+                Case "P3U30", "P3T32"
+                    .AddItem "SI"
+                    .AddItem "NO"
+                Case "P5U20"
+                    .AddItem "NO"
+            End Select
+        End With
+        '--- Corriente
+        With Me.OLEObjects("CorrienteDM1").Object
+            .Clear
+            Select Case dato
+                Case "P3U30"
+                    .AddItem "LPCTS"
+                    .AddItem "CT"
+                Case "P3T32"
+                    .AddItem "CT"
+                Case "P5U20"
+                    .AddItem "LPCTS"
+            End Select
+        End With
+        Me.OLEObjects("MtensionDM1").Object.Clear
+        Me.OLEObjects("PM_DM1").Object.Clear
+    End Sub
+
+    Private Sub CorrienteDM1_Change()
+        Dim dato As String, rele As String
+        dato = Me.OLEObjects("CorrienteDM1").Object.Value
+        rele = Me.OLEObjects("ReleDM1").Object.Value
+        With Me.OLEObjects("MtensionDM1").Object
+            .Clear
+            Select Case dato
+                Case "LPCTS"
+                    .AddItem "NO"
+                Case "CT"
+                    If rele = "P3U30" Then .AddItem "NO"   'P3T32 solo existe con PT
+                    .AddItem "PT"
+            End Select
+        End With
+        Me.OLEObjects("PM_DM1").Object.Clear
+    End Sub
+
+    Private Sub MtensionDM1_Change()
+        Dim contac As String, mt As String
+        contac = Me.OLEObjects("ContacDM1").Object.Value
+        mt = Me.OLEObjects("MtensionDM1").Object.Value
+        With Me.OLEObjects("PM_DM1").Object
+            .Clear
+            If mt = "" Then Exit Sub
+            '--- PM = SI solo existe con contactor SI y PT
+            If contac = "SI" And mt = "PT" Then .AddItem "SI"
+            .AddItem "NO"
+        End With
+    End Sub
+
+    Private Sub ContacDM1_Change()
+        MtensionDM1_Change      'si cambian el contactor, se recalcula PM
+    End Sub
 Public Sub Worksheet_Activate()
     '======== CELDA IM ==========================
         With  Me.OLEObjects("TensionIM").Object
@@ -111,40 +176,27 @@ Public Sub Worksheet_Activate()
             .AddItem "600mm"
         End With
     '======= CELDA DM1 ========================
-        With  Me.OLEObjects("TensionDM1").Object
-            .clear
+        With Me.OLEObjects("TensionDM1").Object
+            .Clear
             .AddItem "24Kv"
         End With
-        with  Me.OLEObjects("ReleDM1").Object
-            .clear
+        With Me.OLEObjects("ReleDM1").Object
+            .Clear
             .AddItem "P3U30"
+            .AddItem "P3T32"
+            .AddItem "P5U20"
         End With
-        with  Me.OLEObjects("ContacDM1").Object
-            .clear
-            .AddItem "SI"
-            .AddItem "NO"
-        End With
-        with  Me.OLEObjects("CorrienteDM1").Object
-            .clear
-            .AddItem "LPCT"
-            .AddItem "CT"
-        End With
-        with  Me.OLEObjects("MtensionDM1").Object
-            .clear
-            .AddItem "PT"
-            .AddItem "NO"
-        End With
-        with  Me.OLEObjects("ZocaloDM1").Object
-            .clear
+        With Me.OLEObjects("ZocaloDM1").Object
+            .Clear
             .AddItem "SIN"
             .AddItem "400mm"
             .AddItem "600mm"
         End With
-        with  Me.OLEObjects("PM_DM1").Object
-            .clear
-            .AddItem "SI"
-            .AddItem "NO"
-        End With
+        Me.OLEObjects("ContacDM1").Object.Clear
+        Me.OLEObjects("CorrienteDM1").Object.Clear
+        Me.OLEObjects("MtensionDM1").Object.Clear
+        Me.OLEObjects("PM_DM1").Object.Clear
+        
 end sub
 Private Sub LimpiarZona(ws As Worksheet, ByVal sRango As String)
     Dim rngZona As Range, shp As Shape, i As Long
@@ -164,7 +216,6 @@ Private Sub LimpiarZona(ws As Worksheet, ByVal sRango As String)
 
     rngZona.Clear
 End Sub
-
 Public sub celda_IM()
     '========================
         Set wsActual = ThisWorkbook.Sheets("Mecanicos")
@@ -203,7 +254,79 @@ Public sub celda_QM()
     CodeQM = "MC_QM" & dato1  & dato2 & "_" & dato3 & dato4
     MoverBloquMecanico CodeQM, "QM", wsActual, Celda
 end sub
+Public sub celda_GAM()
+    '========================
+        Set wsActual = ThisWorkbook.Sheets("Mecanicos")
+        Celda = "KS97"
+        Application.ScreenUpdating = False
+        LimpiarZona wsActual, "KP95:NI189"
+    '========================
+    Dim dato1 As String, dato2 As String, dato3 As String, dato4 As String
+    dato1 = Me.OLEObjects("TensionGAM").Object.Value
+    dato2 = Me.OLEObjects("ApliGAM").Object.Value
+    select case dato2
+        case "Remonte"
+            dato2 = "REM"
+    end select
+    dato3 = Me.OLEObjects("TipoGAM").Object.Value
+    dato4 = Me.OLEObjects("ZocaloGAM").Object.Value
+    CodeGAM = "MC_GAM" & dato1  & dato2 & "_" & dato3 & dato4
+    MoverBloquMecanico CodeGAM, "GAM", wsActual, Celda
+end sub
+Public sub celda_GBC()
+    '========================
+        Set wsActual = ThisWorkbook.Sheets("Mecanicos")
+        Celda = "KS85"
+        Application.ScreenUpdating = False
+        LimpiarZona wsActual, "KP78:NI189"
+    '========================
+    Dim dato1 As String, dato2 As String, dato3 As String, dato4 As String, dato5 As String
+    dato1 = Me.OLEObjects("TensionGBC").Object.Value
+    dato2 = Me.OLEObjects("ApliGBC").Object.Value
+    select case dato2
+        case "Medida"
+            dato2 = "MED"
+    end select
+    dato3 = Me.OLEObjects("TipoGBC").Object.Value
+    dato4 = Me.OLEObjects("OrientacionGBC").Object.Value
+    select case dato4
+        case "Derecha-Izquierda"
+            dato4 = "DI"
+        case "Izquierda-Derecha"
+            dato4 = "ID"
+    end select
+    dato5 = Me.OLEObjects("ZocaloGBC").Object.Value
+    CodeGBC = "MC_" & dato1  & dato2  & dato3 & "_" & dato4 & dato5
+    MoverBloquMecanico CodeGBC, "GBC 24kV 2 MED", wsActual, Celda
+end sub 
+Public Sub celda_DM1A()
+    Dim dato1 As String, dato2 As String, dato3 As String, dato4 As String
+    Dim dato5 As String, dato6 As String, dato7 As String
+    dato1 = Me.OLEObjects("TensionDM1").Object.Value
+    dato2 = Left(Me.OLEObjects("ReleDM1").Object.Value, 3)   'P3U30→P3U, P3T32→P3T, P5U20→P5U
+    dato3 = Me.OLEObjects("ContacDM1").Object.Value
+    dato4 = Me.OLEObjects("CorrienteDM1").Object.Value
+    dato5 = Me.OLEObjects("MtensionDM1").Object.Value
+    dato6 = Me.OLEObjects("ZocaloDM1").Object.Value
+    dato7 = Me.OLEObjects("PM_DM1").Object.Value
+    If dato6 = "SIN" Then dato6 = "NO"     'en la lista el zócalo sin base es "NO"
+
+    If dato1 = "" Or dato2 = "" Or dato3 = "" Or dato4 = "" Or _
+       dato5 = "" Or dato6 = "" Or dato7 = "" Then
+        MsgBox "Complete todas las opciones de la celda DM1A.", vbExclamation
+        Exit Sub
+    End If
+    '========================
+    Set wsActual = ThisWorkbook.Sheets("Mecanicos")
+    Celda = "KS97"
+    Application.ScreenUpdating = False
+    LimpiarZona wsActual, "KO78:NI189"
+    '========================
+    CodeDM1A = "MC_" & dato1 & "DM1A" & dato2 & "_" & dato3 & dato4 & "_" & dato5 & dato6 & dato7
+    MoverBloquMecanico CodeDM1A, "DM", wsActual, Celda
+    Application.ScreenUpdating = True
+End Sub
 '-----------------------------------------
 public sub  Limpiar_zona2()
-    thisWorkbook.Sheets("Mecanicos").Range("KO94:NI189").Clear
+    thisWorkbook.Sheets("Mecanicos").Range("KO78:NI189").Clear
 End Sub 

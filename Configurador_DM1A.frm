@@ -339,11 +339,11 @@ Private Sub Registar_Click()
             End If
         '============= E)
             If Me.OptionButton24.Value = True Then
-                .Range("FH50").Value = "Rele P3U30-6AAA2BCAA"
+                .Range("FH50").Value = "P3U30-6AAA2BCAA"
             ElseIf Me.OptionButton25.Value = True Then
-                .Range("FH50").Value = "Rele P3T32-CGG1A-AA1NA-BBAAA"
+                .Range("FH50").Value = "P3T32-CGG1A-AA1NA-BBAAA"
             ElseIf Me.OptionButton26.Value = True Then
-                .Range("FH50").Value = "Rele P5U20-AABD-IABAA-BAEI"
+                .Range("FH50").Value = "P5U20-AABD-IABAA-BAEI"
             ElseIf Me.OptionButton27.Value = True Then
                 .Range("FH50").Value = "No Incluido"
             End If
@@ -357,21 +357,21 @@ Private Sub Registar_Click()
             End If
         '============= G)
             If Me.OptionButton31.Value = True Then
-                .Range("FH60").Value = "50/5A Clase 5P20 10VA 17.5kV"
+                .Range("FH60").Value = "50/5A Cl 5P20 10VA 17.5kV"
             ElseIf Me.OptionButton32.Value = True Then
-                .Range("FH60").Value = "100/5A Clase 5P20 10VA 17.5kV"
+                .Range("FH60").Value = "100/5A Cl 5P20 10VA 17.5kV"
             ElseIf Me.OptionButton33.Value = True Then
-                .Range("FH60").Value = "150/5A Clase 5P20 10VA 17.5kV"
+                .Range("FH60").Value = "150/5A Cl 5P20 10VA 17.5kV"
             ElseIf Me.OptionButton34.Value = True Then
-                .Range("FH60").Value = "200/5A Clase 5P20 10VA 17.5kV"
+                .Range("FH60").Value = "200/5A Cl 5P20 10VA 17.5kV"
             ElseIf Me.OptionButton35.Value = True Then
-                .Range("FH60").Value = "50/5A Clase 10P20 10VA 17.5kV"
+                .Range("FH60").Value = "50/5A Cl 10P20 10VA 17.5kV"
             ElseIf Me.OptionButton36.Value = True Then
-                .Range("FH60").Value = "100/5A Clase 10P20 10VA 17.5kV"
+                .Range("FH60").Value = "100/5A Cl 10P20 10VA 17.5kV"
             ElseIf Me.OptionButton37.Value = True Then
-                .Range("FH60").Value = "150/5A Clase 10P20 10VA 17.5kV"
+                .Range("FH60").Value = "150/5A Cl 10P20 10VA 17.5kV"
             ElseIf Me.OptionButton38.Value = True Then
-                .Range("FH60").Value = "200/5A Clase 10P20 10VA 17.5kV"
+                .Range("FH60").Value = "200/5A Cl 10P20 10VA 17.5kV"
             ElseIf Me.OptionButton39.Value = True Then
                 .Range("FH60").Value = "50/5A N1: 0.5S N2:5P20 10VA 17.5kV"
             ElseIf Me.OptionButton40.Value = True Then
@@ -395,15 +395,15 @@ Private Sub Registar_Click()
             End If
         '============= H)
             If Me.OptionButton49.Value = True Then
-                .Range("FH70").Value = "PT Clase 0.2 10VA S.Normal 17,5kV"
+                .Range("FH70").Value = "PT Cl 0.2 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton50.Value = True Then
-                .Range("FH70").Value = "PT Clase 0.5 10VA S.Normal 17,5kV"
+                .Range("FH70").Value = "PT Cl 0.5 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton51.Value = True Then
-                .Range("FH70").Value = "PT Clase 3P 10VA S.Normal 17,5kV"
+                .Range("FH70").Value = "PT Cl 3P 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton52.Value = True Then
                 .Range("FH70").Value = "PT N1: 0.5 N2:3P 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton53.Value = True Then
-                .Range("FH70").Value = "PT N1:Clase 0.2 N2: 3P 10VA S.Normal 17,5kV"
+                .Range("FH70").Value = "PT N1:Cl 0.2 N2: 3P 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton54.Value = True Then
                 .Range("FH70").Value = "No Incluido"
             End If
@@ -438,7 +438,8 @@ Private Sub Registar_Click()
                 .Range("FH95").Value = "No Incluido"
             End If
     End With
-    MsgBox "Datos Cargados a la ficha t�cnica", vbInformation, "Aviso"
+   
+    MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar
     'cerrar el formulario
     Unload Me
