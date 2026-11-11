@@ -237,6 +237,13 @@ Private Sub OptionButton54_Click()
     SetRef OptionButton54.Value, Me.Rf9, Me.Ct9, "", ""
 End Sub
 '============= I)
+Private Sub OptionButton80_Click()
+    SetRef OptionButton55.Value, Me.Rf10, Me.Ct10, "KIT-BARRAJE-MT", "1"
+End Sub
+Private Sub OptionButton79_Click()
+    SetRef OptionButton56.Value, Me.Rf10, Me.Ct10, "", ""
+End Sub
+'============= J)
 Private Sub OptionButton55_Click()
     SetRef OptionButton55.Value, Me.Rf10, Me.Ct10, "KIT-AR-01", "1"
 End Sub
@@ -249,21 +256,21 @@ End Sub
 Private Sub OptionButton58_Click()
     SetRef OptionButton58.Value, Me.Rf10, Me.Ct10, "", ""
 End Sub
-'============= J)
+'============= K)
 Private Sub OptionButton59_Click()
     SetRef OptionButton59.Value, Me.Rf11, Me.Ct11, "GAB-CONT-MT", "1"
 End Sub
 Private Sub OptionButton60_Click()
     SetRef OptionButton60.Value, Me.Rf11, Me.Ct11, "", ""
 End Sub
-'============= K)
+'============= L)
 Private Sub OptionButton61_Click()
     SetRef OptionButton61.Value, Me.Rf12, Me.Ct12, "EMS59572", "1"
 End Sub
 Private Sub OptionButton62_Click()
     SetRef OptionButton62.Value, Me.Rf12, Me.Ct12, "", ""
 End Sub
-'============= L)
+'============= M)
 Private Sub OptionButton63_Click()
     SetRef OptionButton63.Value, Me.Rf13, Me.Ct13, "KIT-ZOCALO-400-SM6-24", "1"
 End Sub
@@ -408,35 +415,43 @@ Private Sub Registar_Click()
                 .Range("FH70").Value = "No Incluido"
             End If
         '============= I)
-            If Me.OptionButton55.Value = True Then
-                .Range("FH80").Value = "PM5340"
-            ElseIf Me.OptionButton56.Value = True Then
-                .Range("FH80").Value = "PM5560"
-            ElseIf Me.OptionButton57.Value = True Then
-                .Range("FH80").Value = "PM8240"
-            ElseIf Me.OptionButton58.Value = True Then
+            If Me.OptionButton79.Value = True Then
                 .Range("FH80").Value = "No Incluido"
+            elseIf Me.OptionButton80.Value = True Then
+                .Range("FH80").Value = "KIT-BARRAJE-MT"
             End If
         '============= J)
-            If Me.OptionButton59.Value = True Then
-                .Range("FH85").Value = "Incluido"
-            ElseIf Me.OptionButton60.Value = True Then
-                .Range("FH85").Value = "No Incluido"
-            End If
-        '============= K)
-            If Me.OptionButton61.Value = True Then
-                .Range("FH90").Value = "Incluido"
-            ElseIf Me.OptionButton62.Value = True Then
+            If Me.OptionButton55.Value = True Then
+                .Range("FH90").Value = "PM5340"
+            ElseIf Me.OptionButton56.Value = True Then
+                .Range("FH90").Value = "PM5560"
+            ElseIf Me.OptionButton57.Value = True Then
+                .Range("FH90").Value = "PM8240"
+            ElseIf Me.OptionButton58.Value = True Then
                 .Range("FH90").Value = "No Incluido"
             End If
-        '============= L)
-            If Me.OptionButton63.Value = True Then
-                .Range("FH95").Value = "400mm"
-            ElseIf Me.OptionButton64.Value = True Then
-                .Range("FH95").Value = "600mm"
-            ElseIf Me.OptionButton65.Value = True Then
+        '============= K)
+            If Me.OptionButton59.Value = True Then
+                .Range("FH95").Value = "Incluido"
+            ElseIf Me.OptionButton60.Value = True Then
                 .Range("FH95").Value = "No Incluido"
             End If
+        '============= L)
+            If Me.OptionButton61.Value = True Then
+                .Range("FH100").Value = "Incluido"
+            ElseIf Me.OptionButton62.Value = True Then
+                .Range("FH100").Value = "No Incluido"
+            End If
+        '============= M)
+            If Me.OptionButton63.Value = True Then
+                .Range("FH105").Value = "400mm"
+            ElseIf Me.OptionButton64.Value = True Then
+                .Range("FH105").Value = "600mm"
+            ElseIf Me.OptionButton65.Value = True Then 
+                .Range("FH105").Value = "No Incluido"
+            End If
+        '===== REFERENCIA
+           .RAnge("HE171").Value = Me.Rf1.Caption
     End With
    
     MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
