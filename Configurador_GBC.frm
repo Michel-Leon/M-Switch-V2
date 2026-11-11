@@ -50,7 +50,7 @@ End Sub
 Private Sub OptionButton69_Click()
     SetRef OptionButton69.Value, Me.Rf1, Me.Ct1, "SE-GBC-B-24KV", "1"
 End Sub
-Private Sub OptionButton70_Click()
+Private Sub OptionButton70_Click() 
     SetRef OptionButton70.Value, Me.Rf1, Me.Ct1, "SE-GBC-C-24KV", "1"
 End Sub
 Private Sub OptionButton71_Click()
@@ -369,8 +369,10 @@ Private Sub Registar_Click()
             ElseIf Me.OptionButton67.Value = True Then
                 .Range("FH63").Value = "No Incluido"
             End If
+        '===== REFERENCIA
+           .RAnge("HE171").Value = Me.Rf1.Caption
     End With
-    MsgBox "Datos Cargados a la ficha t�cnica", vbInformation, "Aviso"
+    MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar
     'cerrar el formulario
     Unload Me

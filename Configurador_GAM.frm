@@ -131,9 +131,11 @@ Private Sub Registar_Click()
         '============= C)
             If Me.OptionButton18.Value = True Then
                 .Range("FH31").Value = "Incluido"
-            ElseIf Me.OptionButton19.Value = True Then
+            ElseIf Me.OptionButton19.Value = True Then 
                 .Range("FH31").Value = "No Incluido"
             End If
+        '===== REFERENCIA
+           .RAnge("HE171").Value = Me.Rf1.Caption
     End With
     MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar

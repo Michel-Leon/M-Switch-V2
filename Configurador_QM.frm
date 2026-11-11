@@ -272,7 +272,9 @@ Private Sub Registar_Click()
                 .Range("FH65").Value = "600mm"
             ElseIf Me.OptionButton44.Value = True Then
                 .Range("FH65").Value = "No Incluido"
-            End If
+            End If 
+        '===== REFERENCIA
+           .RAnge("HE171").Value = Me.Rf1.Caption
     End With
     MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar
