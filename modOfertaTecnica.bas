@@ -18,9 +18,9 @@ Private Const FILA_FIN As Long = 173
 Private Const COL_ITEM As String = "BU"     ' Item
 Private Const COL_DESC As String = "CB"     ' Descripcion
 Private Const COL_REF As String = "GU"      ' Referencia
-Private Const COL_MARCA As String = "HY"    ' Marca
+Private Const COL_MARCA As String = "IG"    ' Marca
 Private Const COL_CANT As String = "JC"     ' Cantidad
-Private Const COLS_FORMATO As String = "BU,CB,GU,HY,JC"
+Private Const COLS_FORMATO As String = "BU,CB,GU,IG,JC"
 
 ' Columnas en el listado (hoja Accesorios 24kV)
 Private Const LST_DESC As String = "D"
@@ -28,7 +28,7 @@ Private Const LST_MARCA As String = "F"
 Private Const LST_REF As String = "G"
 
 ' Texto de la fila de encabezado. {n} se reemplaza por el numero del item.
-Private Const FORMATO_ENCABEZADO As String = "S{n}H{n}"
+Private Const FORMATO_ENCABEZADO As String = "Celda S{n}H{n}"
 ' Marca de la celda principal (fila n.1)
 Private Const MARCA_CELDA As String = "CTS"
 
@@ -37,17 +37,20 @@ Private Const MARCA_CELDA As String = "CTS"
 '==========================================================
 
 ' Escribe un paquete completo:
-'   fila n        -> BU = n, CB = S{n}H{n}           (gris)
+'   fila n        -> BU = n, CB = S{n}H{n}                     (gris)
 '   fila n.1      -> la primera referencia, con descripcionCelda y marca CTS
-'   filas n.2 ... -> cada referencia restante, con descripcion y marca del listado
+'   filas n.2 ... -> lineas de "extras" (solo descripcion; config. por defecto)
+'   filas sig.    -> cada referencia restante, con descripcion y marca del listado
 ' refs y cants son arreglos paralelos (referencia y cantidad).
+' extras (opcional): Collection o Array de textos que van solo en Descripcion.
 ' Las referencias vacias (opciones "No incluido") se omiten.
 Public Function RegistrarCeldaEnOferta(ByVal descripcionCelda As String, _
-                                       refs As Variant, cants As Variant) As Boolean
-    Dim ws As Worksheet, fila As Long, n As Long, subN As Long
-    Dim i As Long, total As Long, ref As String, cant As String
+                                       refs As Variant, cants As Variant, _
+                                       Optional extras As Variant) As Boolean
+    Dim ws As Worksheet, fila As Long, filaUltima As Long, n As Long, subN As Long
+    Dim i As Long, ref As String, cant As String, x As Variant
     Dim desc As String, marca As String, faltantes As String
-    Dim filaUltima As Long
+    Dim lineas As New Collection, ln As Variant
 
     If Not HojaExiste(HOJA_LISTADO) Then
         MsgBox "No existe la hoja '" & HOJA_LISTADO & "' en este libro." & vbLf & _
@@ -56,12 +59,35 @@ Public Function RegistrarCeldaEnOferta(ByVal descripcionCelda As String, _
     End If
     Set ws = ThisWorkbook.Worksheets(HOJA_OFERTA)
 
-    ' 1. Contar las lineas que se van a escribir
-    For i = LBound(refs) To UBound(refs)
-        If Len(Trim$(refs(i))) > 0 Then total = total + 1
+    ' 1. Armar la lista de lineas: Array(descripcion, referencia, marca, cantidad)
+    '    a) Celda principal
+    ref = Trim$(refs(LBound(refs)))
+    If Len(ref) > 0 Then
+        lineas.Add Array(descripcionCelda, ref, MARCA_CELDA, CantidadTexto(cants(LBound(cants))))
+    End If
+
+    '    b) Configuracion por defecto (solo descripcion)
+    If Not IsMissing(extras) Then
+        For Each x In extras
+            If Len(Trim$(CStr(x))) > 0 Then lineas.Add Array(Trim$(CStr(x)), "", "", "")
+        Next x
+    End If
+
+    '    c) Accesorios seleccionados (descripcion y marca desde el listado)
+    For i = LBound(refs) + 1 To UBound(refs)
+        ref = Trim$(refs(i))
+        If Len(ref) > 0 Then
+            If BuscarEnListado(ref, desc, marca) Then
+                lineas.Add Array(desc, ref, marca, CantidadTexto(cants(i)))
+            Else
+                lineas.Add Array("", ref, "", CantidadTexto(cants(i)))
+                faltantes = faltantes & vbLf & "   - " & ref
+            End If
+        End If
     Next i
-    If total = 0 Then
-        MsgBox "No hay referencias seleccionadas para registrar.", vbExclamation
+
+    If lineas.Count = 0 Then
+        MsgBox "No hay nada seleccionado para registrar.", vbExclamation
         Exit Function
     End If
 
@@ -70,12 +96,12 @@ Public Function RegistrarCeldaEnOferta(ByVal descripcionCelda As String, _
     fila = SiguienteFila(ws)
     filaUltima = fila
     If fila > 0 Then
-        For i = 1 To total
+        For i = 1 To lineas.Count
             filaUltima = FilaSiguiente(ws, filaUltima)
         Next i
     End If
     If fila = 0 Or filaUltima > FILA_FIN Then
-        MsgBox "No hay espacio en " & HOJA_OFERTA & ": se necesitan " & total + 1 & _
+        MsgBox "No hay espacio en " & HOJA_OFERTA & ": se necesitan " & lineas.Count + 1 & _
                " lineas y el limite es la fila " & FILA_FIN & ".", vbExclamation
         Exit Function
     End If
@@ -89,34 +115,18 @@ Public Function RegistrarCeldaEnOferta(ByVal descripcionCelda As String, _
     ws.Range(COL_DESC & fila).Value = Replace(FORMATO_ENCABEZADO, "{n}", CStr(n))
     AplicarFormatoFila ws, fila, True
 
-    ' 4. Una fila por cada referencia seleccionada
-    For i = LBound(refs) To UBound(refs)
-        ref = Trim$(refs(i))
-        If Len(ref) > 0 Then
-            fila = FilaSiguiente(ws, fila)     ' salta al siguiente bloque combinado
-            subN = subN + 1
+    ' 4. Una fila por cada linea
+    For Each ln In lineas
+        fila = FilaSiguiente(ws, fila)     ' salta al siguiente bloque combinado
+        subN = subN + 1
 
-            If i = LBound(refs) Then
-                ' Celda principal: descripcion armada en el formulario
-                desc = descripcionCelda
-                marca = MARCA_CELDA
-            ElseIf Not BuscarEnListado(ref, desc, marca) Then
-                desc = ""
-                marca = ""
-                faltantes = faltantes & vbLf & "   - " & ref
-            End If
-
-            cant = Trim$(cants(i))
-            If Len(cant) = 0 Then cant = "1"
-
-            EscribirTexto ws.Range(COL_ITEM & fila), n & "." & subN
-            ws.Range(COL_DESC & fila).Value = desc
-            EscribirTexto ws.Range(COL_REF & fila), ref
-            ws.Range(COL_MARCA & fila).Value = marca
-            ws.Range(COL_CANT & fila).Value = Val(cant)
-            AplicarFormatoFila ws, fila, False
-        End If
-    Next i
+        EscribirTexto ws.Range(COL_ITEM & fila), n & "." & subN
+        ws.Range(COL_DESC & fila).Value = ln(0)
+        If Len(ln(1)) > 0 Then EscribirTexto ws.Range(COL_REF & fila), CStr(ln(1))
+        If Len(ln(2)) > 0 Then ws.Range(COL_MARCA & fila).Value = ln(2)
+        If Len(ln(3)) > 0 Then ws.Range(COL_CANT & fila).Value = Val(ln(3))
+        AplicarFormatoFila ws, fila, False
+    Next ln
 
     RegistrarCeldaEnOferta = True
 
@@ -128,6 +138,12 @@ Fin:
         MsgBox "Estas referencias no estan en '" & HOJA_LISTADO & _
                "' y quedaron sin descripcion:" & faltantes, vbExclamation
     End If
+End Function
+
+' Cantidad como texto; si viene vacia se asume 1.
+Private Function CantidadTexto(ByVal valor As Variant) As String
+    CantidadTexto = Trim$(CStr(valor))
+    If Len(CantidadTexto) = 0 Then CantidadTexto = "1"
 End Function
 
 ' Borra todos los items del rango y deja el formato en blanco.
@@ -227,14 +243,15 @@ Private Sub EscribirTexto(celda As Range, ByVal valor As String)
     celda.Value = valor
 End Sub
 
-' Encabezado: fondo #F2F2F2, letra #808080. Normal: fondo blanco, letra negra.
+' Encabezado: fondo #D9D9D9, letra #808080. Normal: fondo blanco, letra negra.
 Private Sub AplicarFormatoFila(ws As Worksheet, ByVal fila As Long, ByVal esEncabezado As Boolean)
     Dim col As Variant, rng As Range
     For Each col In Split(COLS_FORMATO, ",")
         Set rng = ws.Range(col & fila).MergeArea
         If esEncabezado Then
-            rng.Interior.Color = RGB(242, 242, 242)
+            rng.Interior.Color = RGB(217, 217, 217)
             rng.Font.Color = RGB(128, 128, 128)
+            rng.Font.Bold = True
         Else
             rng.Interior.Color = RGB(255, 255, 255)
             rng.Font.Color = RGB(0, 0, 0)

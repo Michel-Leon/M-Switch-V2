@@ -33,8 +33,7 @@ Private Sub UserForm_Initialize()
         Me.OptionButton17.Value = True
         Me.OptionButton19.Value = True
         Me.OptionButton23.Value = True
-        Me.OptionButton27.Value = True
-        Me.OptionButton30.Value = True
+        Me.OptionButton45.Value = True
         Me.OptionButton39.Value = True
         Me.OptionButton41.Value = True
         Me.OptionButton44.Value = True
@@ -278,6 +277,7 @@ Private Sub Registar_Click()
     End With
     MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar
+    Oferta_Tecnica 
     'cerrar el formulario
     Unload Me
 End Sub
@@ -306,5 +306,46 @@ Public Sub Codigo_unifilar()
 
     Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_QM, 17
 End Sub
+Private Function HayActivoEnRango(desde As Integer, hasta As Integer) As Boolean
+    Dim i As Integer
+    For i = desde To hasta
+        If Me.Controls("OptionButton" & i).Value = True Then
+            HayActivoEnRango = True
+            Exit Function
+        End If
+    Next i
+    HayActivoEnRango = False
+End Function
+'========== Registrar en OFERTA TECNICA
+Public Sub Oferta_Tecnica()
+    Const TOTAL_REFS As Long = 8           ' Rf1 (celda) ... Rf8 (zocalo)
+    Dim refs() As String, cants() As String, i As Long
+
+    ReDim refs(1 To TOTAL_REFS)
+    ReDim cants(1 To TOTAL_REFS)
+    For i = 1 To TOTAL_REFS
+        refs(i) = CaptionDe("Rf" & i)
+        cants(i) = CaptionDe("Ct" & i)
+    Next i
+
+    ' Sin lineas por defecto: solo la celda + accesorios seleccionados
+    RegistrarCeldaEnOferta DescripcionCelda(), refs, cants
+End Sub
+
+' Descripcion de la celda principal (fila n.1)
+Private Function DescripcionCelda() As String
+    Dim kV As String, amp As String, kA As String
+    kV = IIf(Me.OptionButton2.Value, "24kV", "17.5kV")
+    amp = IIf(Me.OptionButton6.Value, "630A", "1250A")
+    kA = IIf(Me.OptionButton8.Value, "20kA", "25kA")
+
+    DescripcionCelda = "Celda de medida tipo SM6 QM " & kV & ", " & amp & ", " & kA
+End Function
+
+' Lee el Caption de un control; si el control no existe devuelve ""
+Private Function CaptionDe(ByVal nombre As String) As String
+    On Error Resume Next
+    CaptionDe = Trim$(Me.Controls(nombre).Caption)
+End Function
 
 

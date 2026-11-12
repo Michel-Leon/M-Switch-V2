@@ -24,7 +24,7 @@ Private Sub UserForm_Initialize()
     Me.Top = (Application.Height - Me.Height) / 2
     Me.Left = (Application.Width - Me.Width) / 2
     Me.OptionButton1.Value = True
-    Me.OptionButton7.Value = True
+    Me.OptionButton6.Value = True
     Me.OptionButton9.Value = True
     Me.OptionButton10.Value = True
     Me.OptionButton12.Value = True
@@ -41,6 +41,7 @@ Private Sub UserForm_Initialize()
     Me.OptionButton62.Value = True
     Me.OptionButton65.Value = True
     Me.OptionButton66.Value = True 'conexion a al izquierda
+    Me.OptionButton79.Value = True
     Me.Rf1.Caption = "SM61D1JHD6X7CDM1A"
     Me.Ct1.Caption = "1"
     'MSGBOX Dato1
@@ -520,7 +521,7 @@ Public Sub Oferta_Tecnica()
         cants(i) = CaptionDe("Ct" & i)
     Next i
 
-    RegistrarCeldaEnOferta DescripcionCelda(), refs, cants
+        RegistrarCeldaEnOferta DescripcionCelda(), refs, cants, LineasPorDefecto()
 End Sub
 
 ' Descripcion de la celda principal (fila n.1) segun las opciones elegidas
@@ -528,16 +529,27 @@ Private Function DescripcionCelda() As String
     Dim kV As String, amp As String, kA As String
     kV = IIf(Me.OptionButton2.Value, "24kV", "17.5kV")
     amp = IIf(Me.OptionButton6.Value, "630A", "1250A")
-    kA = IIf(Me.OptionButton8.Value, "20kA", "25kA")
+    kA = IIf(Me.OptionButton9.Value, "20kA", "25kA")
 
     DescripcionCelda = "Celda interruptor tipo SM6 DM1-A " & kV & ", " & amp & _
                        ", " & kA & ". Motor 120Vac"
     If Me.OptionButton47.Value Then DescripcionCelda = DescripcionCelda & " + LPCT"
+End Function
+' Lineas de la configuracion por defecto que siguen activas (solo descripcion)
+Private Function LineasPorDefecto() As Collection
+    Dim c As New Collection
+
+    If Me.OptionButton17.Value Then c.Add "3 Sensores TH110"
+    If Me.OptionButton23.Value Then c.Add "Indicador de tensión Easergy VPIS (9-17) KV"
+    If Me.OptionButton27.Value Then c.Add "Relé de protección P3U30-7AAA2CCAA"
+    If Me.OptionButton47.Value Then c.Add "3 LPCT's 5-1250A / 22.5mV Cl 5P250"
+
+    Set LineasPorDefecto = c
 End Function
 
 ' Lee el Caption de un control; si el control no existe devuelve ""
 Private Function CaptionDe(ByVal nombre As String) As String
     On Error Resume Next
     CaptionDe = Trim$(Me.Controls(nombre).Caption)
-End Function
+End Function 
 

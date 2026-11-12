@@ -196,7 +196,15 @@ Public Sub Worksheet_Activate()
         Me.OLEObjects("CorrienteDM1").Object.Clear
         Me.OLEObjects("MtensionDM1").Object.Clear
         Me.OLEObjects("PM_DM1").Object.Clear
-        
+    With Me.OLEObjects("CotasMC").Object 
+        .clear   ' Solo llena la lista si está vacía
+        .AddItem "DM1A"
+        .AddItem "QM"
+        .AddItem "IM"
+        .AddItem "GAM"
+        .AddItem "GBC"
+      
+    End With   
 end sub
 Private Sub LimpiarZona(ws As Worksheet, ByVal sRango As String)
     Dim rngZona As Range, shp As Shape, i As Long
@@ -326,7 +334,36 @@ Public Sub celda_DM1A()
     MoverBloquMecanico CodeDM1A, "DM", wsActual, Celda
     Application.ScreenUpdating = True
 End Sub
+Public Sub Generar_CotasMecanico()
+   '========================
+        Set wsActual = ThisWorkbook.Sheets("Mecanicos")
+        Celda = "KS97"
+        Application.ScreenUpdating = False
+        LimpiarZona wsActual, "KP95:NI189"
+    '========================
+    Dim dato1 As String
+    dato1 = Me.OLEObjects("CotasMC").Object.Value
+    ResultadoCotas = "Cotas_" & dato1
+    MoverBloquMecanico ResultadoCotas, "IM", wsActual, Celda
+End Sub
 '-----------------------------------------
 public sub  Limpiar_zona2()
     thisWorkbook.Sheets("Mecanicos").Range("KO78:NI189").Clear
 End Sub 
+Public Sub Limpiar_zona1()
+    Dim borde As Variant
+
+    With ThisWorkbook.Sheets("Mecanicos").Range("CM45:IZ148")
+        .Clear
+        For Each borde In Array(xlEdgeLeft, xlEdgeTop, xlEdgeBottom, xlEdgeRight)
+            With .Borders(borde)
+                .LineStyle = xlContinuous
+                .Weight = xlHairline          ' Línea punteada extra delgada
+                .Color = RGB(191, 191, 191)   ' #BFBFBF
+            End With
+        Next borde
+    End With
+    With ThisWorkbook.Sheets("Mecanicos").Range("CM149:IZ166")
+        .Clear
+    end with
+End Sub

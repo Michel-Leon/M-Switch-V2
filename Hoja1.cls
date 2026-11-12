@@ -231,5 +231,29 @@ Sub Limpiar_TodasLasPosiciones()
     ' EXCLUYENDO el bot?n "Boton_Limpiar" (ajusta el nombre real aqu?)
     EliminarGraficosEnRango ws, rng, "Boton_Limpiar"
     Limpiar_ctr_unifilar
+    Limpiar_unifilar
+    LimpiarOfertaTecnica
     MsgBox "Se limpia el contenido y los graficos de todas las posiciones (H1 a H9).", vbInformation
 End Sub
+Public Sub Limpiar_unifilar()
+    Dim borde As Variant
+
+    With ThisWorkbook.Sheets("Unifilar").Range("CM45:IZ148")
+        .Clear
+        For Each borde In Array(xlEdgeLeft, xlEdgeTop, xlEdgeBottom, xlEdgeRight)
+            With .Borders(borde)
+                .LineStyle = xlContinuous
+                .Weight = xlHairline          ' Línea punteada extra delgada
+                .Color = RGB(191, 191, 191)   ' #BFBFBF
+            End With
+        Next borde
+    End With
+    With ThisWorkbook.Sheets("Unifilar").Range("CM149:IZ166")
+        .Clear
+    end with
+End Sub
+
+
+
+
+

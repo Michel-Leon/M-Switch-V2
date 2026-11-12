@@ -199,6 +199,7 @@ Private Sub Registar_Click()
     End With
     MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar
+    Oferta_Tecnica 
     'cerrar el formulario
     Unload Me
 End Sub
@@ -235,4 +236,45 @@ Public Sub Codigo_unifilar()
     codigo_IM = "UN_" & Dato1 & Dato2 & Dato3 & Dato4
     Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_IM, 17
 End Sub
+Private Function HayActivoEnRango(desde As Integer, hasta As Integer) As Boolean
+    Dim i As Integer
+    For i = desde To hasta
+        If Me.Controls("OptionButton" & i).Value = True Then
+            HayActivoEnRango = True
+            Exit Function
+        End If
+    Next i
+    HayActivoEnRango = False
+End Function
 
+'========== Registrar en OFERTA TECNICA
+Public Sub Oferta_Tecnica()
+    Const TOTAL_REFS As Long = 8           ' Rf1 (celda) ... Rf8 (zocalo)
+    Dim refs() As String, cants() As String, i As Long
+
+    ReDim refs(1 To TOTAL_REFS)
+    ReDim cants(1 To TOTAL_REFS)
+    For i = 1 To TOTAL_REFS
+        refs(i) = CaptionDe("Rf" & i)
+        cants(i) = CaptionDe("Ct" & i)
+    Next i
+
+    ' Sin lineas por defecto: solo la celda + accesorios seleccionados
+    RegistrarCeldaEnOferta DescripcionCelda(), refs, cants
+End Sub
+
+' Descripcion de la celda principal (fila n.1)
+Private Function DescripcionCelda() As String
+    Dim kV As String, amp As String, kA As String
+    kV = IIf(Me.OptionButton2.Value, "24kV", "17.5kV")
+    amp = IIf(Me.OptionButton6.Value, "630A", "1250A")
+    kA = IIf(Me.OptionButton9.Value, "20kA", "25kA")
+
+    DescripcionCelda = "Celda de medida tipo SM6 IM " & kV & ", " & amp & ", " & kA
+End Function
+
+' Lee el Caption de un control; si el control no existe devuelve ""
+Private Function CaptionDe(ByVal nombre As String) As String
+    On Error Resume Next
+    CaptionDe = Trim$(Me.Controls(nombre).Caption)
+End Function

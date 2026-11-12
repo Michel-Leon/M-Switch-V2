@@ -103,19 +103,96 @@ Sub abrir_formulario()
     End If
 
 End Sub
-Public Sub MostrarTodasLasHojas()
-    Dim ws As Object
-    Dim contador As Long
- 
-    On Error Resume Next
-    For Each ws In ThisWorkbook.Sheets
-        If ws.Visible <> xlSheetVisible Then
-            ws.Visible = xlSheetVisible
-            If Err.Number = 0 Then contador = contador + 1
-            Err.Clear
-        End If
-    Next ws
-    On Error GoTo 0
+Sub MostrarTodasLasHojas()
+    Dim ws As Worksheet
+    Dim usuario As String
+    Dim clave As String
+    Dim intentos As Integer
 
-    MsgBox "Se mostraron " & contador & " hoja(s).", vbInformation
+    Const USUARIO_VALIDO As String = "ADMIN"
+    Const CLAVE_VALIDA As String = "ADMIN2026"
+    Const MAX_INTENTOS As Integer = 3
+
+    Do
+        intentos = intentos + 1
+
+        usuario = InputBox("Ingrese el usuario:", "Acceso restringido")
+        If StrPtr(usuario) = 0 Then Exit Sub   ' Cancel�
+
+        clave = InputBox("Ingrese la contraseña:", "Acceso restringido")
+        If StrPtr(clave) = 0 Then Exit Sub     ' Cancel�
+
+        If UCase(Trim(usuario)) = USUARIO_VALIDO And Trim(clave) = CLAVE_VALIDA Then
+            Exit Do
+        Else
+            If intentos >= MAX_INTENTOS Then
+                MsgBox "Acceso denegado. Se agotaron los intentos.", vbCritical, "Error"
+                Exit Sub
+            End If
+            MsgBox "Usuario o contraseña incorrectos." & vbNewLine & _
+                   "Intento " & intentos & " de " & MAX_INTENTOS, vbExclamation, "Error"
+        End If
+    Loop
+
+    ' Acceso concedido
+    Application.ScreenUpdating = False
+    For Each ws In ThisWorkbook.Worksheets
+        ws.Visible = xlSheetVisible
+    Next ws
+    Application.ExecuteExcel4Macro "SHOW.TOOLBAR(""Ribbon"", TRUE)"
+    Application.DisplayFormulaBar = True
+    Application.ScreenUpdating = True
+
+    MsgBox "Acceso concedido. Todas las hojas estan visibles.", vbInformation, "Listo"
+End Sub
+Sub CambiarZoomEnTodasLasHojas()
+    Dim zoomStr As String
+    Dim zoomVal As Integer
+    Dim ws As Worksheet
+
+    ' Solicitar el valor de zoom al usuario
+    zoomStr = InputBox("Ingrese el nivel de zoom deseado (ej. 100 para 100%):", "Cambiar Zoom")
+    ' Cancelar si el usuario presiona Cancelar o deja vac�o
+    If zoomStr = "" Then Exit Sub
+
+    ' Validar que el valor ingresado sea num�rico
+    If Not IsNumeric(zoomStr) Then
+        MsgBox "Por favor ingrese un numero valido.", vbExclamation
+        Exit Sub
+    End If
+    zoomVal = CInt(zoomStr)
+    ' Validar que el zoom est� dentro de un rango razonable
+    If zoomVal < 10 Or zoomVal > 400 Then
+        MsgBox "El nivel de zoom debe estar entre 10 y 400.", vbExclamation
+        Exit Sub
+    End If
+    ' Aplicar el zoom a todas las hojas
+    For Each ws In ThisWorkbook.Worksheets
+        ws.Activate
+        ActiveWindow.Zoom = zoomVal
+    Next ws
+    MsgBox "Zoom ajustado a " & zoomVal & "% en todas las hojas.", vbInformation
+End Sub
+Sub OcultarBARRAS()
+    Application.ExecuteExcel4Macro "SHOW.TOOLBAR(""Ribbon"", false)"
+    Application.DisplayFormulaBar = False
+    Application.DisplayStatusBar = False
+    ActiveWindow.DisplayWorkbookTabs = False
+    ActiveWindow.DisplayHeadings = False
+    ActiveWindow.DisplayHorizontalScrollBar = False
+    ActiveWindow.DisplayVerticalScrollBar = False
+    ActiveSheet.Shapes("Mostrar Barras").Visible = True
+    ActiveSheet.Shapes("ocultar Barras").Visible = False
+End Sub
+' Mostrar las barras y elementos de la interfaz
+Sub MostarBARRAS()
+    Application.ExecuteExcel4Macro "SHOW.TOOLBAR(""Ribbon"", true)"
+    Application.DisplayFormulaBar = True
+    Application.DisplayStatusBar = True
+    ActiveWindow.DisplayWorkbookTabs = True 
+    ActiveWindow.DisplayHeadings = True
+    ActiveWindow.DisplayHorizontalScrollBar = True
+    ActiveWindow.DisplayVerticalScrollBar = True
+    ActiveSheet.Shapes("ocultar Barras").Visible = True
+    ActiveSheet.Shapes("Mostrar Barras").Visible = False
 End Sub
