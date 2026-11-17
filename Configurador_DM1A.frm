@@ -13,7 +13,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
 Option Explicit
 Private Sub UserForm_Initialize()
     'Tama?o de la ventana
@@ -44,7 +43,7 @@ Private Sub UserForm_Initialize()
     Me.OptionButton79.Value = True
     Me.Rf1.Caption = "SM61D1JHD6X7CDM1A"
     Me.Ct1.Caption = "1"
-    'MSGBOX Dato1
+    MSGBOX posicion
 End Sub
 Private Sub SetRef(ByVal isChecked As Boolean, _
                     ByRef refCtl As MSForms.Label, _
@@ -317,142 +316,150 @@ Private Sub Registar_Click()
             ElseIf Me.OptionButton13.Value = True Then
                 .Range("DA114").Value = "IAC-AFLR 12,5kA/1s"
             End If
+        '============= Columna destino según posicion (H1=HE, H2=HG ... H9=HU)
+            Dim nPos As Long, col As Long
+            nPos = Val(Replace(UCase(CStr(posicion)), "H", ""))   'acepta 1..9 o "H1".."H9"
+            If nPos < 1 Or nPos > 9 Then
+                MsgBox "Valor de posición no válido: " & posicion, vbExclamation
+                Exit Sub
+            End If
+            col = .Range("HE1").Column + (nPos - 1) * 2
         '============= A)
             If Me.OptionButton14.Value = True Then
-                .Range("FH23").Value = "Incluido"
+                .Cells(152, col).Value = "Incluido"
             ElseIf Me.OptionButton15.Value = True Then
-                .Range("FH23").Value = "No Incluido"
+                .Cells(152, col).Value = "No Incluido"
             End If
         '============= B)
             If Me.OptionButton16.Value = True Then
-                .Range("FH35").Value = "sensores TH110 x3"
+                .Cells(153, col).Value = "sensores TH110 x3"
             ElseIf Me.OptionButton17.Value = True Then
-                .Range("FH35").Value = "No Incluido"
+                .Cells(153, col).Value = "No Incluido"
             End If
         '============= C)
             If Me.OptionButton18.Value = True Then
-                .Range("FH40").Value = "Sensor CL110"
+                .Cells(154, col).Value = "Sensor CL110"
             ElseIf Me.OptionButton19.Value = True Then
-                .Range("FH40").Value = "No Incluido"
+                .Cells(154, col).Value = "No Incluido"
             End If
         '============= D)
             If Me.OptionButton20.Value = True Then
-                .Range("FH45").Value = "VPIS (2 - 4) KV"
+                .Cells(155, col).Value = "VPIS (2 - 4) KV"
             ElseIf Me.OptionButton21.Value = True Then
-                .Range("FH45").Value = "VPIS (3,4 - 6,3)KV - VPIS (13 - 24kV)"
+                .Cells(155, col).Value = "VPIS (3,4 - 6,3)KV - VPIS (13 - 24kV)"
             ElseIf Me.OptionButton22.Value = True Then
-                .Range("FH45").Value = "VPIS (4-8)KV"
+                .Cells(155, col).Value = "VPIS (4-8)KV"
             ElseIf Me.OptionButton23.Value = True Then
-                .Range("FH45").Value = "(9-17)kV"
+                .Cells(155, col).Value = "(9-17)kV"
             End If
         '============= E)
             If Me.OptionButton24.Value = True Then
-                .Range("FH50").Value = "P3U30-6AAA2BCAA"
+                .Cells(156, col).Value = "P3U30-6AAA2BCAA"
             ElseIf Me.OptionButton25.Value = True Then
-                .Range("FH50").Value = "P3T32-CGG1A-AA1NA-BBAAA"
+                .Cells(156, col).Value = "P3T32-CGG1A-AA1NA-BBAAA"
             ElseIf Me.OptionButton26.Value = True Then
-                .Range("FH50").Value = "P5U20-AABD-IABAA-BAEI"
+                .Cells(156, col).Value = "P5U20-AABD-IABAA-BAEI"
             ElseIf Me.OptionButton27.Value = True Then
-                .Range("FH50").Value = "No Incluido"
+                .Cells(156, col).Value = "No Incluido"
             End If
         '============= F)
             If Me.OptionButton28.Value = True Then
-                .Range("FH55").Value = "AGC-150"
+                .Cells(157, col).Value = "AGC-150"
             ElseIf Me.OptionButton29.Value = True Then
-                .Range("FH55").Value = "ATS-270 Comap"
+                .Cells(157, col).Value = "ATS-270 Comap"
             ElseIf Me.OptionButton30.Value = True Then
-                .Range("FH55").Value = "No Incluido"
+                .Cells(157, col).Value = "No Incluido"
             End If
         '============= G)
             If Me.OptionButton31.Value = True Then
-                .Range("FH60").Value = "50/5A Cl 5P20 10VA 17.5kV"
+                .Cells(158, col).Value = "50/5A Cl 5P20 10VA 17.5kV"
             ElseIf Me.OptionButton32.Value = True Then
-                .Range("FH60").Value = "100/5A Cl 5P20 10VA 17.5kV"
+                .Cells(158, col).Value = "100/5A Cl 5P20 10VA 17.5kV"
             ElseIf Me.OptionButton33.Value = True Then
-                .Range("FH60").Value = "150/5A Cl 5P20 10VA 17.5kV"
+                .Cells(158, col).Value = "150/5A Cl 5P20 10VA 17.5kV"
             ElseIf Me.OptionButton34.Value = True Then
-                .Range("FH60").Value = "200/5A Cl 5P20 10VA 17.5kV"
+                .Cells(158, col).Value = "200/5A Cl 5P20 10VA 17.5kV"
             ElseIf Me.OptionButton35.Value = True Then
-                .Range("FH60").Value = "50/5A Cl 10P20 10VA 17.5kV"
+                .Cells(158, col).Value = "50/5A Cl 10P20 10VA 17.5kV"
             ElseIf Me.OptionButton36.Value = True Then
-                .Range("FH60").Value = "100/5A Cl 10P20 10VA 17.5kV"
+                .Cells(158, col).Value = "100/5A Cl 10P20 10VA 17.5kV"
             ElseIf Me.OptionButton37.Value = True Then
-                .Range("FH60").Value = "150/5A Cl 10P20 10VA 17.5kV"
+                .Cells(158, col).Value = "150/5A Cl 10P20 10VA 17.5kV"
             ElseIf Me.OptionButton38.Value = True Then
-                .Range("FH60").Value = "200/5A Cl 10P20 10VA 17.5kV"
+                .Cells(158, col).Value = "200/5A Cl 10P20 10VA 17.5kV"
             ElseIf Me.OptionButton39.Value = True Then
-                .Range("FH60").Value = "50/5A N1: 0.5S N2:5P20 10VA 17.5kV"
+                .Cells(158, col).Value = "50/5A N1: 0.5S N2:5P20 10VA 17.5kV"
             ElseIf Me.OptionButton40.Value = True Then
-                .Range("FH60").Value = "100/5A N1: 0.5S N2:5P20 10VA 17.5kV"
+                .Cells(158, col).Value = "100/5A N1: 0.5S N2:5P20 10VA 17.5kV"
             ElseIf Me.OptionButton41.Value = True Then
-                .Range("FH60").Value = "150/5A N1: 0.5S N2:5P20 10VA 17.5kV"
+                .Cells(158, col).Value = "150/5A N1: 0.5S N2:5P20 10VA 17.5kV"
             ElseIf Me.OptionButton42.Value = True Then
-                .Range("FH60").Value = "200/5A N1: 0.5S N2:5P20 10VA 17.5kV"
+                .Cells(158, col).Value = "200/5A N1: 0.5S N2:5P20 10VA 17.5kV"
             ElseIf Me.OptionButton43.Value = True Then
-                .Range("FH60").Value = "50/5A N1: 0.5S N2:10P20 10VA 17.5kV"
+                .Cells(158, col).Value = "50/5A N1: 0.5S N2:10P20 10VA 17.5kV"
             ElseIf Me.OptionButton44.Value = True Then
-                .Range("FH60").Value = "100/5A N1: 0.5S N2:10P20 10VA 17.5kV"
+                .Cells(158, col).Value = "100/5A N1: 0.5S N2:10P20 10VA 17.5kV"
             ElseIf Me.OptionButton45.Value = True Then
-                .Range("FH60").Value = "150/5A N1: 0.5S N2:10P20 10VA 17.5kV"
+                .Cells(158, col).Value = "150/5A N1: 0.5S N2:10P20 10VA 17.5kV"
             ElseIf Me.OptionButton46.Value = True Then
-                .Range("FH60").Value = "200/5A N1: 0.5S N2:10P20 10VA 17.5kV"
+                .Cells(158, col).Value = "200/5A N1: 0.5S N2:10P20 10VA 17.5kV"
             ElseIf Me.OptionButton47.Value = True Then
-                .Range("FH60").Value = "LPCT's 5-1250A / 22.5mV Cl 5P250"
+                .Cells(158, col).Value = "LPCT's 5-1250A / 22.5mV Cl 5P250"
             ElseIf Me.OptionButton48.Value = True Then
-                .Range("FH60").Value = "No Incluido"
+                .Cells(158, col).Value = "No Incluido"
             End If
         '============= H)
             If Me.OptionButton49.Value = True Then
-                .Range("FH70").Value = "PT Cl 0.2 10VA S.Normal 17,5kV"
+                .Cells(159, col).Value = "PT Cl 0.2 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton50.Value = True Then
-                .Range("FH70").Value = "PT Cl 0.5 10VA S.Normal 17,5kV"
+                .Cells(159, col).Value = "PT Cl 0.5 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton51.Value = True Then
-                .Range("FH70").Value = "PT Cl 3P 10VA S.Normal 17,5kV"
+                .Cells(159, col).Value = "PT Cl 3P 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton52.Value = True Then
-                .Range("FH70").Value = "PT N1: 0.5 N2:3P 10VA S.Normal 17,5kV"
+                .Cells(159, col).Value = "PT N1: 0.5 N2:3P 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton53.Value = True Then
-                .Range("FH70").Value = "PT N1:Cl 0.2 N2: 3P 10VA S.Normal 17,5kV"
+                .Cells(159, col).Value = "PT N1:Cl 0.2 N2: 3P 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton54.Value = True Then
-                .Range("FH70").Value = "No Incluido"
+                .Cells(159, col).Value = "No Incluido"
             End If
-        '============= I)
+        '============= I)   (fila asumida: 167)
             If Me.OptionButton79.Value = True Then
-                .Range("FH80").Value = "No Incluido"
-            elseIf Me.OptionButton80.Value = True Then
-                .Range("FH80").Value = "KIT-BARRAJE-MT"
+                .Cells(167, col).Value = "No Incluido"
+            ElseIf Me.OptionButton80.Value = True Then
+                .Cells(167, col).Value = "KIT-BARRAJE-MT"
             End If
         '============= J)
             If Me.OptionButton55.Value = True Then
-                .Range("FH90").Value = "PM5340"
+                .Cells(161, col).Value = "PM5340"
             ElseIf Me.OptionButton56.Value = True Then
-                .Range("FH90").Value = "PM5560"
+                .Cells(161, col).Value = "PM5560"
             ElseIf Me.OptionButton57.Value = True Then
-                .Range("FH90").Value = "PM8240"
+                .Cells(161, col).Value = "PM8240"
             ElseIf Me.OptionButton58.Value = True Then
-                .Range("FH90").Value = "No Incluido"
+                .Cells(161, col).Value = "No Incluido"
             End If
         '============= K)
             If Me.OptionButton59.Value = True Then
-                .Range("FH95").Value = "Incluido"
+                .Cells(165, col).Value = "Incluido"
             ElseIf Me.OptionButton60.Value = True Then
-                .Range("FH95").Value = "No Incluido"
+                .Cells(165, col).Value = "No Incluido"
             End If
         '============= L)
             If Me.OptionButton61.Value = True Then
-                .Range("FH100").Value = "Incluido"
+                .Cells(163, col).Value = "Incluido"
             ElseIf Me.OptionButton62.Value = True Then
-                .Range("FH100").Value = "No Incluido"
+                .Cells(163, col).Value = "No Incluido"
             End If
         '============= M)
             If Me.OptionButton63.Value = True Then
-                .Range("FH105").Value = "400mm"
+                .Cells(166, col).Value = "400mm"
             ElseIf Me.OptionButton64.Value = True Then
-                .Range("FH105").Value = "600mm"
-            ElseIf Me.OptionButton65.Value = True Then 
-                .Range("FH105").Value = "No Incluido"
+                .Cells(166, col).Value = "600mm"
+            ElseIf Me.OptionButton65.Value = True Then
+                .Cells(166, col).Value = "No Incluido"
             End If
-        '===== REFERENCIA
-           .RAnge("HE171").Value = Me.Rf1.Caption 
+        'referencia
+            .Cells(171, col).Value = Me.Rf1.Caption
     End With
    
     MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"

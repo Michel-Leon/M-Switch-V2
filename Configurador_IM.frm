@@ -146,56 +146,64 @@ Private Sub Registar_Click()
             ElseIf Me.OptionButton13.Value = True Then
                 .Range("DA114").Value = "IAC-AFLR 12,5kA/1s"
             End If
+         '============= Columna destino según posicion (H1=HE, H2=HG ... H9=HU)
+            Dim nPos As Long, col As Long
+            nPos = Val(Replace(UCase(CStr(posicion)), "H", ""))   'acepta 1..9 o "H1".."H9"
+            If nPos < 1 Or nPos > 9 Then
+                MsgBox "Valor de posición no válido: " & posicion, vbExclamation
+                Exit Sub
+            End If
+            col = .Range("HE1").Column + (nPos - 1) * 2
         '============= A)
             If Me.OptionButton14.Value = True Then
-                .Range("FH23").Value = "Incluido"
+                .Cells(152, col).Value = "Incluido"
             ElseIf Me.OptionButton15.Value = True Then
-                .Range("FH23").Value = "No Incluido"
+                .Cells(152, col).Value = "No Incluido"
             End If
         '============= B)
             If Me.OptionButton16.Value = True Then
-                .Range("FH35").Value = "sensores TH110 x3"
+                .Cells(153, col).Value = "sensores TH110 x3"
             ElseIf Me.OptionButton17.Value = True Then
-                .Range("FH35").Value = "No Incluido"
+                .Cells(153, col).Value = "No Incluido"
             End If
         '============= C)
             If Me.OptionButton18.Value = True Then
-                .Range("FH40").Value = "Sensor CL110"
+                .Cells(154, col).Value = "Sensor CL110"
             ElseIf Me.OptionButton19.Value = True Then
-                .Range("FH40").Value = "No Incluido"
+                .Cells(154, col).Value = "No Incluido"
             End If
         '============= D)
             If Me.OptionButton20.Value = True Then
-                .Range("FH45").Value = "VPIS (2 - 4) KV"
+                .Cells(155, col).Value = "VPIS (2 - 4) KV"
             ElseIf Me.OptionButton21.Value = True Then
-                .Range("FH45").Value = "VPIS (3,4 - 6,3)KV - VPIS (13 - 24kV)"
+                .Cells(155, col).Value = "VPIS (3,4 - 6,3)KV - VPIS (13 - 24kV)"
             ElseIf Me.OptionButton22.Value = True Then
-                .Range("FH45").Value = "VPIS (4-8)KV"
+                .Cells(155, col).Value = "VPIS (4-8)KV"
             ElseIf Me.OptionButton23.Value = True Then
-                .Range("FH45").Value = "(9-17)kV"
+                .Cells(155, col).Value = "(9-17)kV"
             End If
         '============= E)
             If Me.OptionButton24.Value = True Then
-                .Range("FH50").Value = "Incluido"
+               .Cells(163, col).Value = "Incluido"
             ElseIf Me.OptionButton25.Value = True Then
-                .Range("FH50").Value = "No Incluido"
+               .Cells(163, col).Value = "No Incluido"
             End If
         '============= F)
             If Me.OptionButton26.Value = True Then
-                .Range("FH55").Value = "Motorizado 120VAC IM"
+                .Cells(164, col).Value = "Motorizado 120VAC IM"
             ElseIf Me.OptionButton27.Value = True Then
-                .Range("FH55").Value = "No Incluido"
+                .Cells(164, col).Value = "No Incluido"
             End If
         '============= G)
             If Me.OptionButton28.Value = True Then
-                .Range("FH60").Value = "400mm"
+                .Cells(166, col).Value = "400mm"
             ElseIf Me.OptionButton29.Value = True Then
-                .Range("FH60").Value = "600mm" 
+                .Cells(166, col).Value = "600mm" 
             ElseIf Me.OptionButton30.Value = True Then
-                .Range("FH60").Value = "No Incluido"
+                .Cells(166, col).Value = "No Incluido"
             End If
         '===== REFERENCIA
-           .RAnge("HE171").Value = Me.Rf1.Caption
+           .Cells(171, col).Value = Me.Rf1.Caption
     End With
     MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar

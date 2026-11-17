@@ -41,8 +41,9 @@ Sub Celda_IM() ' Modo de ejecucion
     Dim codigoIM As String
     codigoIM = "ESQ_CL_IM_24"
     Resultado_IM = "1"
-    
+    THISWORKBOOK.Sheets("FT IM").Range("A1").Value = pregunta 
     MoverBloque codigoIM, "BD_Esquemas", ws, celdaDestino
+    posicion=pregunta
 End Sub
 Sub Celda_QM() ' Modo de ejecuci?n
     Dim ws As Worksheet
@@ -85,8 +86,9 @@ Sub Celda_QM() ' Modo de ejecuci?n
     Dim codigoQM As String
     codigoQM = "ESQ_CL_QM_24"
     Resultado_QM = "1"
-    
+     THISWORKBOOK.Sheets("FT QM").Range("A1").Value = pregunta 
     MoverBloque codigoQM, "BD_Esquemas", ws, celdaDestino
+    posicion=pregunta
 End Sub
 Sub Celda_GBC() ' Modo de ejecuci?n
     Dim ws As Worksheet
@@ -129,8 +131,9 @@ Sub Celda_GBC() ' Modo de ejecuci?n
     Dim codigoGBC As String
     codigoGBC = "ESQ_CL_GBC_24"
     Resultado_GBC = "1"
-    
+    THISWORKBOOK.Sheets("FT GBC").Range("A1").Value = pregunta 
     MoverBloque codigoGBC, "BD_Esquemas", ws, celdaDestino
+    posicion=pregunta
 End Sub
 Sub Celda_GAM() ' Modo de ejecuci?n
     Dim ws As Worksheet
@@ -173,8 +176,9 @@ Sub Celda_GAM() ' Modo de ejecuci?n
     Dim codigoGBC As String
     codigoGBC = "ESQ_CL_GAM_24"
     Resultado_GBC = "1"
-    
+    THISWORKBOOK.Sheets("FT GAM 24kV").Range("A1").Value = pregunta 
     MoverBloque codigoGBC, "BD_Esquemas", ws, celdaDestino
+    posicion=pregunta
 End Sub
 Sub Celda_DM1A() ' Modo de ejecucion
     Dim ws As Worksheet
@@ -214,8 +218,10 @@ Sub Celda_DM1A() ' Modo de ejecucion
     
     Dim codigoDM1A As String
     codigoDM1A = "ESQ_CL_DM1A_24"
-    
+    'GUARDAR VARIABLE D ELA POSICION ACTUAL
+    THISWORKBOOK.Sheets("FT DM1A").Range("A1").Value = pregunta 
     MoverBloque codigoDM1A, "BD_Esquemas", ws, celdaDestino
+    posicion=pregunta
 End Sub
 Sub Limpiar_TodasLasPosiciones()
     Dim ws As Worksheet

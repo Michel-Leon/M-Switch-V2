@@ -10,6 +10,7 @@ Public CodeGAM As String
 Public CodeDM1 As String
 Public CodeGBC As String
 public ResultadoCotas As String
+Public posicion As String
 '=============== Mover Bloque ========================
 Public Sub MoverBloquMecanico(ByVal ref As String, ByVal BD As String, _
                        ByVal wsDestino As Worksheet, ByVal celdaDestino As String)

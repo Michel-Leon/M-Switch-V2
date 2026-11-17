@@ -18,13 +18,14 @@ Private Const ALTO_FILA As Double = 3.6
 ' Puede ser un nombre definido o el nombre de una hoja con �rea de impresi�n.
 ' Se busca sin importar may�sculas, tildes, espacios o guiones bajos.
 ' Orden = orden de los ComboBox: HojaENT|Esquema|Unifilar|Mecanico|Resumen|Oferta1
-Private Const AREAS_BASE As String = "Hoja de entrada|Esquema|Unifilar|Mecanicos|Resumen_tecnico|Oferta"
+Private Const AREAS_BASE As String = "Hoja de entrada|Esquema|Unifilar|Mecanicos|Oferta"
 ' Orden = elementos del ComboBox Ficha_TEC
-Private Const AREAS_FT As String = "FT_DM1A|FT_QM|FT_IM|FT_GAM|FT_GBC"
+Private Const AREAS_FT As String = "|FT_DM1A|FT_QM|FT_IM|FT_GAM|FT_GBC"
 ' Orden = elementos del ComboBox Complemento
-Private Const AREAS_COMP As String = "Comp_DM1A|Comp_QM|Comp_IM|Comp_GAM_0|Comp_GAM_2|Comp_GBC_A|Comp_GBC_B|Comp_GBC_C|Comp_GBC_D"
+Private Const AREAS_COMP As String = "|Comp_DM1A|Comp_QM|Comp_IM|Comp_GAM_0|Comp_GAM_2|Comp_GBC_A|Comp_GBC_B|Comp_GBC_C|Comp_GBC_D"
 ' �rea que a�ade el ComboBox Oferta2
 Private Const AREA_OFERTA_ADIC As String = "Oferta"
+Private Const AREA_RESUMEN As String = "Resumen_tecnico"
 
 
 '==========================================================================
@@ -43,7 +44,7 @@ Public Sub CrearLibro()
 
     ' ListIndex = 0  ->  "A�adir"
     Dim combos As Variant, nombresBase As Variant, k As Long
-    combos = Array("HojaENT", "Esquema", "Unifilar", "Mecanico", "Resumen", "Oferta1")
+    combos = Array("HojaENT", "Esquema", "Unifilar", "Mecanico", "Oferta1")
     nombresBase = Split(AREAS_BASE, "|")
     For k = 0 To UBound(combos)
         If Seleccion(wsCtrl, CStr(combos(k))) = 0 Then areas.Add nombresBase(k)
@@ -58,12 +59,12 @@ Public Sub CrearLibro()
     ruta = Application.GetSaveAsFilename( _
                 InitialFileName:="Oferta.xlsx", _
                 FileFilter:="Libro de Excel (*.xlsx), *.xlsx", _
-                Title:="Seleccione d�nde guardar el libro y escriba su nombre")
+                Title:="Seleccione donde guardar el libro y escriba su nombre")
     If VarType(ruta) = vbBoolean Then Exit Sub          ' Cancel�
 
     If Dir(CStr(ruta)) <> "" Then
         If MsgBox("El archivo ya existe:" & vbCrLf & ruta & vbCrLf & vbCrLf & _
-                  "�Desea reemplazarlo?", vbYesNo + vbQuestion) = vbNo Then Exit Sub
+                  "¿Desea reemplazarlo?", vbYesNo + vbQuestion) = vbNo Then Exit Sub
     End If
 
     On Error GoTo ErrHandler
@@ -118,6 +119,7 @@ Public Sub AnadirHojas()
     If idx >= 0 Then areas.Add Split(AREAS_COMP, "|")(idx)
 
     If Seleccion(wsCtrl, "Oferta2") = 0 Then areas.Add AREA_OFERTA_ADIC
+    If Seleccion(wsCtrl, "Resumen") = 0 Then areas.Add AREA_RESUMEN
 
     If areas.Count = 0 Then
         MsgBox "No hay ninguna hoja adicional seleccionada.", vbExclamation
@@ -137,14 +139,14 @@ Public Sub AnadirHojas()
 
     RomperVinculos wb
     wb.Save
-    MsgBox "Hojas a�adidas correctamente a:" & vbCrLf & wb.FullName, vbInformation
+    MsgBox "Hojas añadidas correctamente a:" & vbCrLf & wb.FullName, vbInformation
 
 Salir:
     Application.CutCopyMode = False
     Application.ScreenUpdating = True
     Exit Sub
 ErrHandler:
-    MsgBox "Error al a�adir hojas: " & Err.Description, vbCritical
+    MsgBox "Error al añadir hojas: " & Err.Description, vbCritical
     Resume Salir
 End Sub
 
@@ -659,7 +661,7 @@ Private Function ObtenerLibroDestino() As Workbook
     If wb Is Nothing Then
         sel = Application.GetOpenFilename( _
                 FileFilter:="Libro de Excel (*.xlsx), *.xlsx", _
-                Title:="Seleccione el libro al que desea a�adir las hojas")
+                Title:="Seleccione el libro al que desea añadir las hojas")
         If VarType(sel) = vbBoolean Then Exit Function
         Set wb = Workbooks.Open(CStr(sel))
         GuardarRuta CStr(sel)
@@ -681,14 +683,14 @@ Public Sub Mapear_Formulas()
     Dim fila As Long, nImg As Long, nFlot As Long
     Dim combinadas As String, cortada As String, vistos As String
 
-    listas = Array(AREAS_BASE, AREAS_FT, AREAS_COMP, AREA_OFERTA_ADIC)
+        listas = Array(AREAS_BASE, AREAS_FT, AREAS_COMP, AREA_OFERTA_ADIC, AREA_RESUMEN)
 
     Set wbRep = Workbooks.Add(xlWBATWorksheet)
     Set wsRep = wbRep.Worksheets(1)
     wsRep.Name = "Mapa_Formulas"
-    wsRep.Range("A1:J1").Value = Array("�rea", "Hoja", "Rango del �rea", "�rea ajustada", _
-        "Corta combinadas", "Rango con f�rmula", "N� celdas", "Tiene combinadas", _
-        "Im�genes en celda", "Im�genes flotantes")
+    wsRep.Range("A1:J1").Value = Array("area", "Hoja", "Rango del area", "area ajustada", _
+        "Corta combinadas", "Rango con formula", "No celdas", "Tiene combinadas", _
+        "Imagenes en celda", "Imagenes flotantes")
     wsRep.Range("A1:J1").Font.Bold = True
     fila = 2
     vistos = "|"
@@ -708,7 +710,7 @@ Public Sub Mapear_Formulas()
                 Else
                     Set ws = rngArea.Worksheet
                     Set rngAmpliada = ExpandirCombinadas(rngArea)
-                    cortada = IIf(rngAmpliada.Address = rngArea.Address, "No", "S�")
+                    cortada = IIf(rngAmpliada.Address = rngArea.Address, "No", "Si")
 
                     nFlot = 0
                     For Each shp In ws.Shapes
@@ -725,14 +727,14 @@ Public Sub Mapear_Formulas()
                     If celdas Is Nothing Then
                         wsRep.Cells(fila, 1).Resize(1, 10).Value = Array(CStr(n), ws.Name, _
                             rngArea.Address(0, 0), rngAmpliada.Address(0, 0), cortada, _
-                            "(sin f�rmulas)", 0, "-", 0, nFlot)
+                            "(sin formulas)", 0, "-", 0, nFlot)
                         fila = fila + 1
                     Else
                         For Each a In celdas.Areas
                             If IsNull(a.MergeCells) Then
                                 combinadas = "Parcial"
                             ElseIf a.MergeCells Then
-                                combinadas = "S�"
+                                combinadas = "Si"
                             Else
                                 combinadas = "No"
                             End If
@@ -752,5 +754,5 @@ Public Sub Mapear_Formulas()
     Next lista
 
     wsRep.Columns("A:J").AutoFit
-    MsgBox "Mapa de f�rmulas generado.", vbInformation
+    MsgBox "Mapa de formulas generado.", vbInformation
 End Sub

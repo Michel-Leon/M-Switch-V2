@@ -251,126 +251,134 @@ Private Sub Registar_Click()
             ElseIf Me.OptionButton13.Value = True Then
                 .Range("DA114").Value = "IAC-AFLR 12,5kA/1s"
             End If
+        '============= Columna destino según posicion (H1=HE, H2=HG ... H9=HU)
+            Dim nPos As Long, col As Long
+            nPos = Val(Replace(UCase(CStr(posicion)), "H", ""))   'acepta 1..9 o "H1".."H9"
+            If nPos < 1 Or nPos > 9 Then
+                MsgBox "Valor de posición no válido: " & posicion, vbExclamation
+                Exit Sub
+            End If
+            col = .Range("HE1").Column + (nPos - 1) * 2
         '============= A)
             If Me.OptionButton14.Value = True Then
-                .Range("FH23").Value = "5A Clase 0.5s 10VA 17,5kV"
+                 .Cells(158, col).Value = "5A Clase 0.5s 10VA 17,5kV"
             ElseIf Me.OptionButton15.Value = True Then
-                .Range("FH23").Value = "7.5/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "7.5/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton16.Value = True Then
-                .Range("FH23").Value = "10/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "10/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton17.Value = True Then
-                .Range("FH23").Value = "15/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "15/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton18.Value = True Then
-                .Range("FH23").Value = "20/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "20/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton19.Value = True Then
-                .Range("FH23").Value = "25/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "25/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton20.Value = True Then
-                .Range("FH23").Value = "30/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "30/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton21.Value = True Then
-                .Range("FH23").Value = "40/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "40/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton22.Value = True Then
-                .Range("FH23").Value = "50/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "50/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton23.Value = True Then
-                .Range("FH23").Value = "60/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "60/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton24.Value = True Then
-                .Range("FH23").Value = "70/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "70/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton25.Value = True Then
-                .Range("FH23").Value = "80/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "80/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton26.Value = True Then
-                .Range("FH23").Value = "100/5A Clase 0.5s10VA 17,5kV"
+                .Cells(158, col).Value = "100/5A Clase 0.5s10VA 17,5kV"
             ElseIf Me.OptionButton27.Value = True Then
-                .Range("FH23").Value = "5/5A Clase 0.2s 10VA 17,5kV"
+                .Cells(158, col).Value = "5/5A Clase 0.2s 10VA 17,5kV"
             ElseIf Me.OptionButton28.Value = True Then
-                .Range("FH23").Value = "7.5/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "7.5/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton29.Value = True Then
-                .Range("FH23").Value = "10/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "10/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton30.Value = True Then
-                .Range("FH23").Value = "15/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "15/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton31.Value = True Then
-                .Range("FH23").Value = "20/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "20/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton32.Value = True Then
-                .Range("FH23").Value = "25/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "25/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton33.Value = True Then
-                .Range("FH23").Value = "30/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "30/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton34.Value = True Then
-                .Range("FH23").Value = "40/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "40/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton35.Value = True Then
-                .Range("FH23").Value = "50/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "50/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton36.Value = True Then
-                .Range("FH23").Value = "60/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "60/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton37.Value = True Then
-                .Range("FH23").Value = "70/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "70/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton38.Value = True Then
-                .Range("FH23").Value = "80/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "80/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton39.Value = True Then
-                .Range("FH23").Value = "100/5A Clase 0.2s10VA 17,5kV"
+                .Cells(158, col).Value = "100/5A Clase 0.2s10VA 17,5kV"
             ElseIf Me.OptionButton40.Value = True Then
-                .Range("FH23").Value = "No Incluido"
+                .Cells(158, col).Value = "No Incluido"
             End If
         '============= B)
             If Me.OptionButton41.Value = True Then
-                .Range("FH33").Value = "PT Clase 0.2 10VA S.Normal 17,5kV"
+                .Cells(159, col).Value = "PT Clase 0.2 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton42.Value = True Then
-                .Range("FH33").Value = "PT Clase 0.5 10VA S.Normal 17,5kV"
+                .Cells(159, col).Value = "PT Clase 0.5 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton43.Value = True Then
-                .Range("FH33").Value = "PT Clase 3P 10VA S.Normal 17,5kV"
+                .Cells(159, col).Value = "PT Clase 3P 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton44.Value = True Then
-                .Range("FH33").Value = "PT N1: 0.5 N2:3P 10VA S.Normal 17,5kV"
+                .Cells(159, col).Value = "PT N1: 0.5 N2:3P 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton45.Value = True Then
-                .Range("FH33").Value = "PT N1:Clase 0.2 N2: 3P 10VA S.Normal 17,5kV"
+                .Cells(159, col).Value = "PT N1:Clase 0.2 N2: 3P 10VA S.Normal 17,5kV"
             ElseIf Me.OptionButton46.Value = True Then
-                .Range("FH33").Value = "No Incluido"
+                .Cells(159, col).Value = "No Incluido"
             End If
         '============= C)
             If Me.OptionButton47.Value = True Then
-                .Range("FH43").Value = "Landis Clase 0.5s RS485"
+                .Cells(162, col).Value = "Landis Clase 0.5s RS485"
             ElseIf Me.OptionButton48.Value = True Then
-                .Range("FH43").Value = "Landis Clase 0.5s RS485 + Ethernet"
+                .Cells(162, col).Value = "Landis Clase 0.5s RS485 + Ethernet"
             ElseIf Me.OptionButton49.Value = True Then
-                .Range("FH43").Value = "Landis Clase 0.2s RS485 + Ethernet"
+                .Cells(162, col).Value = "Landis Clase 0.2s RS485 + Ethernet"
             ElseIf Me.OptionButton50.Value = True Then
-                .Range("FH43").Value = "Microstar Clase 0.5s RS485"
+                .Cells(162, col).Value = "Microstar Clase 0.5s RS485"
             ElseIf Me.OptionButton51.Value = True Then
-                .Range("FH43").Value = "Inhemeter Clase 0.5s RS485"
+                .Cells(162, col).Value = "Inhemeter Clase 0.5s RS485"
             ElseIf Me.OptionButton52.Value = True Then
-                .Range("FH43").Value = "Itron Clase 0.5s RS485"
+                .Cells(162, col).Value = "Itron Clase 0.5s RS485"
             ElseIf Me.OptionButton53.Value = True Then
-                .Range("FH43").Value = "Itron Clase 0.2s RS485"
+                .Cells(162, col).Value = "Itron Clase 0.2s RS485"
             ElseIf Me.OptionButton54.Value = True Then
-                .Range("FH43").Value = "ION7400"
+                .Cells(162, col).Value = "ION7400"
             ElseIf Me.OptionButton55.Value = True Then
-                .Range("FH43").Value = "Suministro Cliente"
+                .Cells(162, col).Value = "Suministro Cliente"
             End If
         '============= D)
             If Me.OptionButton56.Value = True Then
-                .Range("FH53").Value = "Landis Clase 0.5s RS485"
+                .Cells(168, col).Value = "Landis Clase 0.5s RS485"
             ElseIf Me.OptionButton57.Value = True Then
-                .Range("FH53").Value = "Landis Clase 0.5s RS485 + Ethernet"
+                .Cells(168, col).Value = "Landis Clase 0.5s RS485 + Ethernet"
             ElseIf Me.OptionButton58.Value = True Then
-                .Range("FH53").Value = "Landis Clase 0.2s RS485 + Ethernet"
+                .Cells(168, col).Value = "Landis Clase 0.2s RS485 + Ethernet"
             ElseIf Me.OptionButton59.Value = True Then
-                .Range("FH53").Value = "Microstar Clase 0.5s RS485"
+                .Cells(168, col).Value = "Microstar Clase 0.5s RS485"
             ElseIf Me.OptionButton60.Value = True Then
-                .Range("FH53").Value = "Inhemeter Clase 0.5s RS485"
+                .Cells(168, col).Value = "Inhemeter Clase 0.5s RS485"
             ElseIf Me.OptionButton61.Value = True Then
-                .Range("FH53").Value = "Itron Clase 0.5s RS485"
+                .Cells(168, col).Value = "Itron Clase 0.5s RS485"
             ElseIf Me.OptionButton62.Value = True Then
-                .Range("FH53").Value = "Itron Clase 0.2s RS485"
+                .Cells(168, col).Value = "Itron Clase 0.2s RS485"
             ElseIf Me.OptionButton63.Value = True Then
-                .Range("FH53").Value = "ION7400"
+                .Cells(168, col).Value = "ION7400"
             ElseIf Me.OptionButton64.Value = True Then
-                .Range("FH53").Value = "Suministro Cliente"
+                .Cells(168, col).Value = "Suministro Cliente"
             End If
         '============= E)
             If Me.OptionButton65.Value = True Then
-                .Range("FH63").Value = "400mm"
+                .Cells(166, col).Value = "400mm"
             ElseIf Me.OptionButton66.Value = True Then
-                .Range("FH63").Value = "600mm"
+                .Cells(166, col).Value = "600mm"
             ElseIf Me.OptionButton67.Value = True Then
-                .Range("FH63").Value = "No Incluido"
+                .Cells(166, col).Value = "No Incluido"
             End If
         '===== REFERENCIA
-           .RAnge("HE171").Value = Me.Rf1.Caption
+           .Cells(171, col).Value = Me.Rf1.Caption
     End With
     MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar

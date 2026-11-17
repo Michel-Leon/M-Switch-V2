@@ -116,26 +116,35 @@ Private Sub Registar_Click()
             ElseIf Me.OptionButton13.Value = True Then
                 .Range("DA114").Value = "IAC-AFLR 12,5kA/1s"
             End If
+
+        '============= Columna destino según posicion (H1=HE, H2=HG ... H9=HU)
+            Dim nPos As Long, col As Long
+            nPos = Val(Replace(UCase(CStr(posicion)), "H", ""))   'acepta 1..9 o "H1".."H9"
+            If nPos < 1 Or nPos > 9 Then
+                MsgBox "Valor de posición no válido: " & posicion, vbExclamation
+                Exit Sub
+            End If
+            col = .Range("HE1").Column + (nPos - 1) * 2
         '============= A)
             If Me.OptionButton14.Value = True Then
-                .Range("FH23").Value = "Incluido"
+                .Cells(153, col).Value = "Incluido"
             ElseIf Me.OptionButton15.Value = True Then
-                .Range("FH23").Value = "No Incluido"
+               .Cells(153, col).Value = "No Incluido"
             End If
         '============= B)
             If Me.OptionButton16.Value = True Then
-                .Range("FH28").Value = "Incluido"
+                .Cells(154, col).Value = "Incluido"
             ElseIf Me.OptionButton17.Value = True Then
-                .Range("FH28").Value = "No Incluido"
+                .Cells(154, col).Value = "No Incluido"
             End If
         '============= C)
             If Me.OptionButton18.Value = True Then
-                .Range("FH31").Value = "Incluido"
+                .Cells(166, col).Value = "Incluido"
             ElseIf Me.OptionButton19.Value = True Then 
-                .Range("FH31").Value = "No Incluido"
+                .Cells(166, col).Value = "No Incluido"
             End If
         '===== REFERENCIA
-           .RAnge("HE171").Value = Me.Rf1.Caption
+           .Cells(171, col).Value = Me.Rf1.Caption
     End With
     MsgBox "Datos Cargados a la ficha tecnica", vbInformation, "Aviso"
     Codigo_unifilar

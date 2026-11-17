@@ -52,6 +52,12 @@ Private Sub Worksheet_Activate()
             .AddItem "GBC"
         End If
     End With
+    with Me.conexion
+        If .ListCount = 0 Then          ' Solo llena la lista si está vacía
+            .AddItem "Superior"
+            .AddItem "Inferior"
+        End If
+    End With
 End Sub
 
 ' Se ejecuta automáticamente al elegir una opción en el ComboBox
@@ -66,6 +72,28 @@ Public Sub Generar_CotasUnifilar()
     Dim ResultadoCotas As String
 
     dato1 = Trim(Me.CotasUN.Value)
+    If dato1 = "" Then
+        MsgBox "Seleccione una opción en el ComboBox.", vbExclamation
+        Exit Sub
+    End If
+
+    Set wsActual = Me
+    Celda = "KS81"
+
+    Application.ScreenUpdating = False
+    LimpiarZona wsActual, "KO78:NI189"
+
+    ResultadoCotas = "C_" & dato1
+    MoverBloquMecanico ResultadoCotas, "Diagrama_unifilar", wsActual, Celda
+    Application.ScreenUpdating = True
+End Sub
+Public Sub conexion_Unifilar()
+    Dim wsActual As Worksheet
+    Dim Celda As String
+    Dim dato1 As String
+    Dim ResultadoCotas As String
+
+    dato1 = Trim(Me.conexion.Value)
     If dato1 = "" Then
         MsgBox "Seleccione una opción en el ComboBox.", vbExclamation
         Exit Sub

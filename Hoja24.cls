@@ -3,7 +3,7 @@ Public Sub Worksheet_Activate()
     With Me.oleObjects("HojaENT").Object
         If .ListCount = 0 Then
         .AddItem "Añadir" 'Hoja_Entrada
-        .AddItem "No anadir"
+        .AddItem "No anadir" 
         End If
     End With
     with Me.oleObjects("Esquema").Object

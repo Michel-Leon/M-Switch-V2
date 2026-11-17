@@ -119,3 +119,35 @@ public Sub Seleccion_Menu_Cotas()
         ActiveSheet.Shapes("Menu GBC").Visible = False
       End If
 End Sub
+public Sub Seleccion_Menu_CotasU()
+    Dim shp As Shape
+    Dim groupname As String
+    groupname = "Menu Cotas"
+    
+    On Error Resume Next
+    Set shp = ActiveSheet.Shapes(groupname)
+    On Error GoTo 0
+    
+    If Not shp Is Nothing Then
+        ' Alterna la visibilidad del grupo seleccionado
+        shp.Visible = Not shp.Visible
+        ' Oculta los demás grupos
+        ActiveSheet.Shapes("Menu Conexiones").Visible = False
+      End If
+End Sub
+Public Sub Seleccion_Menu_Conexiones()
+    Dim shp As Shape
+    Dim groupname As String
+    groupname = "Menu Conexiones"
+    
+    On Error Resume Next
+    Set shp = ActiveSheet.Shapes(groupname)
+    On Error GoTo 0
+    
+    If Not shp Is Nothing Then
+        ' Alterna la visibilidad del grupo seleccionado
+        shp.Visible = Not shp.Visible
+        ' Oculta los demás grupos
+        ActiveSheet.Shapes("Menu Cotas").Visible = False
+      End If
+End Sub
