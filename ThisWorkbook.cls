@@ -49,8 +49,9 @@ Private Sub Workbook_SheetFollowHyperlink(ByVal Sh As Object, ByVal Target As Hy
         .Activate
     End With
     
-    ' Ocultar hoja anterior
-    If hojaAnterior <> nombreHoja And hojaAnterior <> "" Then
+    ' Ocultar hoja anterior (nunca LOGIN ni PANEL)
+    If hojaAnterior <> nombreHoja And hojaAnterior <> "" _
+       And hojaAnterior <> "LOGIN" And hojaAnterior <> "Panel" Then
         On Error Resume Next
         Sheets(hojaAnterior).Visible = xlSheetVeryHidden
         On Error GoTo 0
@@ -58,6 +59,8 @@ Private Sub Workbook_SheetFollowHyperlink(ByVal Sh As Object, ByVal Target As Hy
     
     ' Actualizar hoja anterior
     hojaAnterior = nombreHoja
+    
+    Exit Sub
     
 ManejadorError:
         If Err.Number <> 0 Then
@@ -90,19 +93,24 @@ End Sub
 ' PROCEDIMIENTOS PRIVADOS
 ' ============================================================================
 
-' Oculta todas las hojas excepto INICIO
+'' Oculta todas las hojas excepto LOGIN y PANEL
 Private Sub OcultarTodasLasHojas()
     Dim ws As Worksheet
     
     For Each ws In ThisWorkbook.Worksheets
-        If ws.Name <> "LOGIN" Then
-            ws.Visible = xlSheetVeryHidden
-        End If
+        Select Case ws.Name
+            Case "LOGIN", "Panel"
+                ws.Visible = xlSheetVisible
+            Case Else
+                ws.Visible = xlSheetVeryHidden
+        End Select
     Next ws
 End Sub
 
-' Muestra y activa la hoja INICIO
+' Muestra LOGIN y PANEL, y deja LOGIN como hoja activa
 Private Sub MostrarHojaInicio()
+    If SheetExists("Panel") Then Sheets("Panel").Visible = xlSheetVisible
+    
     With Sheets("LOGIN")
         .Visible = xlSheetVisible
         .Activate
