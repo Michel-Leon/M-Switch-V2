@@ -105,6 +105,9 @@ End Sub
 Private Sub OptionButton27_Click()
     SetRef OptionButton27.Value, Me.Rf6, Me.Ct6, "", ""
 End Sub
+Private Sub OptionButton93_Click()
+    SetRef OptionButton93.Value, Me.Rf6, Me.Ct6, "KIT-P5F30", "1"
+End Sub
 '============= F)
 Private Sub OptionButton28_Click()
     SetRef OptionButton28.Value, Me.Rf7, Me.Ct7, "KIT-SYNC-MT-01", "1"
@@ -116,68 +119,20 @@ Private Sub OptionButton30_Click()
     SetRef OptionButton30.Value, Me.Rf7, Me.Ct7, "", ""
 End Sub
 '============= G)
-Private Sub OptionButton31_Click()
-    SetRef OptionButton31.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_5P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton32_Click()
-    SetRef OptionButton32.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_5P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton33_Click()
-    SetRef OptionButton33.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_5P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton34_Click()
-    SetRef OptionButton34.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_5P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton35_Click()
-    SetRef OptionButton35.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_10P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton36_Click()
-    SetRef OptionButton36.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_10P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton37_Click()
-    SetRef OptionButton37.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_10P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton38_Click()
-    SetRef OptionButton38.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_10P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton39_Click()
-    SetRef OptionButton39.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5s_5P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton40_Click()
-    SetRef OptionButton40.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_0.5s_5P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton41_Click()
-    SetRef OptionButton41.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_0.5s_5P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton42_Click()
-    SetRef OptionButton42.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_0.5s_5P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
 Private Sub OptionButton43_Click()
-    SetRef OptionButton43.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5s_10P20_BR", "3"
+    SetRef OptionButton43.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5S_5P20_BR", "3"
     Me.OptionButton47.Value = False
 End Sub
 Private Sub OptionButton44_Click()
-    SetRef OptionButton44.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_0.5s_10P20_BR", "3"
+    SetRef OptionButton44.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_0.5S_10P20_BR", "3"
     Me.OptionButton47.Value = False
 End Sub
 Private Sub OptionButton45_Click()
-    SetRef OptionButton45.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_0.5s_10P20_BR", "3"
+    SetRef OptionButton45.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_10P20_BR", "3"
     Me.OptionButton47.Value = False
 End Sub
 Private Sub OptionButton46_Click()
-    SetRef OptionButton46.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_0.5s_10P20_BR", "3"
+    SetRef OptionButton46.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_0.5S_10P20_BR", "3"
     Me.OptionButton47.Value = False
 End Sub
 Private Sub OptionButton47_Click()
@@ -185,8 +140,44 @@ Private Sub OptionButton47_Click()
 End Sub
 Private Sub OptionButton48_Click()
     SetRef OptionButton48.Value, Me.Rf8, Me.Ct8, "", ""
-    Me.OptionButton47.Value = False
 End Sub
+'kkkk
+Private Sub OptionButton81_Click()
+    SetRef OptionButton81.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_5P20_BR", "3"
+End Sub
+Private Sub OptionButton82_Click()
+    SetRef OptionButton82.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_5P20_BR", "3"
+End Sub
+Private Sub OptionButton83_Click()
+    SetRef OptionButton83.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_0.5S_5P20_BR", "3"
+End Sub
+Private Sub OptionButton84_Click()
+    SetRef OptionButton84.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5S_5P20_BR", "3"
+End Sub
+Private Sub OptionButton85_Click()
+    SetRef OptionButton85.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_0.5S_5P20_BR", "3"
+End Sub
+Private Sub OptionButton86_Click()
+    SetRef OptionButton86.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_5P20_BR", "3"
+End Sub
+Private Sub OptionButton87_Click()
+    SetRef OptionButton87.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_10P20_BR", "3"
+End Sub
+Private Sub OptionButton89_Click()
+    SetRef OptionButton87.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_10P20_BR", "3"
+End Sub
+Private Sub OptionButton90_Click()
+    SetRef OptionButton90.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_5P20_BR", "3"
+End Sub
+Private Sub OptionButton91_Click()
+    SetRef OptionButton91.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_5P20_BR", "3"
+End Sub
+Private Sub OptionButton92_Click()
+    SetRef OptionButton92.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_10P20_BR", "3"
+End Sub
+
+
+
 '============= H)
 Private Sub OptionButton49_Click()
     SetRef OptionButton49.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.2_BR", "3"
@@ -236,7 +227,7 @@ End Sub
 Private Sub OptionButton54_Click()
     SetRef OptionButton54.Value, Me.Rf9, Me.Ct9, "", ""
 End Sub
-'============= I)
+'============= I)  
 Private Sub OptionButton80_Click()
     SetRef OptionButton55.Value, Me.Rf10, Me.Ct10, "KIT-BARRAJE-MT", "1"
 End Sub
@@ -489,6 +480,7 @@ Public Sub Codigo_unifilar()
     Else
         Dato4 = ""
     End If
+    
     if Me.OptionButton66.Value = True Then
         Dato5 = "01"
     elseIf Me.OptionButton67.Value = True Then

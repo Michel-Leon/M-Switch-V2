@@ -64,17 +64,17 @@ Private Sub OptionButton15_Click()
 End Sub
 '============= B)
 Private Sub OptionButton16_Click()
-    SetRef OptionButton18.Value, Me.Rf4, Me.Ct4, "ZBRTT1", "1"
+    SetRef OptionButton16.Value, Me.Rf4, Me.Ct4, "ZBRTT1", "1"
 End Sub
 Private Sub OptionButton17_Click()
-    SetRef OptionButton19.Value, Me.Rf4, Me.Ct4, "", ""
+    SetRef OptionButton17.Value, Me.Rf4, Me.Ct4, "", ""
 End Sub
 '============= C)
 Private Sub OptionButton18_Click()
-    SetRef OptionButton16.Value, Me.Rf3, Me.Ct3, "KIT-TH110-01", "1"
+    SetRef OptionButton18.Value, Me.Rf3, Me.Ct3, "KIT-TH110-01", "1"
 End Sub
 Private Sub OptionButton19_Click()
-    SetRef OptionButton17.Value, Me.Rf3, Me.Ct3, "", ""
+    SetRef OptionButton19.Value, Me.Rf3, Me.Ct3, "", ""
 End Sub
 '============= D)
 Private Sub OptionButton20_Click()
@@ -103,37 +103,37 @@ Private Sub OptionButton27_Click()
     SetRef OptionButton27.Value, Me.Rf6, Me.Ct6, "2050151000006", "3"
 End Sub
 Private Sub OptionButton28_Click()
-    SetRef OptionButton28.Value, Me.Rf7, Me.Ct7, "2050151000007", "3"
+    SetRef OptionButton28.Value, Me.Rf6, Me.Ct6, "2050151000007", "3"
 End Sub
 Private Sub OptionButton29_Click()
-    SetRef OptionButton29.Value, Me.Rf7, Me.Ct7, "2050151000008", "3"
+    SetRef OptionButton29.Value, Me.Rf6, Me.Ct6, "2050151000008", "3"
 End Sub
 Private Sub OptionButton30_Click()
-    SetRef OptionButton30.Value, Me.Rf7, Me.Ct7, "2050151000009", "3"
+    SetRef OptionButton30.Value, Me.Rf6, Me.Ct6, "2050151000009", "3"
 End Sub
 Private Sub OptionButton31_Click()
-    SetRef OptionButton31.Value, Me.Rf8, Me.Ct8, "2050151000010", "3"
+    SetRef OptionButton31.Value, Me.Rf6, Me.Ct6, "2050151000010", "3"
 End Sub
 Private Sub OptionButton32_Click()
-    SetRef OptionButton32.Value, Me.Rf8, Me.Ct8, "2050151000011", "3"
+    SetRef OptionButton32.Value, Me.Rf6, Me.Ct6, "2050151000011", "3"
 End Sub
 Private Sub OptionButton33_Click()
-    SetRef OptionButton33.Value, Me.Rf8, Me.Ct8, "2050151000012", "3"
+    SetRef OptionButton33.Value, Me.Rf6, Me.Ct6, "2050151000012", "3"
 End Sub
 Private Sub OptionButton34_Click()
-    SetRef OptionButton34.Value, Me.Rf8, Me.Ct8, "2050151000013", "3"
+    SetRef OptionButton34.Value, Me.Rf6, Me.Ct6, "2050151000013", "3"
 End Sub
 Private Sub OptionButton35_Click()
-    SetRef OptionButton35.Value, Me.Rf8, Me.Ct8, "2050151000014", "3"
+    SetRef OptionButton35.Value, Me.Rf6, Me.Ct6, "2050151000014", "3"
 End Sub
 Private Sub OptionButton36_Click()
-    SetRef OptionButton36.Value, Me.Rf8, Me.Ct8, "2050151000015", "3"
+    SetRef OptionButton36.Value, Me.Rf6, Me.Ct6, "2050151000015", "3"
 End Sub
 Private Sub OptionButton37_Click()
-    SetRef OptionButton37.Value, Me.Rf8, Me.Ct8, "2050151000016", "3"
+    SetRef OptionButton37.Value, Me.Rf6, Me.Ct6, "2050151000016", "3"
 End Sub
 private Sub OptionButton45_Click()
-    SetRef OptionButton45.Value, Me.Rf9, Me.Ct9, "", ""
+    SetRef OptionButton45.Value, Me.Rf6, Me.Ct6, "", ""
 End Sub
 '============= F)
 Private Sub OptionButton38_Click()

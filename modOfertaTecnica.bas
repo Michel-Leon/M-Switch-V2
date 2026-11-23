@@ -255,6 +255,7 @@ Private Sub AplicarFormatoFila(ws As Worksheet, ByVal fila As Long, ByVal esEnca
         Else
             rng.Interior.Color = RGB(255, 255, 255)
             rng.Font.Color = RGB(0, 0, 0)
+            rng.Font.Bold = false 
         End If
     Next col
 End Sub
