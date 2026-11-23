@@ -275,14 +275,14 @@ End Sub
 Private Function DescripcionCelda() As String
     Dim kV As String, amp As String, kA As String
     kV = IIf(Me.OptionButton2.Value, "24kV", "17.5kV")
-    amp = IIf(Me.OptionButton6.Value, "630A", "1250A")
+    amp = IIf(Me.OptionButton7.Value, "630A", "1250A")
     kA = IIf(Me.OptionButton9.Value, "20kA", "25kA")
 
-    DescripcionCelda = "Celda de medida tipo SM6 IM " & kV & ", " & amp & ", " & kA
+    DescripcionCelda = "Celda de proteccion tipo SM6 IM " & kV & ", " & amp & ", " & kA
 End Function
 
 ' Lee el Caption de un control; si el control no existe devuelve ""
 Private Function CaptionDe(ByVal nombre As String) As String
     On Error Resume Next
     CaptionDe = Trim$(Me.Controls(nombre).Caption)
-End Function
+End Function 
