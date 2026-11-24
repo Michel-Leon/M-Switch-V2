@@ -64,7 +64,7 @@ Private Sub OptionButton18_Click()
     SetRef OptionButton18.Value, Me.Rf4, Me.Ct4, "KIT-ZOCALO-400-SM6-24", "1"
 End Sub
 Private Sub OptionButton19_Click()
-    SetRef OptionButton19.Value, Me.Rf4, Me.Ct4, "KIT-ZOCALO-600-SM6-24", ""
+    SetRef OptionButton19.Value, Me.Rf4, Me.Ct4, "KIT-ZOCALO-600-SM6-24", "1"
 End Sub
 Private Sub OptionButton20_Click()
     SetRef OptionButton20.Value, Me.Rf4, Me.Ct4, "", ""
@@ -155,9 +155,9 @@ End Sub
 Public Sub Codigo_unifilar()
     Dim codigo_GAM As String
     Dato2 = "01"
-    If Me.OptionButton23.Value = True Or Me.OptionButton24.Value = True Then
+    If Me.OptionButton22.Value = True Or Me.OptionButton24.Value = True Then
         Dato3 = "02"
-    ElseIf Me.OptionButton21.Value = True Or Me.OptionButton22.Value = True Then
+    ElseIf Me.OptionButton21.Value = True Or Me.OptionButton23.Value = True Then
         Dato3 = "01"
     End If
     If Me.OptionButton25.Value = True Then

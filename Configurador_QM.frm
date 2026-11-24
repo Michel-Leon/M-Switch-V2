@@ -292,9 +292,9 @@ End Sub
 Public Sub Codigo_unifilar()
     Dim codigo_QM As String
     Dato2 = "03"
-    If Me.OptionButton17.Value = True Then
+    If Me.OptionButton18.Value = True Then
         Dato3 = "02"
-    ElseIf Me.OptionButton16.Value = True Then
+    ElseIf Me.OptionButton19.Value = True Then
         Dato3 = "01"
     End If
     if Me.OptionButton66.Value = True Then

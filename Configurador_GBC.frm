@@ -391,8 +391,8 @@ Private Sub Registar_Click()
         '============= D)
             If Me.OptionButton56.Value = True Then
                 .Cells(168, col).Value = "Landis Clase 0.5s RS485"
-            ElseIf Me.OptionButton57.Value = True Then
-                .Cells(168, col).Value = "Landis Clase 0.5s RS485 + Ethernet"
+            'ElseIf Me.OptionButton57.Value = True Then
+                '.Cells(168, col).Value = "Landis Clase 0.5s RS485 + Ethernet"
             ElseIf Me.OptionButton58.Value = True Then
                 .Cells(168, col).Value = "Landis Clase 0.2s RS485 + Ethernet"
             ElseIf Me.OptionButton59.Value = True Then
@@ -442,10 +442,10 @@ Public Sub Codigo_unifilar()
     ElseIf Me.OptionButton73.Value = True Then
         Dato4 = "02"
     End If
-    If HayActivoEnRango(47, 55) Then
-        Dato5 = "01"
-    ElseIf HayActivoEnRango(47, 55) And HayActivoEnRango(56, 64) Then
+    If HayActivoEnRango(47, 55) And HayActivoEnRango(56, 64) Then
         Dato5 = "02"
+    ElseIf    HayActivoEnRango(47, 55) Then
+        Dato5 = "01"
     End If
     codigo_GBC = "UN_" & Dato1 & Dato2 & Dato3 & Dato4 & Dato5
 

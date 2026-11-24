@@ -326,7 +326,7 @@ Public Sub celda_DM1A()
     End If
     '========================
     Set wsActual = ThisWorkbook.Sheets("Mecanicos")
-    Celda = "KS97"
+    Celda = "KP79"
     Application.ScreenUpdating = False
     LimpiarZona wsActual, "KO78:NI189"
     '========================

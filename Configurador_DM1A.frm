@@ -31,7 +31,7 @@ Private Sub UserForm_Initialize()
     Me.OptionButton17.Value = True
     Me.OptionButton19.Value = True
     Me.OptionButton23.Value = True
-    Me.OptionButton27.Value = True
+    Me.OptionButton27.Value = True 
     Me.OptionButton30.Value = True
     Me.OptionButton47.Value = True
     Me.OptionButton54.Value = True
@@ -39,7 +39,7 @@ Private Sub UserForm_Initialize()
     Me.OptionButton60.Value = True
     Me.OptionButton62.Value = True
     Me.OptionButton65.Value = True
-    Me.OptionButton66.Value = True 'conexion a al izquierda
+    Me.OptionButton66.Value = false 'conexion a al izquierda
     Me.OptionButton79.Value = True
     Me.Rf1.Caption = "SM61D1JHD6X7CDM1A"
     Me.Ct1.Caption = "1"
@@ -236,40 +236,40 @@ Private Sub OptionButton79_Click()
 End Sub
 '============= J)
 Private Sub OptionButton55_Click()
-    SetRef OptionButton55.Value, Me.Rf10, Me.Ct10, "KIT-AR-01", "1"
+    SetRef OptionButton55.Value, Me.Rf11, Me.Ct11, "KIT-AR-01", "1"
 End Sub
 Private Sub OptionButton56_Click()
-    SetRef OptionButton56.Value, Me.Rf10, Me.Ct10, "KIT-AR-02", "1"
+    SetRef OptionButton56.Value, Me.Rf11, Me.Ct11, "KIT-AR-02", "1"
 End Sub
 Private Sub OptionButton57_Click()
-    SetRef OptionButton57.Value, Me.Rf10, Me.Ct10, "KIT-AR-03", "1"
+    SetRef OptionButton57.Value, Me.Rf11, Me.Ct11, "KIT-AR-03", "1"
 End Sub
 Private Sub OptionButton58_Click()
-    SetRef OptionButton58.Value, Me.Rf10, Me.Ct10, "", ""
+    SetRef OptionButton58.Value, Me.Rf11, Me.Ct11, "", ""
 End Sub
 '============= K)
 Private Sub OptionButton59_Click()
-    SetRef OptionButton59.Value, Me.Rf11, Me.Ct11, "GAB-CONT-MT", "1"
+    SetRef OptionButton59.Value, Me.Rf12, Me.Ct12, "GAB-CONT-MT", "1"
 End Sub
 Private Sub OptionButton60_Click()
-    SetRef OptionButton60.Value, Me.Rf11, Me.Ct11, "", ""
+    SetRef OptionButton60.Value, Me.Rf12, Me.Ct12, "", ""
 End Sub
 '============= L)
 Private Sub OptionButton61_Click()
-    SetRef OptionButton61.Value, Me.Rf12, Me.Ct12, "EMS59572", "1"
+    SetRef OptionButton61.Value, Me.Rf13, Me.Ct13, "EMS59572", "1"
 End Sub
 Private Sub OptionButton62_Click()
-    SetRef OptionButton62.Value, Me.Rf12, Me.Ct12, "", ""
+    SetRef OptionButton62.Value, Me.Rf13, Me.Ct13, "", ""
 End Sub
 '============= M)
 Private Sub OptionButton63_Click()
-    SetRef OptionButton63.Value, Me.Rf13, Me.Ct13, "KIT-ZOCALO-400-SM6-24", "1"
+    SetRef OptionButton63.Value, Me.Rf14, Me.Ct14, "KIT-ZOCALO-400-SM6-24", "1"
 End Sub
 Private Sub OptionButton64_Click()
-    SetRef OptionButton64.Value, Me.Rf13, Me.Ct13, "KIT-ZOCALO-600-SM6-24", "1"
+    SetRef OptionButton64.Value, Me.Rf14, Me.Ct14, "KIT-ZOCALO-600-SM6-24", "1"
 End Sub
 Private Sub OptionButton65_Click()
-    SetRef OptionButton65.Value, Me.Rf13, Me.Ct13, "", ""
+    SetRef OptionButton65.Value, Me.Rf14, Me.Ct14, "", ""
 End Sub
 
 
@@ -462,6 +462,7 @@ End Sub
 ' tomar valores para codigo bloque unifilar
 Public Sub Codigo_unifilar()
     Dim codigo_DM1A As String
+    Dim Cond1 As Boolean, Cond2 As Boolean, Cond3 As Boolean
 
     Dato2 = "04"
 
@@ -470,13 +471,21 @@ Public Sub Codigo_unifilar()
     ElseIf Me.OptionButton16.Value = True Then
         Dato3 = "02"
     End If
+    ' Condición 1
+    Cond1 = HayActivoEnLista(91, 92, 84, 43, 47, 90, 87, 83, 44, 48, 85, 88, 82, 45, 86, 89, 81, 46)
 
-    If Me.OptionButton47.Value = True Then
-        Dato4 = "01"
-    ElseIf HayActivoEnRango(31, 46) And HayActivoEnRango(49, 53) And HayActivoEnRango(55, 57) Then
+    ' Condición 2 (el 54 = "No", por eso no está en la lista)
+    Cond2 = HayActivoEnLista(49, 50, 51, 52, 53, 69, 72, 71, 70, 78, 75, 74, 73, 77, 76)
+
+    ' Condición 3 (el 58 = "No", por eso no está en la lista)
+    Cond3 = HayActivoEnLista(55, 56, 57)
+
+    If Cond1 And Cond2 And Cond3 Then
         Dato4 = "03"
-    ElseIf HayActivoEnRango(31, 46) And HayActivoEnRango(49, 53) Then
+    ElseIf Cond1 And Cond2 Then
         Dato4 = "02"
+    ElseIf Cond1 Then
+        Dato4 = "01"
     Else
         Dato4 = ""
     End If
@@ -498,15 +507,16 @@ Public Sub Codigo_unifilar()
     End If
     Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_DM1A, 34
 End Sub
-Private Function HayActivoEnRango(desde As Integer, hasta As Integer) As Boolean
-    Dim i As Integer
-    For i = desde To hasta
-        If Me.Controls("OptionButton" & i).Value = True Then
-            HayActivoEnRango = True
+
+Private Function HayActivoEnLista(ParamArray numeros() As Variant) As Boolean
+    Dim n As Variant
+    For Each n In numeros
+        If Me.Controls("OptionButton" & n).Value = True Then
+            HayActivoEnLista = True
             Exit Function
         End If
-    Next i
-    HayActivoEnRango = False
+    Next n
+    HayActivoEnLista = False
 End Function
 '========== Registrar en OFERTA TECNICA
 Public Sub Oferta_Tecnica()
