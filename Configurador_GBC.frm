@@ -58,43 +58,43 @@ End Sub
     End Sub
 '============= A)
     Private Sub OptionButton14_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_5/5_0.5S_BR","3"
+        setRef optionButton14.value, Me.Rf2, Me.Ct2,"CTMT_17,5_5/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton15_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_7.5/5_0.5S_BR","3"
+        setRef optionButton15.value, Me.Rf2, Me.Ct2,"CTMT_17,5_7.5/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton16_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_10/5_0.5S_BR","3"
+        setRef optionButton16.value, Me.Rf2, Me.Ct2,"CTMT_17,5_10/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton17_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_15/5_0.5S_BR","3"
+        setRef optionButton17.value, Me.Rf2, Me.Ct2,"CTMT_17,5_15/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton18_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_20/5_0.5S_BR","3"
+        setRef optionButton18.value, Me.Rf2, Me.Ct2,"CTMT_17,5_20/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton19_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_25/5_0.5S_BR","3"
+        setRef optionButton19.value, Me.Rf2, Me.Ct2,"CTMT_17,5_25/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton20_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_30/5_0.5S_BR","3"
+        setRef optionButton20.value, Me.Rf2, Me.Ct2,"CTMT_17,5_30/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton21_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_40/5_0.5S_BR","3"
+        setRef optionButton21.value, Me.Rf2, Me.Ct2,"CTMT_17,5_40/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton22_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_50/5_5P20_BR","3"
+        setRef optionButton22.value, Me.Rf2, Me.Ct2,"CTMT_17,5_50/5_5P20_BR","3"
     end sub
     Private Sub OptionButton23_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_60/5_0.5S_BR","3"
+        setRef optionButton23.value, Me.Rf2, Me.Ct2,"CTMT_17,5_60/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton24_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_70/5_0.5S_BR","3"
+        setRef optionButton24.value, Me.Rf2, Me.Ct2,"CTMT_17,5_70/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton25_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_80/5_0.5S_BR","3"
+        setRef optionButton25.value, Me.Rf2, Me.Ct2,"CTMT_17,5_80/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton26_Click()
-        setRef optionButton27.value, Me.Rf2, Me.Ct2,"CTMT_17,5_15/5_0.5S_BR","3"
+        setRef optionButton26.value, Me.Rf2, Me.Ct2,"CTMT_17,5_15/5_0.5S_BR","3"
     end sub
     Private Sub OptionButton27_Click()
         SetRef OptionButton27.Value, Me.Rf2, Me.Ct2, "CTMT_17,5_100/5_0.5S_BR", "3"
@@ -427,7 +427,10 @@ Private Sub Registar_Click()
 End Sub
 Public Sub Codigo_unifilar()
     Dim codigo_GBC As String
+    Dim Cond1 As Boolean, Cond2 As Boolean, Cond3 As Boolean
+
     Dato2 = "05"
+    ' VERIFICO CONFIGURACION
     If Me.OptionButton68.Value = True Then
         Dato3 = "01"
     ElseIf Me.OptionButton69.Value = True Then
@@ -437,16 +440,28 @@ Public Sub Codigo_unifilar()
     ElseIf Me.OptionButton71.Value = True Then
         Dato3 = "04"
     End If
+    ' VERIFICO ORIENTACION
     If Me.OptionButton72.Value = True Then
         Dato4 = "01"
     ElseIf Me.OptionButton73.Value = True Then
         Dato4 = "02"
     End If
-    If HayActivoEnRango(47, 55) And HayActivoEnRango(56, 64) Then
+
+    ' Condición 1
+    Cond1 = HayActivoEnLista(47, 48, 49, 50, 51, 51, 53, 54, 55)
+
+    ' Condición 2 (el 54 = "No", por eso no está en la lista)
+    Cond2 = HayActivoEnLista(56, 58, 61, 84, 53, 59, 62, 60, 63)
+
+    ' Condición 3 (el 58 = "No", por eso no está en la lista)
+    'Cond3 = HayActivoEnLista(55, 56, 57)
+    'VERIFICO MEDIDORES 
+    IF Cond1 And Cond2 ThEN
         Dato5 = "02"
-    ElseIf    HayActivoEnRango(47, 55) Then
+    ELSEIF Cond1 Then
         Dato5 = "01"
-    End If
+    END IF 
+    
     codigo_GBC = "UN_" & Dato1 & Dato2 & Dato3 & Dato4 & Dato5
 
     If PosicionUnifilarActual = 0 Then
@@ -456,15 +471,15 @@ Public Sub Codigo_unifilar()
 
     Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_GBC, 34
 End Sub
-Private Function HayActivoEnRango(desde As Integer, hasta As Integer) As Boolean
-    Dim i As Integer
-    For i = desde To hasta
-        If Me.Controls("OptionButton" & i).Value = True Then
-            HayActivoEnRango = True
+Private Function HayActivoEnLista(ParamArray numeros() As Variant) As Boolean
+    Dim n As Variant
+    For Each n In numeros
+        If Me.Controls("OptionButton" & n).Value = True Then
+            HayActivoEnLista = True
             Exit Function
         End If
-    Next i
-    HayActivoEnRango = False
+    Next n
+    HayActivoEnLista = False
 End Function
 '========== Registrar en OFERTA TECNICA
 Public Sub Oferta_Tecnica()

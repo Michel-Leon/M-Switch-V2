@@ -227,6 +227,7 @@ Public Sub Codigo_unifilar()
     ElseIf Me.OptionButton16.Value = True Then
         Dato3 = "02"
     End If
+
     IF Me.OptionButton66.Value = True Then
         Dato4 = "01"
     ElseIf Me.OptionButton67.Value = True Then
@@ -236,12 +237,19 @@ Public Sub Codigo_unifilar()
     Else
         Dato4 = ""
     End If
+
+    if Me.OptionButton26.Value = True Then
+        Dato5 = "02"
+    elseif Me.OptionButton27.Value = True Then
+        Dato5 = "01"
+    end if 
+
     If PosicionUnifilarActual = 0 Then
         MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
         Exit Sub
     End If
 
-    codigo_IM = "UN_" & Dato1 & Dato2 & Dato3 & Dato4
+    codigo_IM = "UN_" & Dato1 & Dato2 & Dato3 & Dato4 & Dato5
     Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_IM, 17
 End Sub
 Private Function HayActivoEnRango(desde As Integer, hasta As Integer) As Boolean
