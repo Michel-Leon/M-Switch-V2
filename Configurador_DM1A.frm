@@ -59,201 +59,201 @@ Private Sub SetRef(ByVal isChecked As Boolean, _
     End If
 End Sub
 '============= A)
-Private Sub OptionButton14_Click()
-    SetRef OptionButton14.Value, Me.Rf2, Me.Ct2, "KIT-CONT-B-01", "1"
-End Sub
-Private Sub OptionButton15_Click()
-    SetRef OptionButton15.Value, Me.Rf2, Me.Ct2, "", ""
-End Sub
+    Private Sub OptionButton14_Click()
+        SetRef OptionButton14.Value, Me.Rf2, Me.Ct2, "KIT-CONT-B-01", "1"
+    End Sub
+    Private Sub OptionButton15_Click()
+        SetRef OptionButton15.Value, Me.Rf2, Me.Ct2, "", ""
+    End Sub
 '============= B)
-Private Sub OptionButton16_Click()
-    SetRef OptionButton16.Value, Me.Rf3, Me.Ct3, "KIT-TH110-01", "1"
-End Sub
-Private Sub OptionButton17_Click()
-    SetRef OptionButton17.Value, Me.Rf3, Me.Ct3, "", ""
-End Sub
+    Private Sub OptionButton16_Click()
+        SetRef OptionButton16.Value, Me.Rf3, Me.Ct3, "KIT-TH110-01", "1"
+    End Sub
+    Private Sub OptionButton17_Click()
+        SetRef OptionButton17.Value, Me.Rf3, Me.Ct3, "", ""
+    End Sub
 '============= C)
-Private Sub OptionButton18_Click()
-    SetRef OptionButton18.Value, Me.Rf4, Me.Ct4, "ZBRTT1", "1"
-End Sub
-Private Sub OptionButton19_Click()
-    SetRef OptionButton19.Value, Me.Rf4, Me.Ct4, "", ""
-End Sub
+    Private Sub OptionButton18_Click()
+        SetRef OptionButton18.Value, Me.Rf4, Me.Ct4, "ZBRTT1", "1"
+    End Sub
+    Private Sub OptionButton19_Click()
+        SetRef OptionButton19.Value, Me.Rf4, Me.Ct4, "", ""
+    End Sub
 '============= D)
-Private Sub OptionButton20_Click()
-    SetRef OptionButton20.Value, Me.Rf5, Me.Ct5, "VPI62403", "1"
-End Sub
-Private Sub OptionButton21_Click()
-    SetRef OptionButton21.Value, Me.Rf5, Me.Ct5, "VPI62404", "1"
-End Sub
-Private Sub OptionButton22_Click()
-    SetRef OptionButton22.Value, Me.Rf5, Me.Ct5, "VPI62405", "1"
-End Sub
-Private Sub OptionButton23_Click()
-    SetRef OptionButton23.Value, Me.Rf5, Me.Ct5, "", ""
-End Sub
+    Private Sub OptionButton20_Click()
+        SetRef OptionButton20.Value, Me.Rf5, Me.Ct5, "VPI62403", "1"
+    End Sub
+    Private Sub OptionButton21_Click()
+        SetRef OptionButton21.Value, Me.Rf5, Me.Ct5, "VPI62404", "1"
+    End Sub
+    Private Sub OptionButton22_Click()
+        SetRef OptionButton22.Value, Me.Rf5, Me.Ct5, "VPI62405", "1"
+    End Sub
+    Private Sub OptionButton23_Click()
+        SetRef OptionButton23.Value, Me.Rf5, Me.Ct5, "", ""
+    End Sub
 '============= E)
-Private Sub OptionButton24_Click()
-    SetRef OptionButton24.Value, Me.Rf6, Me.Ct6, "KIT-P3U30", "1"
-End Sub
-Private Sub OptionButton25_Click()
-    SetRef OptionButton25.Value, Me.Rf6, Me.Ct6, "KIT-P3T32", "1"
-End Sub
-Private Sub OptionButton26_Click()
-    SetRef OptionButton26.Value, Me.Rf6, Me.Ct6, "KIT-P5U20", "1"
-End Sub
-Private Sub OptionButton27_Click()
-    SetRef OptionButton27.Value, Me.Rf6, Me.Ct6, "", ""
-End Sub
-Private Sub OptionButton93_Click()
-    SetRef OptionButton93.Value, Me.Rf6, Me.Ct6, "KIT-P5F30", "1"
-End Sub
+    Private Sub OptionButton24_Click()
+        SetRef OptionButton24.Value, Me.Rf6, Me.Ct6, "KIT-P3U30", "1"
+    End Sub
+    Private Sub OptionButton25_Click()
+        SetRef OptionButton25.Value, Me.Rf6, Me.Ct6, "KIT-P3T32", "1"
+    End Sub
+    Private Sub OptionButton26_Click()
+        SetRef OptionButton26.Value, Me.Rf6, Me.Ct6, "KIT-P5U20", "1"
+    End Sub
+    Private Sub OptionButton27_Click()
+        SetRef OptionButton27.Value, Me.Rf6, Me.Ct6, "", ""
+    End Sub
+    Private Sub OptionButton93_Click()
+        SetRef OptionButton93.Value, Me.Rf6, Me.Ct6, "KIT-P5F30", "1"
+    End Sub
 '============= F)
-Private Sub OptionButton28_Click()
-    SetRef OptionButton28.Value, Me.Rf7, Me.Ct7, "KIT-SYNC-MT-01", "1"
-End Sub
-Private Sub OptionButton29_Click()
-    SetRef OptionButton29.Value, Me.Rf7, Me.Ct7, "KIT-ATS-MT-01", "1"
-End Sub
-Private Sub OptionButton30_Click()
-    SetRef OptionButton30.Value, Me.Rf7, Me.Ct7, "", ""
-End Sub
+    Private Sub OptionButton28_Click()
+        SetRef OptionButton28.Value, Me.Rf7, Me.Ct7, "KIT-SYNC-MT-01", "1"
+    End Sub
+    Private Sub OptionButton29_Click()
+        SetRef OptionButton29.Value, Me.Rf7, Me.Ct7, "KIT-ATS-MT-01", "1"
+    End Sub
+    Private Sub OptionButton30_Click()
+        SetRef OptionButton30.Value, Me.Rf7, Me.Ct7, "", ""
+    End Sub
 '============= G)
-Private Sub OptionButton43_Click()
-    SetRef OptionButton43.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5S_5P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton44_Click()
-    SetRef OptionButton44.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_0.5S_10P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton45_Click()
-    SetRef OptionButton45.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_10P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton46_Click()
-    SetRef OptionButton46.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_0.5S_10P20_BR", "3"
-    Me.OptionButton47.Value = False
-End Sub
-Private Sub OptionButton47_Click()
-    SetRef OptionButton47.Value, Me.Rf8, Me.Ct8, "", ""
-End Sub
-Private Sub OptionButton48_Click()
-    SetRef OptionButton48.Value, Me.Rf8, Me.Ct8, "", ""
-End Sub
-'kkkk
-Private Sub OptionButton81_Click()
-    SetRef OptionButton81.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_5P20_BR", "3"
-End Sub
-Private Sub OptionButton82_Click()
-    SetRef OptionButton82.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_5P20_BR", "3"
-End Sub
-Private Sub OptionButton83_Click()
-    SetRef OptionButton83.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_0.5S_5P20_BR", "3"
-End Sub
-Private Sub OptionButton84_Click()
-    SetRef OptionButton84.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5S_5P20_BR", "3"
-End Sub
-Private Sub OptionButton85_Click()
-    SetRef OptionButton85.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_0.5S_5P20_BR", "3"
-End Sub
-Private Sub OptionButton86_Click()
-    SetRef OptionButton86.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_5P20_BR", "3"
-End Sub
-Private Sub OptionButton87_Click()
-    SetRef OptionButton87.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_10P20_BR", "3"
-End Sub
-Private Sub OptionButton89_Click()
-    SetRef OptionButton87.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_10P20_BR", "3"
-End Sub
-Private Sub OptionButton90_Click()
-    SetRef OptionButton90.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_5P20_BR", "3"
-End Sub
-Private Sub OptionButton91_Click()
-    SetRef OptionButton91.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_5P20_BR", "3"
-End Sub
-Private Sub OptionButton92_Click()
-    SetRef OptionButton92.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_10P20_BR", "3"
-End Sub
-
-
+    Private Sub OptionButton91_Click()
+        SetRef OptionButton91.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_5P20_BR", "3"
+    End Sub
+    Private Sub OptionButton92_Click()
+        SetRef OptionButton92.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_10P20_BR", "3"
+    End Sub
+    Private Sub OptionButton84_Click()
+        SetRef OptionButton84.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5S_5P20_BR", "3"
+    End Sub
+    Private Sub OptionButton43_Click()
+        SetRef OptionButton43.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5S_5P20_BR", "3"
+        Me.OptionButton47.Value = False
+    End Sub
+    Private Sub OptionButton47_Click()
+        SetRef OptionButton47.Value, Me.Rf8, Me.Ct8, "", ""
+    End Sub
+    Private Sub OptionButton90_Click()
+        SetRef OptionButton90.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_5P20_BR", "3"
+    End Sub
+    Private Sub OptionButton87_Click()
+        SetRef OptionButton87.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_10P20_BR", "3"
+    End Sub
+    Private Sub OptionButton83_Click()
+        SetRef OptionButton83.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_0.5S_5P20_BR", "3"
+    End Sub
+    Private Sub OptionButton44_Click()
+        SetRef OptionButton44.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_100/5_0.5S_10P20_BR", "3"
+        Me.OptionButton47.Value = False
+    End Sub
+    Private Sub OptionButton48_Click()
+        SetRef OptionButton48.Value, Me.Rf8, Me.Ct8, "", ""
+    End Sub
+    Private Sub OptionButton85_Click()
+        SetRef OptionButton85.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_0.5S_5P20_BR", "3"
+    End Sub
+    Private Sub OptionButton88_Click()
+        SetRef OptionButton88.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_10P20_BR", "3"
+    End Sub
+    Private Sub OptionButton82_Click()
+        SetRef OptionButton82.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_5P20_BR", "3"
+    End Sub
+    Private Sub OptionButton45_Click()
+        SetRef OptionButton45.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_150/5_10P20_BR", "3"
+        Me.OptionButton47.Value = False
+    End Sub
+    Private Sub OptionButton86_Click()
+        SetRef OptionButton86.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_5P20_BR", "3"
+    End Sub
+    Private Sub OptionButton89_Click()
+        SetRef OptionButton89.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_10P20_BR", "3"
+    End Sub
+    Private Sub OptionButton81_Click()
+        SetRef OptionButton81.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_5P20_BR", "3"
+    End Sub
+    Private Sub OptionButton46_Click()
+        SetRef OptionButton46.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_200/5_0.5S_10P20_BR", "3"
+        Me.OptionButton47.Value = False
+    End Sub
 
 '============= H)
-Private Sub OptionButton49_Click()
-    SetRef OptionButton49.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.2_BR", "3"
-End Sub
-Private Sub OptionButton50_Click()
-    SetRef OptionButton50.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.5_BR", "3"
-End Sub
-Private Sub OptionButton51_Click()
-    SetRef OptionButton51.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_3P_BR", "3"
-End Sub
-Private Sub OptionButton52_Click()
-    SetRef OptionButton52.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.5_3P_BR", "3"
-End Sub
-Private Sub OptionButton53_Click()
-    SetRef OptionButton53.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.2_3P_BR", "3"
-End Sub
-Private sub OptionButton69_Click()
-    SetRef OptionButton69.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.2_BR", "3"
-End Sub
-Private Sub OptionButton70_Click()
-    SetRef OptionButton70.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.2_3P_BR", "3"
-End Sub
-Private Sub OptionButton71_Click()
-    SetRef OptionButton71.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_3P_BR", "3"
-End Sub
-Private Sub OptionButton72_Click()
-    SetRef OptionButton72.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.5_BR", "3"
-End Sub
-Private Sub OptionButton73_Click()
-    SetRef OptionButton73.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_3P_BR", "3"
-End Sub
-Private Sub OptionButton74_Click()
-    SetRef OptionButton74.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.5_BR", "3"
-End Sub
-Private Sub OptionButton75_Click()
-    SetRef OptionButton75.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.2_BR", "3"
-End Sub
-Private Sub OptionButton76_Click()
-    SetRef OptionButton76.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.2_3P_BR", "3"
-End Sub
-private Sub OptionButton77_Click()
-    SetRef OptionButton77.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.5_3P_BR", "3"
-End Sub
-private Sub OptionButton78_Click()
-    SetRef OptionButton78.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.5_3P_BR", "3"
-End Sub
-Private Sub OptionButton54_Click()
-    SetRef OptionButton54.Value, Me.Rf9, Me.Ct9, "", ""
-End Sub
+    Private Sub OptionButton49_Click()
+        SetRef OptionButton49.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.2_BR", "3"
+    End Sub
+    Private Sub OptionButton50_Click()
+        SetRef OptionButton50.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.5_BR", "3"
+    End Sub
+    Private Sub OptionButton51_Click()
+        SetRef OptionButton51.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_3P_BR", "3"
+    End Sub
+    Private Sub OptionButton52_Click()
+        SetRef OptionButton52.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.5_3P_BR", "3"
+    End Sub
+    Private Sub OptionButton53_Click()
+        SetRef OptionButton53.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,2/120_0.2_3P_BR", "3"
+    End Sub
+    Private sub OptionButton69_Click()
+        SetRef OptionButton69.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.2_BR", "3"
+    End Sub
+    Private Sub OptionButton70_Click()
+        SetRef OptionButton70.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.2_3P_BR", "3"
+    End Sub
+    Private Sub OptionButton71_Click()
+        SetRef OptionButton71.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_3P_BR", "3"
+    End Sub
+    Private Sub OptionButton72_Click()
+        SetRef OptionButton72.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.5_BR", "3"
+    End Sub
+    Private Sub OptionButton73_Click()
+        SetRef OptionButton73.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_3P_BR", "3"
+    End Sub
+    Private Sub OptionButton74_Click()
+        SetRef OptionButton74.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.5_BR", "3"
+    End Sub
+    Private Sub OptionButton75_Click()
+        SetRef OptionButton75.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.2_BR", "3"
+    End Sub
+    Private Sub OptionButton76_Click()
+        SetRef OptionButton76.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.2_3P_BR", "3"
+    End Sub
+    private Sub OptionButton77_Click()
+        SetRef OptionButton77.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_11,4/120_0.5_3P_BR", "3"
+    End Sub
+    private Sub OptionButton78_Click()
+        SetRef OptionButton78.Value, Me.Rf9, Me.Ct9, "PTMT_17,5_13,8/120_0.5_3P_BR", "3"
+    End Sub
+    Private Sub OptionButton54_Click()
+        SetRef OptionButton54.Value, Me.Rf9, Me.Ct9, "", ""
+    End Sub
 '============= I)  
-Private Sub OptionButton80_Click()
-    SetRef OptionButton55.Value, Me.Rf10, Me.Ct10, "KIT-BARRAJE-MT", "1"
-End Sub
-Private Sub OptionButton79_Click()
-    SetRef OptionButton56.Value, Me.Rf10, Me.Ct10, "", ""
-End Sub
+    Private Sub OptionButton80_Click()
+        SetRef OptionButton80.Value, Me.Rf10, Me.Ct10, "KIT-BARRAJE-MT", "1"
+    End Sub
+    Private Sub OptionButton79_Click()
+        SetRef OptionButton79.Value, Me.Rf10, Me.Ct10, "", ""
+    End Sub
 '============= J)
-Private Sub OptionButton55_Click()
-    SetRef OptionButton55.Value, Me.Rf11, Me.Ct11, "KIT-AR-01", "1"
-End Sub
-Private Sub OptionButton56_Click()
-    SetRef OptionButton56.Value, Me.Rf11, Me.Ct11, "KIT-AR-02", "1"
-End Sub
-Private Sub OptionButton57_Click()
-    SetRef OptionButton57.Value, Me.Rf11, Me.Ct11, "KIT-AR-03", "1"
-End Sub
-Private Sub OptionButton58_Click()
-    SetRef OptionButton58.Value, Me.Rf11, Me.Ct11, "", ""
-End Sub
+    Private Sub OptionButton55_Click()
+        SetRef OptionButton55.Value, Me.Rf11, Me.Ct11, "KIT-AR-01", "1"
+    End Sub
+    Private Sub OptionButton56_Click()
+        SetRef OptionButton56.Value, Me.Rf11, Me.Ct11, "KIT-AR-02", "1"
+    End Sub
+    Private Sub OptionButton57_Click()
+        SetRef OptionButton57.Value, Me.Rf11, Me.Ct11, "KIT-AR-03", "1"
+    End Sub
+    Private Sub OptionButton58_Click()
+        SetRef OptionButton58.Value, Me.Rf11, Me.Ct11, "", ""
+    End Sub
 '============= K)
-Private Sub OptionButton59_Click()
-    SetRef OptionButton59.Value, Me.Rf12, Me.Ct12, "GAB-CONT-MT", "1"
-End Sub
-Private Sub OptionButton60_Click()
-    SetRef OptionButton60.Value, Me.Rf12, Me.Ct12, "", ""
-End Sub
+    Private Sub OptionButton59_Click()
+        SetRef OptionButton59.Value, Me.Rf12, Me.Ct12, "GAB-CONT-MT", "1"
+    End Sub
+    Private Sub OptionButton60_Click()
+        SetRef OptionButton60.Value, Me.Rf12, Me.Ct12, "", ""
+    End Sub
 '============= L)
 Private Sub OptionButton61_Click()
     SetRef OptionButton61.Value, Me.Rf13, Me.Ct13, "EMS59572", "1"

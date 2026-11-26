@@ -155,16 +155,19 @@ End Sub
 Public Sub Codigo_unifilar()
     Dim codigo_GAM As String
     Dato2 = "01"
-    If Me.OptionButton22.Value = True Or Me.OptionButton24.Value = True Then
+    
+    If Me.OptionButton25.Value = True Then
         Dato3 = "02"
-    ElseIf Me.OptionButton21.Value = True Or Me.OptionButton23.Value = True Then
+    ElseIf Me.OptionButton26.Value = True Then
         Dato3 = "01"
     End If
-    If Me.OptionButton25.Value = True Then
-        Dato4 = "02"
-    ElseIf Me.OptionButton26.Value = True Then
+
+    If  Me.OptionButton21.Value = True Or Me.OptionButton22.Value = True Or Me.OptionButton23.Value = True Then
         Dato4 = "01"
+    ElseIf  Me.OptionButton24.Value = True Then
+        Dato4 = "02"
     End If
+    
     codigo_GAM = "UN_" & Dato1 & Dato2 & Dato3 & Dato4
     If PosicionUnifilarActual = 0 Then
         MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
@@ -172,6 +175,7 @@ Public Sub Codigo_unifilar()
     End If
 
     Asignar_Posicion_Unifilar PosicionUnifilarActual, codigo_GAM, 17
+    msgbox codigo_GAM
 End Sub
 Private Function HayActivoEnRango(desde As Integer, hasta As Integer) As Boolean
     Dim i As Integer

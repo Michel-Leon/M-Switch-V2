@@ -31,7 +31,7 @@ Private mbCargando As Boolean          'evita eventos en cascada
         With Me.OLEObjects("ContacDM1").Object
             .Clear
             Select Case dato
-                Case "P3U30", "P3T32"
+                Case "P3U30", "P3T32","P5F30"
                     .AddItem "SI"
                     .AddItem "NO"
                 Case "P5U20"
@@ -45,7 +45,7 @@ Private mbCargando As Boolean          'evita eventos en cascada
                 Case "P3U30"
                     .AddItem "LPCTS"
                     .AddItem "CT"
-                Case "P3T32"
+                Case "P3T32","P5F30"
                     .AddItem "CT"
                 Case "P5U20"
                     .AddItem "LPCTS"
@@ -56,34 +56,46 @@ Private mbCargando As Boolean          'evita eventos en cascada
     End Sub
 
     Private Sub CorrienteDM1_Change()
-        Dim dato As String, rele As String
-        dato = Me.OLEObjects("CorrienteDM1").Object.Value
-        rele = Me.OLEObjects("ReleDM1").Object.Value
-        With Me.OLEObjects("MtensionDM1").Object
-            .Clear
-            Select Case dato
-                Case "LPCTS"
-                    .AddItem "NO"
-                Case "CT"
-                    If rele = "P3U30" Then .AddItem "NO"   'P3T32 solo existe con PT
-                    .AddItem "PT"
-            End Select
-        End With
-        Me.OLEObjects("PM_DM1").Object.Clear
-    End Sub
+    Dim dato As String, rele As String
+    dato = Me.OLEObjects("CorrienteDM1").Object.Value
+    rele = Me.OLEObjects("ReleDM1").Object.Value
+    With Me.OLEObjects("MtensionDM1").Object
+        .Clear
+        Select Case dato
+            Case "LPCTS"
+                .AddItem "NO"
+            Case "CT"
+                Select Case rele
+                    Case "P3U30"
+                        .AddItem "NO"
+                        .AddItem "PT"
+                    Case "P3T32", "P5F30"      'solo existen con PT
+                        .AddItem "PT"
+                End Select
+        End Select
+    End With
+    Me.OLEObjects("PM_DM1").Object.Clear
+End Sub
 
-    Private Sub MtensionDM1_Change()
-        Dim contac As String, mt As String
-        contac = Me.OLEObjects("ContacDM1").Object.Value
-        mt = Me.OLEObjects("MtensionDM1").Object.Value
-        With Me.OLEObjects("PM_DM1").Object
-            .Clear
-            If mt = "" Then Exit Sub
-            '--- PM = SI solo existe con contactor SI y PT
-            If contac = "SI" And mt = "PT" Then .AddItem "SI"
-            .AddItem "NO"
-        End With
-    End Sub
+Private Sub MtensionDM1_Change()
+    Dim contac As String, mt As String, rele As String
+    contac = Me.OLEObjects("ContacDM1").Object.Value
+    mt = Me.OLEObjects("MtensionDM1").Object.Value
+    rele = Me.OLEObjects("ReleDM1").Object.Value
+    With Me.OLEObjects("PM_DM1").Object
+        .Clear
+        If mt = "" Then Exit Sub
+        If mt = "PT" Then
+            Select Case rele
+                Case "P5F30"                   'PM = SI con o sin contactor
+                    .AddItem "SI"
+                Case "P3U30", "P3T32"          'PM = SI solo con contactor SI
+                    If contac = "SI" Then .AddItem "SI"
+            End Select
+        End If
+        .AddItem "NO"
+    End With
+End Sub
 
     Private Sub ContacDM1_Change()
         MtensionDM1_Change      'si cambian el contactor, se recalcula PM
@@ -185,10 +197,11 @@ Public Sub Worksheet_Activate()
             .AddItem "P3U30"
             .AddItem "P3T32"
             .AddItem "P5U20"
+            .AddItem "P5F30"
         End With
         With Me.OLEObjects("ZocaloDM1").Object
             .Clear
-            .AddItem "SIN"
+            .AddItem "SIN"       'antes "SIN": debe coincidir con la tabla
             .AddItem "400mm"
             .AddItem "600mm"
         End With
