@@ -78,28 +78,19 @@ Private mbCargando As Boolean          'evita eventos en cascada
 End Sub
 
 Private Sub MtensionDM1_Change()
-    Dim contac As String, mt As String, rele As String
-    contac = Me.OLEObjects("ContacDM1").Object.Value
+    Dim mt As String
     mt = Me.OLEObjects("MtensionDM1").Object.Value
-    rele = Me.OLEObjects("ReleDM1").Object.Value
     With Me.OLEObjects("PM_DM1").Object
         .Clear
         If mt = "" Then Exit Sub
-        If mt = "PT" Then
-            Select Case rele
-                Case "P5F30"                   'PM = SI con o sin contactor
-                    .AddItem "SI"
-                Case "P3U30", "P3T32"          'PM = SI solo con contactor SI
-                    If contac = "SI" Then .AddItem "SI"
-            End Select
-        End If
+        If mt = "PT" Then .AddItem "SI"      'PM existe con PT, con o sin contactor
         .AddItem "NO"
     End With
 End Sub
 
-    Private Sub ContacDM1_Change()
-        MtensionDM1_Change      'si cambian el contactor, se recalcula PM
-    End Sub
+Private Sub ContacDM1_Change()
+    MtensionDM1_Change
+End Sub
 Public Sub Worksheet_Activate()
     '======== CELDA IM ==========================
         With  Me.OLEObjects("TensionIM").Object
@@ -190,7 +181,7 @@ Public Sub Worksheet_Activate()
     '======= CELDA DM1 ========================
         With Me.OLEObjects("TensionDM1").Object
             .Clear
-            .AddItem "24Kv"
+            .AddItem "24Kv" 
         End With
         With Me.OLEObjects("ReleDM1").Object
             .Clear
@@ -323,14 +314,15 @@ end sub
 Public Sub celda_DM1A()
     Dim dato1 As String, dato2 As String, dato3 As String, dato4 As String
     Dim dato5 As String, dato6 As String, dato7 As String
-    dato1 = Me.OLEObjects("TensionDM1").Object.Value
-    dato2 = Left(Me.OLEObjects("ReleDM1").Object.Value, 3)   'P3U30→P3U, P3T32→P3T, P5U20→P5U
+    dato1 = Replace(UCase(Me.OLEObjects("TensionDM1").Object.Value), "KV", "")   '24Kv → 24
+    dato2 = Left(Me.OLEObjects("ReleDM1").Object.Value, 3)   'P3U, P3T, P5U, P5F
     dato3 = Me.OLEObjects("ContacDM1").Object.Value
     dato4 = Me.OLEObjects("CorrienteDM1").Object.Value
     dato5 = Me.OLEObjects("MtensionDM1").Object.Value
     dato6 = Me.OLEObjects("ZocaloDM1").Object.Value
     dato7 = Me.OLEObjects("PM_DM1").Object.Value
-    If dato6 = "SIN" Then dato6 = "NO"     'en la lista el zócalo sin base es "NO"
+    If dato6 = "SIN" Then dato6 = "NO"            'sin zócalo → NO
+    dato6 = Replace(dato6, "mm", "")              '400mm → 400, 600mm → 600
 
     If dato1 = "" Or dato2 = "" Or dato3 = "" Or dato4 = "" Or _
        dato5 = "" Or dato6 = "" Or dato7 = "" Then

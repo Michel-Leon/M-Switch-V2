@@ -292,11 +292,13 @@ End Sub
 Public Sub Codigo_unifilar()
     Dim codigo_QM As String
     Dato2 = "03"
+    'SENSORES
     If Me.OptionButton18.Value = True Then
         Dato3 = "02"
     ElseIf Me.OptionButton19.Value = True Then
         Dato3 = "01"
     End If
+    'ORIENTACION
     if Me.OptionButton66.Value = True Then
         Dato4 = "01"
     elseIf Me.OptionButton67.Value = True Then
@@ -306,7 +308,14 @@ Public Sub Codigo_unifilar()
     else
         Dato4 = ""
     End If
-    codigo_QM = "UN_" & Dato1 & Dato2 & Dato3 & Dato4
+    ' MOTORIZADO
+    If  Me.OptionButton40.Value = True Then
+        Dato5 = "02"
+    Elseif Me.OptionButton41.Value = True Then
+        Dato5 = "01"
+    end if 
+
+    codigo_QM = "UN_" & Dato1 & Dato2 & Dato3 & Dato4 & Dato5
     If PosicionUnifilarActual = 0 Then
         MsgBox "No se ha definido la posicion (H1-H9) para este bloque.", vbExclamation
         Exit Sub

@@ -129,7 +129,7 @@ End Sub
         SetRef OptionButton84.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5S_5P20_BR", "3"
     End Sub
     Private Sub OptionButton43_Click()
-        SetRef OptionButton43.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5S_5P20_BR", "3"
+        SetRef OptionButton43.Value, Me.Rf8, Me.Ct8, "CTMT_17,5_50/5_0.5S_10P20_BR", "3"
         Me.OptionButton47.Value = False
     End Sub
     Private Sub OptionButton47_Click()
